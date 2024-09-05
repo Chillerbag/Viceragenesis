@@ -1,0 +1,26 @@
+{
+  "repoUrl": "https://github.com/feit-comp30019/2024s2-project-2-ed-discussers",
+  "teamName": "Ed Discussers",
+  "teamMembers": [
+    {
+      "name": "Ethan Hawkins",
+      "github": "Chillerbag",
+      "email": "ewhawkins@student.unimelb.edu.au"
+    },
+    {
+      "name": "Ella McKercher",
+      "github": "ellamck",
+      "email": "emckercher@student.unimelb.edu.au" 
+    },
+    {
+      "name": "Canghai Wang",
+      "github": "alex226336",
+      "email": "canghaiw@student.unimelb.edu.au"
+    },
+    {
+      "name": "Hoang Khue Duong",
+      "github": "hoangKhueDuong",
+      "email": "hoangkhued@student.unimelb.edu.au"
+    }
+  ]
+}
