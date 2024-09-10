@@ -193,12 +193,21 @@ public class basicPlayerMovement : MonoBehaviour
 
 void OnCollisionEnter(Collision collision)
 {
-    if (collision.gameObject.tag == "Enemy")
+    if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
     {
         if (State == "Attacking")
         {
             Vector3 reflection = Vector3.Reflect(lastDirection, collision.contacts[0].normal);
-            collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
+            if (collision.gameObject.tag == "Enemy")
+            {
+                collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
+            }
+            
+            else if (collision.gameObject.tag == "Boss")
+            {
+                collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
+            }
+            
             // bounce back after attacking
             StartCoroutine(BounceBack(reflection.normalized));
         }
