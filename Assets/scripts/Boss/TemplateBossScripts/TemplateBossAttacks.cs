@@ -10,15 +10,17 @@ public class BossAttacks : MonoBehaviour
 
     private Animator stateMachine;
     
-    private float bulletSpeed = 3f; 
+    private float bulletSpeed = 1f; 
 
     // shoot a stream of bullets at the player for 4s
     public void attack_1()
     {
+        stateMachine = GetComponent<Animator>();
         float attackDuration = 5f;
         while (attackDuration > 0) {
             attackDuration -= Time.deltaTime;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Debug.Log("bullet created");
             // Set the bullet's velocity
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null)
@@ -30,21 +32,20 @@ public class BossAttacks : MonoBehaviour
                 Debug.LogError("Rigidbody component not found on bulletPrefab.");
             }
         }
-        if (stateMachine.GetCurrentAnimatorStateInfo(0).IsName("BossEnrage")) {
-            stateMachine.SetTrigger("returnToEnragedAfterAttack");
-        } else {
-            stateMachine.SetTrigger("returnIdleAfterAttack");
-        }
+        stateMachine.SetTrigger("returnIdleAfterAttack");
+        stateMachine.ResetTrigger("Attack1");
     }
 
     // shoot bullets in a ring shape 3 times
     public void attack_2()
     {
+        stateMachine = GetComponent<Animator>();
         for (int j = 0; j < 3; j++)
         { 
             for (int i = 0; i < 360; i += 10)
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Debug.Log("bullet created");
                 bullet.transform.Rotate(0, i, 0);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 Vector3 direction = bullet.transform.forward;
@@ -57,16 +58,16 @@ public class BossAttacks : MonoBehaviour
                 ringTimer -= Time.deltaTime;
             }
         }
-        if (stateMachine.GetCurrentAnimatorStateInfo(0).IsName("BossEnrage")) {
-            stateMachine.SetTrigger("returnToEnragedAfterAttack");
-        } else {
-            stateMachine.SetTrigger("returnIdleAfterAttack");
-        }
+
+        stateMachine.SetTrigger("returnIdleAfterAttack");
+        stateMachine.ResetTrigger("Attack2");
+
     }
 
 
     public void attack_3()
     {
+        stateMachine = GetComponent<Animator>();
         int numberOfBullets = 100; // Total number of bullets to be fired
         float angleIncrement = 10f; // Angle increment in degrees
         float radiusIncrement = 0.1f; // Radius increment per bullet
@@ -92,6 +93,7 @@ public class BossAttacks : MonoBehaviour
             currentRadius += radiusIncrement;
         }
         stateMachine.SetTrigger("returnToEnragedAfterAttack");
+        stateMachine.ResetTrigger("Attack3");
     }
 
 
