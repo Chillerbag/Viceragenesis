@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 06cbe14e58ef1404d920a5b1f51db1ff
+<<<<<<<< HEAD:Assets/GraphicsDev_2.unity.meta
+guid: 9a7ed0f18f9540b4b84cdf67d94abb0b
+========
+guid: 988c84aa7b953434e844c5fc94d09d79
+>>>>>>>> khue-start-menu:Assets/StartMenu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
