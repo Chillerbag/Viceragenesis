@@ -50,9 +50,6 @@ public class SoundFXManager : MonoBehaviour
         audioSource.volume = volume;
         audioSource.Play();
         float clipLength = audioSource.clip.length;
-
-        Debug.Log("PLAYING SOUND AT " + soundLocation.position);
-
         // destroy the soundFXObject when sound is done playing
         Destroy(audioSource.gameObject, clipLength);
 

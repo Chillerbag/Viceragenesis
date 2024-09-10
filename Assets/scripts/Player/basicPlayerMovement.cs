@@ -1,6 +1,27 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
+// basicPlayerMovement.cs - Written by Ethan Hawkins
+
+// what is this script for?
+    /* 
+    This script is responsible for the player's movement and interactions with the environment.
+    The player can move around the environment, dig underground, and attack enemies.
+    The player can also take damage and lose health, which results in the destruction of nodes.
+    The player can also bounce off enemies when attacking them.
+    The player can also move to the top of diggable objects by raycasting and moving to the top marker.
+    */
+
+// TODOs:
+    /*
+    - Refactor the code to be more readable and maintainable.
+    - Add comments to explain the code.
+    - make the player's movement more fluid and responsive (specifically digging and attacking).
+    - change all public variables to private and use properties to access them (getters and setters).
+    - fix bouncing off enemies to actually work.
+    */
 
 public class basicPlayerMovement : MonoBehaviour
 {
@@ -22,6 +43,8 @@ public class basicPlayerMovement : MonoBehaviour
     public ParticleSystem undergroundEffect; // particle effect for being underground
     public ParticleSystem attackEffect; // particle effect for dashing through the air ?
 
+    [SerializeField] private Slider cooldownSlider; // the slider for the player's cooldown for digging again 
+
     // ----------- Private Variables -----------
     private float vspeed = 5; // how fast the player falls
     private float timeInvisible = 1.5f; // how long the player is invisible when digging
@@ -34,31 +57,50 @@ public class basicPlayerMovement : MonoBehaviour
     private Animator rigAnimator; // the animator for the player rig
 
     // ----------- Unity Functions -----------
+
+    // start()
+    // what do we do here? - set the player layer, turn off the underground effect, and get the player rig animator.
     void Start()
     {
         playerLayer = gameObject.layer; 
         var emission = undergroundEffect.emission; // figure out how to not store this as var. awful.
         emission.enabled = false; // turn off the underground effect to start
         rigAnimator = playerModel.GetComponent<Animator>(); // get the animator from the player rig
+        cooldownSlider.value = 0;
     }
 
+    // update()
+    // what do we do here? - check for player input, move the player, check for collisions, and play soundFX.
     void Update()
     {
+        // make the cooldown slider invisible if 0 
+        if (cooldownSlider.value == 0)
+        {
+            cooldownSlider.gameObject.SetActive(false);
+        }
+        else
+        {
+            cooldownSlider.gameObject.SetActive(true);
+        }
+
         var emission = undergroundEffect.emission; // TODO: ugly. Poor naming too. 
 
         // check health and destroy a node if health is decreased
         OnHealthLoss();
 
+        // check if the player is underground and decrement the buffer TODO: combine this into the cooldown slider
         if (undergroundBuffer > 0)
         {
             undergroundBuffer -= Time.deltaTime;
+            cooldownSlider.value = undergroundBuffer;
         }
 
+        // get player input
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; // normalize the direction of player input
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
+        // move the player if we are inputting a direction
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -73,7 +115,6 @@ public class basicPlayerMovement : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, -transform.up, out hit, 2.0f, groundLayer))
                 {
-                    Debug.Log("digging a surface: " + hit.collider.name);
                     // Project the movement direction onto the surface
                     moveDir = Vector3.ProjectOnPlane(moveDir, hit.normal).normalized;
                     // Adjust the player's position to adhere to the surface
@@ -121,6 +162,7 @@ public class basicPlayerMovement : MonoBehaviour
                 SetLayerCollision(true);
                 isUnderground = false;
                 undergroundBuffer = 2.0f;
+                cooldownSlider.value = undergroundBuffer;
                 MoveToTopMarker();
                 StartCoroutine(DolphinDive());
             }
@@ -134,6 +176,7 @@ public class basicPlayerMovement : MonoBehaviour
             SetLayerCollision(true);
             isUnderground = false;
             undergroundBuffer = 2.0f;
+            cooldownSlider.value = undergroundBuffer;
             MoveToTopMarker();
             StartCoroutine(DolphinDive());
         }
@@ -150,14 +193,11 @@ public class basicPlayerMovement : MonoBehaviour
 
 void OnCollisionEnter(Collision collision)
 {
-    Debug.Log("Collision detected with: " + collision.gameObject.name);
     if (collision.gameObject.tag == "Enemy")
     {
-        Debug.Log("Collided with Enemy while in state: " + State);
         if (State == "Attacking")
         {
             Vector3 reflection = Vector3.Reflect(lastDirection, collision.contacts[0].normal);
-            Debug.Log("Attacking enemy: " + collision.gameObject.name);
             collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
             // bounce back after attacking
             StartCoroutine(BounceBack(reflection.normalized));
@@ -167,12 +207,16 @@ void OnCollisionEnter(Collision collision)
 
 private IEnumerator BounceBack(Vector3 bounceBack)
 {
-    float bounceDuration = 0.2f; // Duration of the bounce back
+    float bounceDuration = 0.5f; // Duration of the bounce back
     float elapsedTime = 0f;
+    Rigidbody rb = GetComponent<Rigidbody>();
 
+    // Gradually apply a backward force over the duration of the bounce
     while (elapsedTime < bounceDuration)
     {
-        controller.Move(bounceBack * Time.deltaTime);
+        float t = elapsedTime / bounceDuration;
+        rb.AddForce(bounceBack * 20 * (1 - t));
+
         elapsedTime += Time.deltaTime;
         yield return null;
     }
@@ -241,11 +285,7 @@ private void OnHealthLoss()
 
 private void MoveToTopMarker()
 {
-    Debug.Log("RayCasting");
-
-
     RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up);
-    Debug.Log("Number of hits: " + hits.Length);
     if (hits.Length > 0)
     {
         // Find the highest hit point
@@ -266,17 +306,7 @@ private void MoveToTopMarker()
             StartCoroutine(SmoothDigUp(topMarker.position.y));
             //controller.Move(topMarker.position.y * Vector3.up);
             //gameObject.layer = originalLayer;
-            Debug.Log("Moved to top marker position: " + topMarker.position);
-        }
-        else
-        {
-            Debug.Log("TopMarker not found on: " + highestHit.collider.name);
-        }
-        
-    }
-    else
-    {
-        Debug.Log("No hits detected");
+        }       
     }
 }
 
