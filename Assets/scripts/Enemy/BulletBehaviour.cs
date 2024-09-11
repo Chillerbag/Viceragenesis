@@ -21,8 +21,12 @@ public class Bullet : MonoBehaviour
             // If the component exists, apply damage
             playerHealth.TakeDamage(damage);
         }
+        if (collision.gameObject.tag == "Boss") {
+            // dont collide with boss
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
 
-        if (collision.gameObject.tag != "Bullet") {
+        if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Boss") {
             Destroy(gameObject);
         }
     }

@@ -9,7 +9,7 @@ public class TemplateBossBehaviour : MonoBehaviour
     private Animator stateMachine;
     public int HP;
 
-    private float attackCooldown = 2f;
+    private float attackCooldown = 10f;
 
     // Start is called before the first frame update
     void Start()
