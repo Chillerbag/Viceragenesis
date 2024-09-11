@@ -9,7 +9,6 @@ public class UIText : MonoBehaviour
 
     void Update()
     {
-        // Assuming your Player script has public Health and Status properties
         screenText.text = "Health= " + player.GetComponent<PlayerHealth>().currentHealth.ToString() + " Status= " + player.GetComponent<basicPlayerMovement>().State;
     }
 
