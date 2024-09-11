@@ -16,6 +16,36 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    void Update() {
+        OnHealthLoss();
+    }
+
+    private void OnHealthLoss()
+    {
+        string NodeToDestroy = "Node." + currentHealth;
+        Destroy(GameObject.Find(NodeToDestroy));
+
+        if (currentHealth == 2)
+        {
+            Destroy(GameObject.Find("Cube.018"));
+            Destroy(GameObject.Find("Cube.017"));
+            Destroy(GameObject.Find("Cube.016"));
+            Destroy(GameObject.Find("Cube.015"));
+            Destroy(GameObject.Find("Cube.014"));
+            Destroy(GameObject.Find("Cube.013"));
+        }
+
+        if (currentHealth == 1)
+        {
+            Destroy(GameObject.Find("Cube.012"));
+            Destroy(GameObject.Find("Cube.011"));
+            Destroy(GameObject.Find("Cube.010"));
+            Destroy(GameObject.Find("Cube.009"));
+            Destroy(GameObject.Find("Cube.008"));
+            Destroy(GameObject.Find("Cube.007"));
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         // handle audio
