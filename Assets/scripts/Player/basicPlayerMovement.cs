@@ -191,157 +191,157 @@ public class basicPlayerMovement : MonoBehaviour
         controller.Move(direction * Time.deltaTime);
     }
 
-void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+    void OnCollisionEnter(Collision collision)
     {
-        if (State == "Attacking")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            Vector3 reflection = Vector3.Reflect(lastDirection, collision.contacts[0].normal);
-            if (collision.gameObject.tag == "Enemy")
+            if (State == "Attacking")
             {
-                collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
-            }
-            
-            else if (collision.gameObject.tag == "Boss")
-            {
-                collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
-            }
-            
-            // bounce back after attacking
-            StartCoroutine(BounceBack(reflection.normalized));
-        }
-    }
-}
-
-private IEnumerator BounceBack(Vector3 bounceBack)
-{
-    float bounceDuration = 0.5f; // Duration of the bounce back
-    float elapsedTime = 0f;
-    Rigidbody rb = GetComponent<Rigidbody>();
-
-    // Gradually apply a backward force over the duration of the bounce
-    while (elapsedTime < bounceDuration)
-    {
-        float t = elapsedTime / bounceDuration;
-        rb.AddForce(bounceBack * 20 * (1 - t));
-
-        elapsedTime += Time.deltaTime;
-        yield return null;
-    }
-}
-
-private void SetLayerCollision(bool enabled)
-{
-    Physics.IgnoreLayerCollision(playerLayer, ignoreCollisionLayer, !enabled);
-    Physics.IgnoreLayerCollision(playerLayer, BulletLayer, !enabled);
-}
-
-private IEnumerator DolphinDive()
-{
-    var attackEmission = attackEffect.emission;
-    attackEmission.enabled = true;
-    State = "Attacking";
-    float diveDuration = 0.7f; // Duration of the dive
-    float elapsedTime = 0f;
-    Vector3 initialVelocity = lastDirection * speed + Vector3.up * 15;
-
-    //var SpeedEffectController = SpeedEffect.GetComponent<MaterialPropertyController>();
-    //SpeedEffectController.isEnabled = true;
-    //SpeedEffectController.UpdateShaderProperties();
-
-    // while only works here because coroutines are frame dependent (independent of update). 
-    while (elapsedTime < diveDuration)
-    {
-        controller.Move(initialVelocity * Time.deltaTime);
-        initialVelocity += Vector3.down * gravity * Time.deltaTime;
-        elapsedTime += Time.deltaTime;
-        yield return null;
-    }
-    //SpeedEffectController.isEnabled = false;
-    //SpeedEffectController.UpdateShaderProperties();
-    attackEmission.enabled = false;
-    State = "Idle";
-
-}
-
-// to do: clean this up. It sucks. 
-private void OnHealthLoss()
-{
-    PlayerHealth health = GetComponent<PlayerHealth>();
-    String NodeToDestroy = "Node." + health.currentHealth;
-    Destroy(GameObject.Find(NodeToDestroy));
-
-    if (health.currentHealth == 2) {
-        Destroy(GameObject.Find("Cube.018"));
-        Destroy(GameObject.Find("Cube.017"));
-        Destroy(GameObject.Find("Cube.016"));
-        Destroy(GameObject.Find("Cube.015"));
-        Destroy(GameObject.Find("Cube.014"));
-        Destroy(GameObject.Find("Cube.013"));
-    }
-
-    if (health.currentHealth == 1) {
-        Destroy(GameObject.Find("Cube.012"));
-        Destroy(GameObject.Find("Cube.011"));
-        Destroy(GameObject.Find("Cube.010"));
-        Destroy(GameObject.Find("Cube.009"));
-        Destroy(GameObject.Find("Cube.008"));
-        Destroy(GameObject.Find("Cube.007"));
-    }
-    
-}
-
-private void MoveToTopMarker()
-{
-    RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up);
-    if (hits.Length > 0)
-    {
-        // Find the highest hit point
-        RaycastHit highestHit = hits[0];
-        foreach (RaycastHit hit in hits)
-        {
-            if (hit.point.y > highestHit.point.y)
-            {
-                highestHit = hit;
+                Vector3 reflection = Vector3.Reflect(lastDirection, collision.contacts[0].normal);
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
+                }
+                
+                else if (collision.gameObject.tag == "Boss")
+                {
+                    collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
+                }
+                
+                // bounce back after attacking
+                StartCoroutine(BounceBack(reflection.normalized));
             }
         }
-        Transform topMarker = highestHit.collider.transform.Find("TopMarker");
-        if (topMarker != null)
-        {
-            originalLayer = gameObject.layer;
-            gameObject.layer = noCollisionLayer;
-            // Move the player to the position of the marker object
-            StartCoroutine(SmoothDigUp(topMarker.position.y));
-            //controller.Move(topMarker.position.y * Vector3.up);
-            //gameObject.layer = originalLayer;
-        }       
     }
-}
 
-
-private IEnumerator SmoothDigUp(float endPosition)
-{
-    float duration = 0.6f; // Duration of the movement in seconds
-    float elapsedTime = 0f;
-    float startPosition = transform.position.y;
-
-    while (elapsedTime < duration)
+    private IEnumerator BounceBack(Vector3 bounceBack)
     {
-        State = "DiggingUp";
-        float newY = Mathf.Lerp(startPosition, endPosition, elapsedTime / duration);
-        Vector3 newPosition = new Vector3(transform.position.x, newY, transform.position.z);
-        controller.Move(newPosition - transform.position); // Move the player to the new position
+        float bounceDuration = 0.5f; // Duration of the bounce back
+        float elapsedTime = 0f;
+        Rigidbody rb = GetComponent<Rigidbody>();
 
-        elapsedTime += Time.deltaTime;
-        yield return null;
+        // Gradually apply a backward force over the duration of the bounce
+        while (elapsedTime < bounceDuration)
+        {
+            float t = elapsedTime / bounceDuration;
+            rb.AddForce(bounceBack * 20 * (1 - t));
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
-    // Ensure the player reaches the exact end position
-    Vector3 finalPosition = new Vector3(transform.position.x, endPosition, transform.position.z);
-    controller.Move(finalPosition - transform.position);
-    State = "Idle";
+    private void SetLayerCollision(bool enabled)
+    {
+        Physics.IgnoreLayerCollision(playerLayer, ignoreCollisionLayer, !enabled);
+        Physics.IgnoreLayerCollision(playerLayer, BulletLayer, !enabled);
+    }
 
-    gameObject.layer = originalLayer;
-}
+    private IEnumerator DolphinDive()
+    {
+        var attackEmission = attackEffect.emission;
+        attackEmission.enabled = true;
+        State = "Attacking";
+        float diveDuration = 0.7f; // Duration of the dive
+        float elapsedTime = 0f;
+        Vector3 initialVelocity = lastDirection * speed + Vector3.up * 15;
+
+        //var SpeedEffectController = SpeedEffect.GetComponent<MaterialPropertyController>();
+        //SpeedEffectController.isEnabled = true;
+        //SpeedEffectController.UpdateShaderProperties();
+
+        // while only works here because coroutines are frame dependent (independent of update). 
+        while (elapsedTime < diveDuration)
+        {
+            controller.Move(initialVelocity * Time.deltaTime);
+            initialVelocity += Vector3.down * gravity * Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        //SpeedEffectController.isEnabled = false;
+        //SpeedEffectController.UpdateShaderProperties();
+        attackEmission.enabled = false;
+        State = "Idle";
+
+    }
+
+    // to do: clean this up. It sucks. 
+    private void OnHealthLoss()
+    {
+        PlayerHealth health = GetComponent<PlayerHealth>();
+        String NodeToDestroy = "Node." + health.currentHealth;
+        Destroy(GameObject.Find(NodeToDestroy));
+
+        if (health.currentHealth == 2) {
+            Destroy(GameObject.Find("Cube.018"));
+            Destroy(GameObject.Find("Cube.017"));
+            Destroy(GameObject.Find("Cube.016"));
+            Destroy(GameObject.Find("Cube.015"));
+            Destroy(GameObject.Find("Cube.014"));
+            Destroy(GameObject.Find("Cube.013"));
+        }
+
+        if (health.currentHealth == 1) {
+            Destroy(GameObject.Find("Cube.012"));
+            Destroy(GameObject.Find("Cube.011"));
+            Destroy(GameObject.Find("Cube.010"));
+            Destroy(GameObject.Find("Cube.009"));
+            Destroy(GameObject.Find("Cube.008"));
+            Destroy(GameObject.Find("Cube.007"));
+        }
+        
+    }
+
+    private void MoveToTopMarker()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up);
+        if (hits.Length > 0)
+        {
+            // Find the highest hit point
+            RaycastHit highestHit = hits[0];
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.point.y > highestHit.point.y)
+                {
+                    highestHit = hit;
+                }
+            }
+            Transform topMarker = highestHit.collider.transform.Find("TopMarker");
+            if (topMarker != null)
+            {
+                originalLayer = gameObject.layer;
+                gameObject.layer = noCollisionLayer;
+                // Move the player to the position of the marker object
+                StartCoroutine(SmoothDigUp(topMarker.position.y));
+                //controller.Move(topMarker.position.y * Vector3.up);
+                //gameObject.layer = originalLayer;
+            }       
+        }
+    }
+
+
+    private IEnumerator SmoothDigUp(float endPosition)
+    {
+        float duration = 0.6f; // Duration of the movement in seconds
+        float elapsedTime = 0f;
+        float startPosition = transform.position.y;
+
+        while (elapsedTime < duration)
+        {
+            State = "DiggingUp";
+            float newY = Mathf.Lerp(startPosition, endPosition, elapsedTime / duration);
+            Vector3 newPosition = new Vector3(transform.position.x, newY, transform.position.z);
+            controller.Move(newPosition - transform.position); // Move the player to the new position
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the player reaches the exact end position
+        Vector3 finalPosition = new Vector3(transform.position.x, endPosition, transform.position.z);
+        controller.Move(finalPosition - transform.position);
+        State = "Idle";
+
+        gameObject.layer = originalLayer;
+    }
 }
