@@ -12,6 +12,8 @@ public class PlayerDigging : MonoBehaviour
     private float timeInvisible = 1.5f;
     private Animator rigAnimator;
 
+    public GameObject playerRig; 
+
     private PlayerEffects playerEffects;
 
     public int ignoreCollisionLayer; // the layer we move to when underground
@@ -30,7 +32,6 @@ public class PlayerDigging : MonoBehaviour
         playerEffects = GetComponent<PlayerEffects>();
         playerMovement = GetComponent<PlayerMovement>();
         playerState = GetComponent<PlayerState>();  
-
         playerEffects.PlayUndergroundParticles(false);
         playerEffects.PlayAttackParticles(false);
     }
@@ -87,12 +88,12 @@ public class PlayerDigging : MonoBehaviour
     {
         rigAnimator.SetTrigger("endDig");
         playerEffects.PlayUndergroundParticles(false);
-        SetLayerCollision(true);
         isUnderground = false;
         undergroundBuffer = 2.0f;
         cooldownSlider.value = undergroundBuffer;
         MoveToTopMarker();
         StartCoroutine(DolphinDive());
+        
     }
 
     private void SetLayerCollision(bool enabled)
@@ -140,6 +141,56 @@ public class PlayerDigging : MonoBehaviour
 
         Vector3 finalPosition = new Vector3(transform.position.x, endPosition, transform.position.z);
         controller.Move(finalPosition - transform.position);
+
+        StartCoroutine(LaunchUpward());
+    }
+
+    private IEnumerator LaunchUpward()
+    {
+        float launchDuration = 1.5f;
+        float elapsedTime = 0f;
+        Vector3 launchVelocity = Vector3.up * 35f; 
+
+        // Rotate player rig to be vertical
+        Quaternion initialRotation = playerRig.transform.rotation;
+        Quaternion verticalRotation = Quaternion.Euler(90f, playerRig.transform.eulerAngles.y, playerRig.transform.eulerAngles.z);
+
+        while (elapsedTime < launchDuration)
+        {
+            controller.Move(launchVelocity * Time.deltaTime);
+            launchVelocity += Vector3.down * playerMovement.gravity * Time.deltaTime;
+
+            // Interpolate rotation to vertical
+            playerRig.transform.rotation = Quaternion.Slerp(initialRotation, verticalRotation, elapsedTime / launchDuration);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        SetLayerCollision(true);
+
+        // Reset rotation to normal
+        playerRig.transform.rotation = initialRotation;
+
+        // Start falling
+        StartCoroutine(FallDown());
+    }
+
+    private IEnumerator FallDown()
+    {
+        float fallDuration = 0.5f;
+        float elapsedTime = 0f;
+        Vector3 fallVelocity = Vector3.zero;
+
+        while (elapsedTime < fallDuration)
+        {
+            fallVelocity += Vector3.down * playerMovement.gravity * Time.deltaTime;
+            controller.Move(fallVelocity * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerState.SetState("Idle");
     }
 
     private IEnumerator DolphinDive()
