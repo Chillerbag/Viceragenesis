@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
     public int currentHealth;
+    public float invulnerabilityDuration = 2f; // Duration of invulnerability in seconds
+    private bool isInvulnerable = false;
 
     public GameObject screenFlash;
-
-
     [SerializeField] private AudioClip damageSound;
 
     void Start()
@@ -48,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isInvulnerable) return; // If the player is invulnerable, do nothing
+
         // handle audio
         SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 1f);
 
@@ -63,6 +66,17 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            StartCoroutine(InvulnerabilityCoroutine());
+        }
+    }
+
+    private IEnumerator InvulnerabilityCoroutine()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(invulnerabilityDuration);
+        isInvulnerable = false;
     }
 
     void Die()

@@ -37,12 +37,12 @@ public class PlayerAttacking : MonoBehaviour
 
                 if (collision.gameObject.tag == "Enemy")
                 {
-                    BounceBack(bounceDirection.normalized);
+                    BounceBack(bounceDirection.normalized, collision.gameObject.tag);
                     collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
                 }
                 else if (collision.gameObject.tag == "Boss")
                 {
-                    BounceBack(bounceDirection.normalized);
+                    BounceBack(bounceDirection.normalized, collision.gameObject.tag);
                     collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
                 }
             }
@@ -53,10 +53,14 @@ public class PlayerAttacking : MonoBehaviour
         }
     }
 
-    private void BounceBack(Vector3 bounceBack)
+    private void BounceBack(Vector3 bounceBack, string enemyTag)
     {
         float bounceDistance = 0.8f; // Adjust this value for a more satisfying bounce
         Vector3 bounceVector = -1 * bounceBack * bounceDistance * 15;
+        if (enemyTag == "Boss") {
+            bounceDistance = 1.5f; // Adjust this value for a more satisfying bounce
+            bounceVector = -1 * bounceBack * bounceDistance * 20;
+        }
         Debug.Log("Applying bounce back with vector: " + bounceVector);
         rigAnimator.SetTrigger("attackBounce");
         StartCoroutine(ApplyBounceBack(bounceVector));
@@ -67,13 +71,13 @@ public class PlayerAttacking : MonoBehaviour
     {
         float duration = 0.7f; // Duration of the bounce-back effect
         float elapsedTime = 0f;
+        float arcHeight = 2.5f; // Adjust this value for a higher or lower arc
 
         // Calculate the initial and final positions
         Vector3 initialPosition = transform.position;
         Vector3 finalPosition = initialPosition + bounceVector;
 
         // Calculate the arc height
-        float arcHeight = 2.5f; // Adjust this value for a higher or lower arc
 
         // Calculate the initial and final rotations
         Quaternion initialRotation = transform.rotation;

@@ -23,6 +23,8 @@ public class PlayerDigging : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerState playerState;
 
+    public int topLayer; 
+
 
     void Start()
     {
@@ -93,6 +95,7 @@ public class PlayerDigging : MonoBehaviour
         cooldownSlider.value = undergroundBuffer;
         MoveToTopMarker();
         StartCoroutine(DolphinDive());
+        SetLayerCollision(true);
         
     }
 
@@ -118,6 +121,7 @@ public class PlayerDigging : MonoBehaviour
             Transform topMarker = highestHit.collider.transform.Find("TopMarker");
             if (topMarker != null)
             {
+                Physics.IgnoreLayerCollision(gameObject.layer, topLayer, true);
                 StartCoroutine(SmoothDigUp(topMarker.position.y));
             }
         }
@@ -141,6 +145,7 @@ public class PlayerDigging : MonoBehaviour
 
         Vector3 finalPosition = new Vector3(transform.position.x, endPosition, transform.position.z);
         controller.Move(finalPosition - transform.position);
+        Physics.IgnoreLayerCollision(gameObject.layer, topLayer, false);
 
         StartCoroutine(LaunchUpward());
     }
@@ -166,7 +171,6 @@ public class PlayerDigging : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        SetLayerCollision(true);
 
         // Reset rotation to normal
         playerRig.transform.rotation = initialRotation;
