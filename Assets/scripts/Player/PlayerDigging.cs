@@ -110,6 +110,7 @@ public class PlayerDigging : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up);
         if (hits.Length > 0)
         {
+            Debug.Log("Found " + hits.Length + " hits");
             RaycastHit highestHit = hits[0];
             foreach (RaycastHit hit in hits)
             {
