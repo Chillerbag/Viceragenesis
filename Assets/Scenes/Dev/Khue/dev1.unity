@@ -210,6 +210,112 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenText: {fileID: 2099853257}
   player: {fileID: 4198952235802518490}
+--- !u!1 &105560272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105560273}
+  - component: {fileID: 105560276}
+  - component: {fileID: 105560275}
+  - component: {fileID: 105560274}
+  m_Layer: 0
+  m_Name: Plane Shader Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &105560273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105560272}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.5, y: 15, z: 27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 124542687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &105560274
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105560272}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &105560275
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105560272}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 08bc4e6ba4448484dac64cc21376d453, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &105560276
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105560272}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &124542686
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +346,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1950544722}
+  - {fileID: 105560273}
   m_Father: {fileID: 775760220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191775740
@@ -7253,20 +7360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb742714eaee454799e5aef15e910f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 19546990000064665}
-  cam: {fileID: 4405060594037845932}
-  speed: 20
-  smoothTurn: 0.1
-  gravity: 15
-  playerModel: {fileID: 5340265993571261915}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  playerLayer: 6
-  ignoreCollisionLayer: 8
-  State: Idle
-  undergroundEffect: {fileID: 145801507651886626}
-  attackEffect: {fileID: 3686017052451265937}
 --- !u!4 &570022112129280006
 Transform:
   m_ObjectHideFlags: 3
@@ -7747,7 +7840,7 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   screenFlash: {fileID: 0}
-  respawnPoint: {fileID: 0}
+  damageSound: {fileID: 0}
 --- !u!198 &3686017052451265937
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -12660,11 +12753,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &5340265993571261915 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4738302538348711406, guid: 91f97e5835b5b814b8f0c9361b99afff, type: 3}
-  m_PrefabInstance: {fileID: 5536005018177542374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5463277795934729703
 MeshRenderer:
   m_ObjectHideFlags: 0
