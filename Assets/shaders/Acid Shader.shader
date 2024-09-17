@@ -3,8 +3,8 @@ Shader "Unlit Acid Shader/shader"
     Properties
     {
         _DisplacementTex ("Displacement Texture", 2D) = "white" {}
+        _DisplacementStrength  ("Displacement Strength", float) = 1
         _OverlayTex ("Overlay Texture", 2D) = "white" {}
-        _Color ("Color", Color) = (1,1,1,1)
         [HDR] _EmissionColor("Color", Color) = (0,0,0)
     }
     SubShader
@@ -45,7 +45,7 @@ Shader "Unlit Acid Shader/shader"
             sampler2D _DisplacementTex;
             sampler2D _OverlayTex;
             fixed4 _EmissionColor;
-            uniform fixed4 _Color;
+            float _DisplacementStrength;
 
             v2f vert (appdata v)
             {
@@ -54,38 +54,40 @@ Shader "Unlit Acid Shader/shader"
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(outpout);
                 o.normal = UnityObjectToWorldNormal(v.normal);
                 o.viewdir = normalize(WorldSpaceViewDir(v.vertex));
+
+                // moving displacement map
                 o.uv = v.uv;
                 float xMod = tex2Dlod(_DisplacementTex, float4(o.uv.xy, 0, 1));
-
                 xMod = xMod * 2 - 1;
                 o.uv.x = sin(xMod * 10 + _Time.y);
 
+                // displace perpendicular to normal
                 float3 vert = v.vertex;
                 float scale = 0.5f;
-                vert.x += o.normal.x * o.normal.x * o.uv.x * scale;
-                vert.y += o.normal.y * o.normal.y * o.uv.x * scale;
-                vert.z += o.normal.z * o.normal.z * o.uv.x * scale;
-
+                vert.x += o.normal.x * o.normal.x * o.uv.x * _DisplacementStrength;
+                vert.y += o.normal.y * o.normal.y * o.uv.x * _DisplacementStrength;
+                vert.z += o.normal.z * o.normal.z * o.uv.x * _DisplacementStrength;
                 o.vertex = UnityObjectToClipPos(vert);
-                o.color = _Color;
+
+                // apply HDR vertex color
+                o.color = float4(0, 0, 0, 0);
                 half4 outputvar = half4(_EmissionColor.rgb, _EmissionColor.a);
                 half4 emission = tex2Dlod(_OverlayTex, float4(v.uv, 0, 0)) * _EmissionColor;///////////////
                 outputvar.rgb += emission.rgb;
-            
                 o.color += outputvar;
+
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float fresnelAmount = dot(i.normal, i.viewdir);
+                //float fresnelAmount = dot(i.normal, i.viewdir);
 
                 fixed4 col = tex2D(_OverlayTex, i.uv + _Time.y / 2);
-
                 float alpha = clamp(1 - i.uv.x + col, 0.3f, 0.8f);
-                float green = clamp(i.uv.x + col.x/2, 0.3f, 1);
+                float saturation = clamp(i.uv.x + col.x/2, 0.3f, 1);
 
-                return fixed4(0, green ,0, alpha) ;
+                return fixed4(saturation * i.color.x, saturation * i.color.y ,saturation * i.color.z, alpha) ;
             }
 
 

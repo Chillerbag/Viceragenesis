@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_shader
+  m_Name: Acid Shader
   m_Shader: {fileID: 4800000, guid: 80b0600991b7aa849a79092ce717f18a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,11 +37,11 @@ Material:
         m_Offset: {x: 10.95, y: 0}
     m_Ints: []
     m_Floats:
-    - _Emission: 8.7
+    - _Emission: -1.8
     - _Glossiness: 0.71
     - _Metallic: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 7.9066997, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.3968494, g: 0.5635285, b: 0.92452824, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
