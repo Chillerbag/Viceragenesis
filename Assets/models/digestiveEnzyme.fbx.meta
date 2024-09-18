@@ -3,7 +3,17 @@ guid: fe3daf7d79c40413a85c401b5cb28aef
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 7c442d3f5e6b643708456c97f8952267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Squid material dark
+    second: {fileID: 2100000, guid: 7c442d3f5e6b643708456c97f8952267, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
