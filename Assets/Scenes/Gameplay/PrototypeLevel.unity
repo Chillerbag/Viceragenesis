@@ -555,7 +555,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &139684012 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8067820479469872248, guid: f891bc4f8c5e0bf448e8fc4df9dd276a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5485875246648459424, guid: f891bc4f8c5e0bf448e8fc4df9dd276a, type: 3}
   m_PrefabInstance: {fileID: 621545588}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &139757913
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

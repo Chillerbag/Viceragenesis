@@ -25,18 +25,19 @@ Material:
     m_TexEnvs:
     - _DisplacementTex:
         m_Texture: {fileID: 2800000, guid: e080be01ec3bfdd4a95d9188f67f1af0, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 19.45, y: 1}
+        m_Offset: {x: 4.01, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 2f6ed85a17458b543b2b70f46d782b49, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
         m_Texture: {fileID: 2800000, guid: 1416dd1d45d5cab479845244afe36ed5, type: 3}
-        m_Scale: {x: 0, y: 0}
-        m_Offset: {x: 10.95, y: 0}
+        m_Scale: {x: 3.03, y: 28.62}
+        m_Offset: {x: 26, y: 0}
     m_Ints: []
     m_Floats:
+    - _DisplacementStrength: 3
     - _Emission: -1.8
     - _Glossiness: 0.71
     - _Metallic: 1
