@@ -6062,6 +6062,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
+--- !u!1 &1144736248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144736250}
+  - component: {fileID: 1144736249}
+  m_Layer: 0
+  m_Name: Death Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1144736249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144736248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcefbf5328031a847a133f231b47c8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startValue: 10
+  reductionDuration: 2
+  material: {fileID: 2100000, guid: f8b572783b058d543831bac03f9ff738, type: 2}
+--- !u!4 &1144736250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144736248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620597613}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153420877
 GameObject:
   m_ObjectHideFlags: 0
@@ -8790,6 +8837,7 @@ Transform:
   m_Children:
   - {fileID: 191775743}
   - {fileID: 198160475}
+  - {fileID: 1144736250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623161783
@@ -12262,6 +12310,10 @@ PrefabInstance:
       propertyPath: hitParticles
       value: 
       objectReference: {fileID: 4318829912162086819, guid: b8398b15dc2f05d47bddbb84c418d955, type: 3}
+    - target: {fileID: 3666595658101307189, guid: 956919c486c09a0438cc082b4fd4c78c, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 1144736248}
     - target: {fileID: 3666595658101307189, guid: 956919c486c09a0438cc082b4fd4c78c, type: 3}
       propertyPath: screenFlash
       value: 

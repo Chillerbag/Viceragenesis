@@ -13,20 +13,27 @@ public class ReduceBitDepth : MonoBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.F))
         {
-
             reductionCoroutine = StartCoroutine(ReduceValueOverTime());
         }
-        // Stop any ongoing reduction coroutine before starting a new one
+
         if (Input.GetKeyDown(KeyCode.G))
         {
-            //StopCoroutine(reductionCoroutine);
             material.SetFloat("_ColorResolution", startValue);
         }
+        */
+    }
 
-        // Start the reduction coroutine
+    public void ReduceScreenBitDepth()
+    {
+        StartCoroutine(ReduceValueOverTime());
+    }
 
+    public void ResetScreenBitDepth()
+    {
+        material.SetFloat("_ColorResolution", startValue);
     }
 
     IEnumerator ReduceValueOverTime()
