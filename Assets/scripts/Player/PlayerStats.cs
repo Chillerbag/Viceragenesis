@@ -11,13 +11,15 @@ public class PlayerHealth : MonoBehaviour
 
     public GameObject screenFlash;
     [SerializeField] private AudioClip damageSound;
+    [SerializeField] private GameObject deathEffect;
 
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    void Update() {
+    void Update()
+    {
         OnHealthLoss();
     }
 
@@ -82,6 +84,16 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player Died!");
+        StartCoroutine(ChangeToDeathScreen());
+
+    }
+
+    private IEnumerator ChangeToDeathScreen()
+    {
+        ReduceBitDepth reduceBitDepthComponent = deathEffect.GetComponent<ReduceBitDepth>();
+        reduceBitDepthComponent.ReduceScreenBitDepth();
+        yield return new WaitForSeconds(reduceBitDepthComponent.reductionDuration + 1);
+        reduceBitDepthComponent.ResetScreenBitDepth();
         SceneManager.LoadScene("GameOverScreen");
     }
 }
