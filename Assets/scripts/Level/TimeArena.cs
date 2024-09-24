@@ -20,6 +20,7 @@ public class TimeArena : MonoBehaviour
     void Start()
     {   
         SetArenaBoundariesActive(false);
+        TimeEmitter.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class TimeArena : MonoBehaviour
                 TimerText.gameObject.SetActive(false);
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
+                Destroy(gameObject);
             }
         }
         // if boss dies take down the collider boundaries
@@ -45,6 +47,7 @@ public class TimeArena : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
             timeActive = true;
+            TimeEmitter.SetActive(true);
             TimerText.gameObject.SetActive(true);
             SetArenaBoundariesActive(true);
             
