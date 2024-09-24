@@ -26,6 +26,11 @@ public class Bullet : MonoBehaviour
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
 
+        if (collision.gameObject.tag == "ArenaWall") {
+            // dont collide with arena walls
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
+
         if (collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Boss") {
             Destroy(gameObject);
         }
