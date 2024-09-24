@@ -20,10 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerState playerState;
 
+
     void Start()
     {
         playerEffects = GetComponent<PlayerEffects>();
-        playerState = GetComponent<PlayerState>();
+        playerState = GetComponent<PlayerState>();   
         playerState.SetState("Idle");
     }
 

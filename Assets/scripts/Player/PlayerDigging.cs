@@ -111,19 +111,15 @@ public class PlayerDigging : MonoBehaviour
         if (hits.Length > 0)
         {
             Debug.Log("Found " + hits.Length + " hits");
-            RaycastHit highestHit = hits[0];
             foreach (RaycastHit hit in hits)
             {
-                if (hit.point.y > highestHit.point.y)
+                Transform topMarker = hit.collider.transform.Find("TopMarker");
+                if (topMarker != null)
                 {
-                    highestHit = hit;
+                    Physics.IgnoreLayerCollision(gameObject.layer, topLayer, true);
+                    StartCoroutine(SmoothDigUp(topMarker.position.y));
+                    return; // Exit the method once the top marker is found and the movement is initiated
                 }
-            }
-            Transform topMarker = highestHit.collider.transform.Find("TopMarker");
-            if (topMarker != null)
-            {
-                Physics.IgnoreLayerCollision(gameObject.layer, topLayer, true);
-                StartCoroutine(SmoothDigUp(topMarker.position.y));
             }
         }
     }
