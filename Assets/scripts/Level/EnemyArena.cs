@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class EnemyArena : MonoBehaviour
 {
@@ -20,17 +21,34 @@ public class EnemyArena : MonoBehaviour
     public int enemyCount = 3;
     void Start()
     {   
+        EnemyCountText.gameObject.SetActive(false);
         SetArenaBoundariesActive(false);
+        for (int i = 0; i < Enemies.Length; i++) {
+                Enemies[i].SetActive(false);
+            }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Enemies == null) {
+        if (Enemies.Length == 0) {
             ArenaActive = false;
             EnemyCountText.gameObject.SetActive(false);
-            EnemyCountText.text = "Enemies Left: " + enemyCount.ToString();
             SetArenaBoundariesActive(false);
+        }
+
+        if (ArenaActive) {
+            EnemyCountText.gameObject.SetActive(true);
+            EnemyCountText.text = "Enemies Left: " + enemyCount.ToString();
+
+            // check if an enemmy has been destroyed and remove
+            for (int i = 0; i < Enemies.Length; i++) {
+                if (Enemies[i] == null) {
+                    enemyCount -= 1;
+                    removeEnemy(Enemies[i]);
+                }
+            }
+
         }
     }
 
@@ -39,6 +57,9 @@ public class EnemyArena : MonoBehaviour
             ArenaActive = true;
             EnemyCountText.gameObject.SetActive(true);
             SetArenaBoundariesActive(true);
+            for (int i = 0; i < Enemies.Length; i++) {
+                Enemies[i].SetActive(true);
+            }
             
         }
     }
