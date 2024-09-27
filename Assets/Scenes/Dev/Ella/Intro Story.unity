@@ -481,6 +481,8 @@ GameObject:
   - component: {fileID: 556901299}
   - component: {fileID: 556901298}
   - component: {fileID: 556901297}
+  - component: {fileID: 556901303}
+  - component: {fileID: 556901302}
   m_Layer: 5
   m_Name: IntroSlides Canvas
   m_TagString: Untagged
@@ -533,6 +535,10 @@ PlayableDirector:
     value: {fileID: 2001563556}
   - key: {fileID: 8133693443241680013, guid: fec59934ca5b146e890dd8412589876e, type: 2}
     value: {fileID: 751041474}
+  - key: {fileID: 4020220720188766870, guid: fec59934ca5b146e890dd8412589876e, type: 2}
+    value: {fileID: 556901303}
+  - key: {fileID: -5799869337894799932, guid: fec59934ca5b146e890dd8412589876e, type: 2}
+    value: {fileID: 751041477}
   m_ExposedReferences:
     m_References:
     - 1b119b61ab7a246f3a06e7ffcab2e52a: {fileID: 722385234}
@@ -625,6 +631,78 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &556901302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556901296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9008d3758c31749e2ab6281d2c233581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &556901303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556901296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 9f3f2b8b907664e7e983396739b7d991, type: 2}
+    - {fileID: 11400000, guid: 9d49863680bb043ea8ba9d321e497ae9, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 556901302}
+          m_TargetAssemblyTypeName: IntroStoryManager, Assembly-CSharp
+          m_MethodName: OnStorySwitch
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 556901302}
+          m_TargetAssemblyTypeName: IntroStoryManager, Assembly-CSharp
+          m_MethodName: OnStorySwitch
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 556901296}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &682786438
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +1006,8 @@ GameObject:
   m_Component:
   - component: {fileID: 751041475}
   - component: {fileID: 751041474}
+  - component: {fileID: 751041477}
+  - component: {fileID: 751041478}
   m_Layer: 0
   m_Name: Background Audio
   m_TagString: Untagged
@@ -947,7 +1027,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3658476520967100352, guid: 51c225583e5254ee4a77e1b87ece7e6e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 87b0b4f53f0af4e42adc96bade88d906, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.275
+  m_Volume: 0.051
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1046,6 +1126,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 117658288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &751041477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751041473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 9d49863680bb043ea8ba9d321e497ae9, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 751041478}
+          m_TargetAssemblyTypeName: IntroStoryAudio, Assembly-CSharp
+          m_MethodName: FadeOut
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 5
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &751041478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751041473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddb5aff9e3fd458d974bae42b95d6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &834921744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,50 +1324,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &891025658
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 891025660}
-  - component: {fileID: 891025659}
-  m_Layer: 0
-  m_Name: Intro Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &891025659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891025658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9008d3758c31749e2ab6281d2c233581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &891025660
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891025658}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2743.4727, y: 741.80426, z: 1302.3829}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542785018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1509,7 @@ RectTransform:
   m_GameObject: {fileID: 2001563552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13, y: 5, z: 5}
+  m_LocalScale: {x: 13, y: 9, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 556901301}
@@ -1662,5 +1740,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 682786441}
   - {fileID: 556901301}
-  - {fileID: 891025660}
   - {fileID: 117658288}
