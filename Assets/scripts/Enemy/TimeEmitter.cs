@@ -50,7 +50,7 @@ public class TimeEmitter : MonoBehaviour
 
     private IEnumerator Attack1Routine() {
         Vector3[] BulletLocs;
-        BulletLocs = new Vector3[] { new Vector3(0, 0, 0), new Vector3(-5, 0, 0), new Vector3(-10, 0, 0), new Vector3(-15, 0, 0), new Vector3(-20, 0, 0), new Vector3(5, 0, 0), new Vector3(10, 0, 0), new Vector3(15, 0, 0), new Vector3(20, 0, 0) };
+        BulletLocs = new Vector3[] { new Vector3(0, 0, 0), new Vector3(-5, 0, 0), new Vector3(-10, 0, 0), new Vector3(-15, 0, 0), new Vector3(-20, 0, 0), new Vector3(-25, 0, 0), new Vector3(5, 0, 0), new Vector3(10, 0, 0), new Vector3(15, 0, 0), new Vector3(20, 0, 0) };
         foreach (Transform firePoint in firePoints) {
             print(firePoint);
             for (int i = 0; i < 9; i++) {

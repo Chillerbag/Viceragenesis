@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -19,9 +20,9 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Start method called.");
         currentHealth = maxHealth;
         LoadProgress();
-        GetComponent<Transform>().position = respawnPoint;
     }
 
     void Update()
@@ -147,14 +148,21 @@ private void SetActiveStateForCubes(bool state, params string[] cubeNames)
 
     public void LoadProgress()
     {
-        if (PlayerPrefs.HasKey("RespawnPointX"))
+        Debug.Log("Loading progress...");
+        if (PlayerPrefs.HasKey("RespawnX"))
         {
-            float x = PlayerPrefs.GetFloat("RespawnPointX");
-            float y = PlayerPrefs.GetFloat("RespawnPointY");
-            float z = PlayerPrefs.GetFloat("RespawnPointZ");
+            float x = PlayerPrefs.GetFloat("RespawnX");
+            Debug.Log("RespawnX: " + x);
+            float y = PlayerPrefs.GetFloat("RespawnY");
+            Debug.Log("RespawnY: " + y);
+            float z = PlayerPrefs.GetFloat("RespawnZ");
+            Debug.Log("RespawnZ: " + z);
             respawnPoint = new Vector3(x, y, z);
+            GetComponent<Transform>().position = respawnPoint;
         } else {
             respawnPoint = GameObject.Find("SpawnPoint").transform.position;
+            Debug.Log("RespawnPoint: " + respawnPoint);
+            GetComponent<Transform>().position = respawnPoint;
         }
     }
 }
