@@ -9,12 +9,15 @@ public class PlayerAttacking : MonoBehaviour
 
     public GameObject hitParticles;
 
+    public PlayerHealth playerHealth;
+
 
     void Start()
     {
         playerState = GetComponent<PlayerState>();
         controller = GetComponent<CharacterController>();
         rigAnimator = GetComponentInChildren<Animator>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -53,6 +56,17 @@ public class PlayerAttacking : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Acid")
+        {
+            playerHealth.TakeDamage(1);
+            // bounce into the air
+            StartCoroutine(SmoothBounceUp());
+            Debug.Log("Player hit acid and took damage.");
+        }
+    }
+
     private void BounceBack(Vector3 bounceBack, string enemyTag)
     {
         float bounceDistance = 0.8f; // Adjust this value for a more satisfying bounce
@@ -65,6 +79,24 @@ public class PlayerAttacking : MonoBehaviour
         rigAnimator.SetTrigger("attackBounce");
         StartCoroutine(ApplyBounceBack(bounceVector));
         rigAnimator.SetTrigger("returnToIdle");
+    }
+
+    private IEnumerator SmoothBounceUp()
+    {
+        float bounceHeight = 25f; // Total height to bounce
+        float duration = 0.5f; // Duration of the bounce
+        float elapsedTime = 0f;
+
+        Vector3 initialPosition = transform.position;
+        Vector3 targetPosition = initialPosition + Vector3.up * bounceHeight;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            controller.Move(Vector3.Lerp(initialPosition, targetPosition, t) - transform.position);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private IEnumerator ApplyBounceBack(Vector3 bounceVector)

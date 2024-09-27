@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/StartScene.unity
     guid: 9a7ed0f18f9540b4b84cdf67d94abb0b
   - enabled: 1
-    path: Assets/Scenes/Gameplay/PrototypeLevel.unity
-    guid: 4eab1c918efa3ff47bdcdbf90055cdef
-  - enabled: 1
     path: Assets/Scenes/Dev/Ella/GameOverScreen.unity
     guid: 96dee1f92729f47529e25b8d0d117007
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Level1.unity
+    guid: 257ef241f70376e41bd167fcec2c322c
   m_configObjects: {}
