@@ -10,7 +10,7 @@ public class floatUpAndDown : MonoBehaviour
     private float phaseOffset;
     void Start()
     {
-        phaseOffset = Random.Range(0f, 1.5f * Mathf.PI);
+        phaseOffset = Random.Range(0f, 0.5f * Mathf.PI);
 
         
     }
