@@ -16,6 +16,8 @@ public class risingAcid : MonoBehaviour
     void Update()
     {
         if (player.position.y > transform.position.y + 30) {
+            // wait 5 seconds before acid starts rising
+            StartCoroutine(Wait());
             isRising = true;
         }
         if(isRising) {
@@ -32,5 +34,9 @@ public class risingAcid : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(3);
         }
+    }
+
+    IEnumerator Wait() {
+        yield return new WaitForSeconds(5);
     }
 }

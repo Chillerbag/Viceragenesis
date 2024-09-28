@@ -11,6 +11,8 @@ public class TimeEmitter : MonoBehaviour
     public float bulletSpeed = 20f; 
     private float shootingTimer;
 
+    public Transform player;
+
     void Start()
     {
         
@@ -25,7 +27,7 @@ public class TimeEmitter : MonoBehaviour
         // every 5 seconds, choose a new attack
         if (shootingTimer <= 0f)
         {
-            int attack = UnityEngine.Random.Range(0, 3);
+            int attack = UnityEngine.Random.Range(0, 2);
             if (attack == 0)
             {
                 Attack1();
@@ -33,12 +35,7 @@ public class TimeEmitter : MonoBehaviour
             }
             if (attack == 1)
             {
-                Attack1();
-                shootingTimer = shootingInterval;
-            }
-            if (attack == 2)
-            {
-                Attack1();
+                Attack2();
                 shootingTimer = shootingInterval;
             }
         }
@@ -65,5 +62,25 @@ public class TimeEmitter : MonoBehaviour
             }
             yield return new WaitForSeconds(1f); 
         }
+    }
+
+    void Attack2(){
+        StartCoroutine(Attack2Routine());
+    }
+
+    private IEnumerator Attack2Routine() {
+        foreach (Transform firePoint in firePoints) {
+            // fire 5 bullets towards the player
+            for (int i = 0; i < 5; i++) {
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position + new Vector3(0, 0, - 10), firePoint.rotation);
+                bullet.GetComponent<Bullet>().lifeTime = 20f;
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                if (rb != null) {
+                    Vector3 direction = player.position - firePoint.position;
+                    rb.velocity = direction * bulletSpeed;
+                }    
+            }
+        }
+        yield return new WaitForSeconds(1f);
     }
 }
