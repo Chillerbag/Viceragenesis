@@ -6,10 +6,11 @@ public class floatUpAndDown : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private float speed = 0.1f;
+    public float speed = 0.1f;
+    private float phaseOffset;
     void Start()
     {
-        speed = Random.Range(0.08f, 0.15f);
+        phaseOffset = Random.Range(0f, 1.5f * Mathf.PI);
 
         
     }
@@ -18,9 +19,10 @@ public class floatUpAndDown : MonoBehaviour
     void Update()
     {
         
+        
     }
 
     void FixedUpdate() {
-        transform.position += new Vector3(0, Mathf.Sin(Time.time) * speed, 0);
+        transform.position += new Vector3(0, Mathf.Sin(Time.time + phaseOffset) * speed, 0);
     }
 }

@@ -10,6 +10,21 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(sceneNumber);
     }
 
+    public void LoadProgress()
+    {
+        int sceneIndex = PlayerPrefs.GetInt("RespawnScene");
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void newGame()
+    {
+        // reset player data
+        PlayerPrefs.DeleteAll();
+
+        // load the first level 
+        SceneManager.LoadScene(2);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
