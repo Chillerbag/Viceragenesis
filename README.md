@@ -17,9 +17,9 @@ placeholder for it [here](GDD.md).
 - [Summary of Contributions](#summary-of-contributions)
 - [References and External Resources](#references-and-external-resources)
 
-## Evaluation Plan
+# Evaluation Plan
 
-# Evaluation Techniques
+## Evaluation Techniques
 ### 1. Observation Hybrid: Cooperative Evaluation - Post-Task Walkthrough
 
 We have decided to utilize a hybrid of two observational techniques taught in class to leverage each technique's benefits. To avoid overlooking insights due to overwhelming tasks, observations will be limited to "levels" and short experiences at a time. 
@@ -49,7 +49,7 @@ Here is our planned usability questionnaire.
 
 Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
 
-# Participants
+## Participants
 Our target audience are late teens and early 20s that appreciate edgy themes, low poly aesthetics, and the bullet hell subgenre. 
 
 ### Recruiting Participants
