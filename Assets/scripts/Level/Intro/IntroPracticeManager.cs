@@ -8,5 +8,5 @@ public class IntroPracticeManager : MonoBehaviour
     public void OnStart()
     {
         SceneManager.LoadScene("Level1", LoadSceneMode.Single);
-    }
+    }wdd
 }
