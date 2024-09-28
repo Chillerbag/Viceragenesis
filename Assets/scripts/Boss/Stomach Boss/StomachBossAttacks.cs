@@ -37,10 +37,6 @@ public class StomachBossAttacks : MonoBehaviour
                     ).normalized;
                     rb.velocity = randomDirection * bulletSpeed;
                 }
-                else
-                {
-                    Debug.LogError("Rigidbody component not found on bulletPrefab.");
-                }
             }
             yield return new WaitForSeconds(0.1f);
         }
@@ -56,28 +52,28 @@ public class StomachBossAttacks : MonoBehaviour
     }
 
     private IEnumerator Attack2Routine() {
-        stateMachine = GetComponent<Animator>();
-        for (int j = 0; j < 3; j++)
+    stateMachine = GetComponent<Animator>();
+    for (int j = 0; j < 3; j++)
+    {
+        foreach (Transform firePoint in firePoints)
         {
-            foreach (Transform firePoint in firePoints)
+            for (int i = 0; i < 5; i++) // Fire a few bullets towards the player
             {
-                for (int i = 0; i < 360; i += 10)
-                {
-                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Bullet>().lifeTime = 10f;
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                bullet.GetComponent<Bullet>().lifeTime = 10f;
 
-                    bullet.transform.Rotate(0, i, 0);
-                    Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                    if (rb != null)
-                    {
-                        Vector3 direction = bullet.transform.forward;
-                        rb.velocity = direction * bulletSpeed;
-                    }
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    // Calculate direction towards the player
+                    Vector3 direction = (player.position - firePoint.position).normalized;
+                    rb.velocity = direction * bulletSpeed;
                 }
             }
-            // wait for 1 second before shooting the next ring
-            yield return new WaitForSeconds(1f);
         }
+        // wait for 1 second before shooting the next set of bullets
+        yield return new WaitForSeconds(1f);
+    }
 
         stateMachine.SetTrigger("returnIdleAfterAttack");
         stateMachine.ResetTrigger("Attack2");

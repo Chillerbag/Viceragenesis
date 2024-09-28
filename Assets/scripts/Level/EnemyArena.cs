@@ -18,7 +18,7 @@ public class EnemyArena : MonoBehaviour
 
     public GameObject[] Enemies;
 
-    public int enemyCount = 3;
+    public int enemyCount = 8;
     void Start()
     {   
         EnemyCountText.gameObject.SetActive(false);
