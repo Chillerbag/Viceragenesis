@@ -79,7 +79,28 @@ A benefit of recruiting friends is the knowledge of the user's interests prior t
 
 **Important to note we will first seek consent from potential participants before asking questions and explain the anonymity of their identity and data, as well as clarify the purpose of the screening questions.**
 
+## Data Collection
+Our Data collection processes and type of data collected depends on our evaluation techniques. The below table shows our data collection process for each technique:
+
+| Evaluation Technique  | Data Collected | Data Collection Process |
+| ------------- |:-------------:|:-------------:|
+| Screening Questionnaire | User age and occupation, game habits, game interests | In-person interview or online form* |
+| Post-Walkthrough Interview | Emotions experienced, opinions on aesthetics, mechanics, and story, gameplay experience  | In-person/Zoom interview, face to face** |
+| Scalar Usability Questionnaire | User scalar answers to questionnaire  | Online or paper form |
+| Observations during Gameplay   | User body language, initial comments, opinions on game, decisions, confusion, emotions  | In-person or Zoom observation (shared screen)** |
+
+*Dependent on consent given, either recorded audio, written notes, or both.
+
+**Dependent on consent given, either recorded audio, recorded video, written notes, or a combination of the three.
+
 We will provide a consent form to each user, outlining the different recording options and how the data from our experiments will be collected and used. Each user can withdraw at any time.
+
+### Tools Used for Data Collection
+While in-person gameplay observations and post-walkthrough interviews are preferred, we will utilize Zoom to conduct online interviews, as the share screen and recording features allow us to faciliate interviews in the case where in-person interviews are not an option.
+
+We will use [Snapforms](https://snapforms.com.au/survey-monkey-alternative/) software for our questionnaires, as they are they Australian alternative to SurveyMonkey and they host their data on-shore.
+
+Previous questionnaires have informed our current forms, including the basic usability questions from [SUS](https://doi.org/10.1201/9781498710411-35) and [Post-Study System Usability Questionnaire](https://trymata.com/learn/pssuq/#:~:text=The%20current%20iteration%20of%20the,end%20of%20a%20usability%20test.) (PSSUQ), and the desirability questions from the [Adoption Likelihood Factors Questionnaire](https://trymata.com/learn/alfq/) (ALFQ).
 
 ## Evaluation Report
 
