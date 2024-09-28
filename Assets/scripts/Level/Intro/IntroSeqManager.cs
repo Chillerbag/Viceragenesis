@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroSeqManager : MonoBehaviour
 {
-    public void OnSeqSwitch()
+    public void SeqToPractice()
     {
         SceneManager.LoadScene("Intro Practice", LoadSceneMode.Single);
     }
