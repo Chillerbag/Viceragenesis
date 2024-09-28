@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Start method called.");
         currentHealth = maxHealth;
-        //LoadProgress();
+        LoadProgress();
     }
 
     void Update()
