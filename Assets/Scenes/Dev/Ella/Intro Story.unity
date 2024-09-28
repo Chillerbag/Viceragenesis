@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 556901297}
   - component: {fileID: 556901303}
   - component: {fileID: 556901302}
+  - component: {fileID: 556901304}
   m_Layer: 5
   m_Name: IntroSlides Canvas
   m_TagString: Untagged
@@ -691,18 +692,30 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 556901296}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 556901304}
+          m_TargetAssemblyTypeName: IntroStoryAudio, Assembly-CSharp
+          m_MethodName: FadeOut
+          m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
+            m_FloatArgument: 10
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &556901304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556901296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddb5aff9e3fd458d974bae42b95d6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &682786438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1038,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3658476520967100352, guid: 51c225583e5254ee4a77e1b87ece7e6e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 87b0b4f53f0af4e42adc96bade88d906, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 57adcbfb35b1443d9ab02651b1f3e095, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.051
   m_Pitch: 1
