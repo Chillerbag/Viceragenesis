@@ -1,118 +1,102 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿// Original Cg/HLSL code stub copyright (c) 2010-2012 SharpDX - Alexandre Mutel
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+// 
+// Adapted for COMP30019 by Jeremy Nicholson, 10 Sep 2012
+// Adapted further by Chris Ewin, 23 Sep 2013
+// Adapted further (again) by Alex Zable (port to Unity), 19 Aug 2016
 
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Challenge: Task 6.
+//
+// This shader is a variation on PhongShader.shader to utilise built-in
+// Unity lights in the shader. A full reference for the relevant uniform
+// parameters can be found at (under "Lighting"): 
+// https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
+//
+// The two variables we utilise are:
+// _WorldSpaceLightPos0
+// _LightColor0
+//
+// Note we are using a Unity "directional" light here. This means the 
+// incoming light "position" data is actually a vector representing the
+// light direction rather than an actual world-space position. As an 
+// experiment, try moving the UnityLight object in the game and notice
+// how it has no effect on the lighting for the cube using this shader. 
+// (Only *rotating* it will have an effect.)
 
-Shader "Unlit/point Shader"
+//UNITY_SHADER_NO_UPGRADE
+
+Shader "Unlit/PhongShaderUnityLights"
 {
-    Properties
-    {
-        _pointSize ("point Size", Range(0, 2)) = 2
-        _NormalMap ("Normal Map", 2D) = "white" {}
+	Properties
+	{
+        _MainTex ("Texture", 2D) = "white" {}
+        _NormalMap ("Texture", 2D) = "white" {}
 		_Ka("Ka", Float) = 1.0
 		_Kd("Kd", Float) = 1.0
 		_Ks("Ks", Float) = 1.0
 		_fAtt("fAtt", Float) = 1.0
 		_specN("specN", Float) = 1.0
-    }
-    SubShader
-    {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
+	}
+	SubShader
+	{
+		Pass
+		{
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
 
-        Pass
-        {
-            CGPROGRAM
-            // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members worldPos)
-            #pragma vertex vert
-            #pragma fragment frag
+			#include "UnityCG.cginc"
+			#include "UnityLightingCommon.cginc"
 
-            #include "UnityCG.cginc"
-            #include "Random.cginc"
-            #include "UnityLightingCommon.cginc"
-
-            uniform float _Ka;
+			uniform float _Ka;
 			uniform float _Kd;
 			uniform float _Ks;
 			uniform float _fAtt;
 			uniform float _specN;
 
-            struct vertIn
-            {
-                float4 vertex : POSITION;
+			struct vertIn
+			{
+				float4 vertex : POSITION;
 				float4 normal : NORMAL;
                 float4 tangent : TANGENT;
 				float4 color : COLOR;
                 float4 uv : TEXCOORD0;
-            };
+			};
 
-            struct vertOut
-            {
-                float4 vertex : SV_POSITION;
+			struct vertOut
+			{
+				float4 vertex : SV_POSITION;
 				float4 color : COLOR;
 				float4 worldVertex : TEXCOORD0;
 				float3 worldNormal : TEXCOORD1;
                 float3 worldBinormal : TEXCOORD2;
                 float3 worldTangent : TEXCOORD3;
                 float4 uv : TEXCOORD4;
-            };
+			};
 
-            float _pointSize;
             sampler2D _NormalMap;
+            sampler2D _MainTex;
 
-            float brownianMotion(float x)
-            {
-
-                float amplitude = x * 4 + 2;
-                float frequency = x * 2 + 2;
-                float y = sin(x * frequency);
-                float t = 0.01*(-_Time.y*130.0);
-                y += sin(x*frequency*2.1 + t)*4.5;
-                y += sin(x*frequency*1.72 + t*1.121)*4.0;
-                y += sin(x*frequency*2.221 + t*0.437)*5.0;
-                y += sin(x*frequency*3.1122+ t*4.269)*2.5;
-                y *= amplitude*0.06;
-                return y;
-            }
-
-
-            float4 voronoiNoise(float2 value){
-                float2 tile = floor(value);
-                float4 color = float4(0.0, 0.0, 0.0, 1.0);
-            
-                float minDistToCore = 10;
-                float2 closestCore;
-                [unroll]
-                for(int x=-1; x<=1; x++){
-                    [unroll]
-                    for(int y=-1; y<=1; y++){
-                        // get neighbor point
-                        float2 core = tile + float2(x, y);
-                        // random position
-                        core = core + 0.2f + 0.6f*rand2dTo2d(core) + 0.2f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
-                        //corePosition = 0.5f + 0.5f*corePosition;
-
-                        // vector distance between the pixel and the point core
-                        float distToCore = length(core - value);
-                        // get min distance
-                        
-                        //distToCore = sin(distToCore + _Time.y);
-                        if(distToCore < minDistToCore){
-                            minDistToCore = distToCore;
-                            closestCore = core;
-                        }
-                    }
-                }
-                float1 randomTint = (rand2dTo1d(floor(closestCore))) * 0.1f + 0.6f;
-
-                color = float4(1 - 0.1f*randomTint, 1-minDistToCore, 1-minDistToCore, 1.0) * randomTint;
-                return color;
-            }
-            
-
-            
-
-            vertOut vert (vertIn v)
-            {
+			// Implementation of the vertex shader
+			vertOut vert(vertIn v)
+			{
                 float3 binormal = cross( v.normal, v.tangent.xyz ) * v.tangent.w;
 				vertOut o;
 
@@ -128,7 +112,7 @@ Shader "Unlit/point Shader"
 
 
 				// Transform vertex in world coordinates to camera coordinates, and pass colour
-				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.color = v.color;
 
 				// Pass out the world vertex position and world normal to be interpolated
@@ -140,14 +124,12 @@ Shader "Unlit/point Shader"
                 o.uv = v.uv;
 
 				return o;
-            }
+			}
 
-            fixed4 frag (vertOut v) : SV_Target
-            {
-                float2 value = v.uv.xy / _pointSize;
-			    float4 noise = voronoiNoise(value);
-
-                float4 unlitColor = noise;
+			// Implementation of the fragment shader
+			fixed4 frag(vertOut v) : SV_Target
+			{
+                float4 unlitColor = tex2D(_MainTex, v.uv);
                 float4 normal = tex2D(_NormalMap, v.uv) * 2 - 1;
 
                 float3 worldNormal = v.worldNormal;
@@ -193,15 +175,9 @@ Shader "Unlit/point Shader"
 				returnColor.rgb = amb.rgb + dif.rgb + spe.rgb;
 				returnColor.a = unlitColor.a;
 
-
-
-                
-                return returnColor;
-            } 
-
-            ENDCG
-        }
-    }
-    FallBack "Standard"
-    
+				return returnColor;
+			}
+			ENDCG
+		}
+	}
 }
