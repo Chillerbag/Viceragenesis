@@ -137,6 +137,20 @@ After the evaluations are completed, insights are condensed and questionnaire sc
 | Oct 26 - 29 | Testing of the game, regularly testing how the game builds, reviewing project report |
 | Oct 29 - 31 | Submit final report and game |
 
+## Responsibility
+We have tried to play to each group member's strengths in splitting up the work. Member task responsibilities are as follows:
+
+* __Level asset collection__: Ella and Hoang
+* __Enemy implementations and refinements__: Alex
+* __Intro Sequence and end screens__: Ella
+* __Level 1 implementation__: Ethan
+* __Level 2 implementation__: Ethan and Alex
+* __Particle system development__: Hoang
+* __Shaders__: Hoang
+* __Player movement and mechanics__: Ethan
+* __Evaluation Plan, updating the GDD and majority of Final Report__: Ella
+
+Our team leader Ethan created a trello board that provides us with a visual representation of tasks, ensuring that each member has an equal amount of work assigned. Our team has regular check ins, and we each communicate our individual progress throughout the week. 
 
 # Evaluation Report
 
