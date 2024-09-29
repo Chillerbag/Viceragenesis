@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 
+
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
@@ -22,7 +23,11 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Start method called.");
         currentHealth = maxHealth;
-        LoadProgress();
+        // check if we're in a level where we should load progress
+        if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Level2")
+        {
+            LoadProgress();
+        }
     }
 
     void Update()
