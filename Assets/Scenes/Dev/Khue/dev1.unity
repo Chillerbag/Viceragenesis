@@ -1652,7 +1652,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72728da704213024f88e752a13a6f955, type: 2}
+  - {fileID: 2100000, guid: 6aabc37d6f7577b428d4c811d830426c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7890,6 +7890,7 @@ MonoBehaviour:
   invulnerabilityDuration: 2
   screenFlash: {fileID: 0}
   damageSound: {fileID: 0}
+  deathEffect: {fileID: 0}
 --- !u!198 &3686017052451265937
 ParticleSystem:
   m_ObjectHideFlags: 0
