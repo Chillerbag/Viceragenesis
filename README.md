@@ -109,6 +109,35 @@ Comparing interview insights to the questionnaire results allows us to compare t
 
 After the evaluations are completed, insights are condensed and questionnaire scores are calculated, we will have a discussion as a team to decide which changes will be made. Priority will be given to the insights with the highest discrepancies, and the results with the most agreeability from users (e.g. all users rated [ feature a ] low on the usability scale).
 
+## Timeline
+
+| Week 10  | Recruitment and Preparation Stage  |
+| ------------- |:-------------:|
+| Sept 30 - Oct 1   | Finalizing evaluation plan   |
+| Sept 29 - Oct 2 | Prepare materials (questionnaire and adaptable questions, surveys, consent forms) |
+| By Oct 8 | Confirm participant availability, schedule evaluation meetings  |
+| Prior to evaluation meetings | Send consent forms to participants |
+
+| Week 11  | Observation and Interview Stage  |
+| ------------- |:-------------:|
+| Oct 7 - Oct 13   | Conduct evaluations, updating results after each evaluation takes place   |
+| Oct 7 - Oct 13 | Condense insights and evaluation results, contributing to main insight document regularly |
+| Oct 13 - 14 | Discuss evaluation results from interviews |
+
+| Week 12 | Updating Stage|
+| ------------- |:-------------:|
+| Oct 14 | Submit gameplay video that incorporates early evaluation insights  |
+| By Oct 15 | Discuss and identify changes to game, assign tasks |
+| Oct 15 - 18 | Review all gathered data, add evaluation results to final report, and update GDD accordingly |
+| Oct 15 - 26 | Add changes, "before and after" visuals to final report along with explanations
+
+| SWOTVAC | Finalization Stage|
+| ------------- |:-------------:|
+| Oct 22 - 26 | Finalize game updates, continue to build final report  |
+| Oct 26 - 29 | Testing of the game, regularly testing how the game builds, reviewing pr |
+| Oct 29 - 31 | Submit final report and game |
+
+
 # Evaluation Report
 
 TODO (due milestone 3) - see specification for details
