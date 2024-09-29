@@ -47,8 +47,6 @@ To end the experiment, we plan to ask the user to fill out a quick anonymous usa
 
 Here is our planned usability questionnaire.
 
-Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
-
 ## Participants
 Our target audience are late teens and early 20s that appreciate edgy themes, low poly aesthetics, and the bullet hell subgenre. 
 
@@ -102,18 +100,30 @@ We will use [Snapforms](https://snapforms.com.au/survey-monkey-alternative/) sof
 
 Previous questionnaires have informed our current forms, including the basic usability questions from [SUS](https://doi.org/10.1201/9781498710411-35) and [Post-Study System Usability Questionnaire](https://trymata.com/learn/pssuq/#:~:text=The%20current%20iteration%20of%20the,end%20of%20a%20usability%20test.) (PSSUQ), and the desirability questions from the [Adoption Likelihood Factors Questionnaire](https://trymata.com/learn/alfq/) (ALFQ).
 
-## Evaluation Report
+## Data Analysis
+For the questionnaire, there will be two sections: usability and desirability. The questionnaire will mainly be comprised of usability questions, and using a scale for answers (rated on a scale 1-7), we will take the average score across users. Standard deviation calculations could also be informative, determining the variability in responses that have a wide range on the scale. The desirability section of the questionnaire aims to investigate user engagement.
+
+For each observation and post-walkthrough interview, we will condense our qualitative findings into insights, and discuss the insights. Identified patterns, themes or common feedback can then be condensed into categories, and these categories will be discussed as a team to determine which are actionable.  
+
+Comparing interview insights to the questionnaire results allows us to compare two forms of data, creating opportunity for our team to pinpoint discrepancies in our data collection processes. For example, positive qualitative feedback but negative usability scale scores would indicate that the game conceptually and aesthetically is engaging, but the gameplay may be frustrating.
+
+After the evaluations are completed, insights are condensed and questionnaire scores are calculated, we will have a discussion as a team to decide which changes will be made. Priority will be given to the insights with the highest discrepancies, and the results with the most agreeability from users (e.g. all users rated [ feature a ] low on the usability scale).
+
+# Evaluation Report
 
 TODO (due milestone 3) - see specification for details
 
-## Shaders and Special Effects
+# Shaders and Special Effects
 
 TODO (due milestone 3) - see specification for details
 
-## Summary of Contributions
+# Summary of Contributions
 
 TODO (due milestone 3) - see specification for details
 
-## References and External Resources
+# References and External Resources
+## References
+Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
 
-TODO (to be continuously updated) - see specification for details
+## External Resources
+[Snapforms](https://snapforms.com.au/survey-monkey-alternative/)
