@@ -134,7 +134,7 @@ After the evaluations are completed, insights are condensed and questionnaire sc
 | SWOTVAC | Finalization Stage|
 | ------------- |:-------------:|
 | Oct 22 - 26 | Finalize game updates, continue to build final report  |
-| Oct 26 - 29 | Testing of the game, regularly testing how the game builds, reviewing pr |
+| Oct 26 - 29 | Testing of the game, regularly testing how the game builds, reviewing project report |
 | Oct 29 - 31 | Submit final report and game |
 
 
