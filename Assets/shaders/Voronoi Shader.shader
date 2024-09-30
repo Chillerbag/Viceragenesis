@@ -8,6 +8,7 @@ Shader "Unlit/point Shader"
     {
         _pointSize ("point Size", Range(0, 2)) = 2
         _NormalMap ("Normal Map", 2D) = "white" {}
+        _smoothness("test value", Float) = 1.0
 		_Ka("Ka", Float) = 1.0
 		_Kd("Kd", Float) = 1.0
 		_Ks("Ks", Float) = 1.0
@@ -30,6 +31,7 @@ Shader "Unlit/point Shader"
             #include "Random.cginc"
             #include "UnityLightingCommon.cginc"
 
+            uniform float _smoothness;
             uniform float _Ka;
 			uniform float _Kd;
 			uniform float _Ks;
@@ -74,9 +76,23 @@ Shader "Unlit/point Shader"
                 return y;
             }
 
+            float MinkowskiDistance(float2 point1, float2 point2, float p)
+            {
+                // Calculate the absolute differences raised to the power of p
+                float deltaX = abs(point1.x - point2.x);
+                float deltaY = abs(point1.y - point2.y);
+                
+                float distance = pow(deltaX, p) + pow(deltaY, p);
+                
+                // Take the p-th root of the sum
+                return pow(distance, 1.0 / p);
+            }
+
+
 
             float4 voronoiNoise(float2 value){
                 float2 tile = floor(value);
+                float2 tileFrac = frac( value );
                 float4 color = float4(0.0, 0.0, 0.0, 1.0);
             
                 float minDistToCore = 10;
@@ -92,22 +108,215 @@ Shader "Unlit/point Shader"
                         //corePosition = 0.5f + 0.5f*corePosition;
 
                         // vector distance between the pixel and the point core
+
+                        //euclidian
                         float distToCore = length(core - value);
+
+                        //manhattan
+                        //float distToCore = abs(core.x - value.x) + abs(core.y - value.y);
+
+                        //minkowski
+                        //float distToCore = MinkowskiDistance(core, value, 3);
+                        
                         // get min distance
                         
                         //distToCore = sin(distToCore + _Time.y);
                         if(distToCore < minDistToCore){
                             minDistToCore = distToCore;
+
                             closestCore = core;
                         }
                     }
                 }
-                float1 randomTint = (rand2dTo1d(floor(closestCore))) * 0.1f + 0.6f;
 
-                color = float4(1 - 0.1f*randomTint, 1-minDistToCore, 1-minDistToCore, 1.0) * randomTint;
+
+                if(minDistToCore < 0.07f)
+                {
+                    minDistToCore -= 0.9f;
+                }
+
+                float1 randomTint = (rand2dTo1d(floor(closestCore))) * 0.2f + 0.5f;
+
+                float contrast = 0.3f;
+
+                color = float4(1 - 0.4f*minDistToCore, 0.7f-minDistToCore * contrast, 0.7f-minDistToCore * contrast, 1.0) * randomTint;
+                //color = float4(border,1,1,1);
                 return color;
             }
+
+            float voronoiDistance( float2 x )
+            {
+                float2 p = floor( x );
+                float2 f = frac( x );
+
+                float2 mb;
+                float2 mr;
+
+                float res = 8.0;
+                for( int j=-1; j<=1; j++ )
+                {
+                    for( int i=-1; i<=1; i++ )
+                    {
+                        float2 b = float2(i, j);
+                        //float2  r = float2(b) + rand2dTo2d(p+b)-f;
+                        float2  r = b + 0.2f + 0.6f*rand2dTo2d(b+p) +0.2f*cos((rand2dTo2d(b+p) + brownianMotion(rand2dTo1d(b+p))));
+                        r = MinkowskiDistance(r, f, 3);
+                        
+                        //float2  r = float2(b) + 0.2f + 0.6f*rand2dTo2d(p+b) + 0.2f*cos((rand2dTo2d(p+b) + brownianMotion(rand2dTo1d(p+b))))-f;
+                        float d = dot(r,r);
+                        //float d = length(r);
+                        d = dot(d,d);
+
+                        if( d < res )
+                        {
+                            res = d;
+                            mr = r;
+                            mb = b;
+                        }
+                    }
+                }
+
+                /*
+                if(res > 0.2)
+                {
+                    res = 1;
+                }
+                else
+                {
+                    res = 0;
+                }*/
+                
+                /*
+                res = 8.0;
+                for( int j=-2; j<=2; j++ )
+                {
+                    for( int i=-2; i<=2; i++ )
+                    {
+                        float2 b = mb + float2(i, j);
+                        float2  r = b + 0.2f + 0.6f*rand2dTo2d(b+p) +0.2f*cos((rand2dTo2d(b+p) + brownianMotion(rand2dTo1d(b+p))));
+                        //r = MinkowskiDistance(r, f, 3);
+                        //float d = length(r - x);
+                        float d = dot(0.5*(mr+r), normalize(r-mr));
+
+                        res = min( res, d );
+                    }
+                }
+                    */
+                    
+                
+
+                float border = 1.0 - smoothstep(0.0,0.2,res);
+
+                return res;
+            }
+
+            // exponential
+            float smin( float a, float b, float k )
+            {
+                k *= 1.0;
+    float r = exp2(-a/k) + exp2(-b/k);
+    return -k*log2(r);
+            }
+
+
+            float voronoiSubtract(float2 value)
+            {
+                float2 tile = floor(value);
             
+                float minDistToCore = 10;
+                float minDistToCoreSmooth = 10;
+                float2 closestCore;
+                float res;
+                [unroll]
+                for(int x=-2; x<=2; x++){
+                    [unroll]
+                    for(int y=-2; y<=2; y++){
+                        float2 core = tile + float2(x, y);
+                        core = core + 0.2f + 0.9f*rand2dTo2d(core) + 0.4f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
+
+                        //float distToCore = length(core - value);
+
+                        //manhattan
+                        //float distToCore = abs(core.x - value.x) + abs(core.y - value.y);
+
+                        //minkowski
+                        float distToCore = MinkowskiDistance(core, value, 3);
+                        
+                        // get min distance
+                        
+                        //distToCore = sin(distToCore + _Time.y);
+                        minDistToCore = min(distToCore, minDistToCore);
+                        minDistToCoreSmooth = smin(distToCore, minDistToCoreSmooth, _smoothness);
+                        //res = min(distToCore, minDistToCore) - smin(distToCore, minDistToCore, _smoothness)/2;
+                        //res = smin(distToCore, minDistToCore, _smoothness);
+                        if(distToCore < minDistToCore){
+                            //minDistToCore = distToCore;
+
+                            //closestCore = core;
+                        }
+                    }
+                }
+
+                res = minDistToCore - minDistToCoreSmooth * 0.8;
+
+                
+                if(res < 0.13f)
+                {
+                    res = 1;
+                }
+                else if(res > 0.3f)
+                {
+                    res = 0;
+                }
+                    
+
+                return res;
+            }
+
+            float getBorder( float2 p )
+            {
+                float d = voronoiDistance( p );
+
+                return 1.0 - smoothstep(0.0,0.05,d);
+            }
+
+            float3 PerturbNormal ( float3 position ,float3 normal , float height )
+            {
+                float3 dpdx = ddx(position);
+                float3 dpdy = ddy(position);
+            
+                float dhdx = ddx(height);
+                float dhdy = ddy(height);
+
+                float3 r1 = cross(dpdy, normal);
+                float3 r2 = cross(normal, dpdx);
+
+                float3 surfaceGradient = (r1 * dhdx + r2 * dhdy) / dot(dpdx, r1);
+
+                float3 perturbNormal = normalize(normal - surfaceGradient);
+
+                return perturbNormal;
+            }
+
+            float3 Unity_NormalFromHeight_World_float(float In, float Strength, float3 Position, float3 normal)
+            {
+                float3 worldDerivativeX = ddx(Position);
+                float3 worldDerivativeY = ddy(Position);
+
+                float3 crossX = cross(normal, worldDerivativeX);
+                float3 crossY = cross(worldDerivativeY, normal);
+                float d = dot(worldDerivativeX, crossY);
+                float sgn = d < 0.0 ? (-1.0f) : 1.0f;
+                float surface = sgn / max(0.000000000000001192093f, abs(d));
+
+                float dHdx = ddx(In);
+                float dHdy = ddy(In);
+                float3 surfGrad = surface * (dHdx*crossY + dHdy*crossX);
+                
+                float3 returnNormal = normalize(normal - (Strength * surfGrad));
+                return mul(returnNormal, normal);
+            }
+                        
 
             
 
@@ -145,15 +354,23 @@ Shader "Unlit/point Shader"
             fixed4 frag (vertOut v) : SV_Target
             {
                 float2 value = v.uv.xy / _pointSize;
-			    float4 noise = voronoiNoise(value);
+			    //float4 noise = voronoiNoise(value);
+                float4 noise = voronoiSubtract(value);
 
                 float4 unlitColor = noise;
                 float4 normal = tex2D(_NormalMap, v.uv) * 2 - 1;
+                float heightMap = tex2D(_NormalMap, v.uv);
+                float height = noise.y * 0.1f;
+                //float3 normal = PerturbNormal(v.uv, v.worldNormal, heightMap);
+                //float3 normal = Unity_NormalFromHeight_World_float(heightMap, 0.01f, v.uv, v.worldNormal);
+                //float3 normal = float4(heightMap, heightMap, heightMap, 1);
+                //float3 normal = v.worldNormal;
+
 
                 float3 worldNormal = v.worldNormal;
                 float3 worldBinormal = v.worldBinormal;
                 float3 worldTangent = v.worldTangent;
-
+                //float3 interpNormal = float4(noise.x, noise.y, noise.y, 1);
                 float3 interpNormal = (normal.z * worldNormal) + (normal.x * -worldTangent) + (normal.y * worldBinormal);
 
                 interpNormal = normalize(interpNormal);
@@ -194,9 +411,10 @@ Shader "Unlit/point Shader"
 				returnColor.a = unlitColor.a;
 
 
-
-                
-                return returnColor;
+                //float4 testcolor = float4(height, height, height, 1);
+                float4 testcolor = float4(normal.x, normal.y, normal.z, 1);
+                float4 diffuse = dot(normal, _WorldSpaceLightPos0);
+                return noise;
             } 
 
             ENDCG
