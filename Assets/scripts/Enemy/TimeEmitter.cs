@@ -70,17 +70,26 @@ public class TimeEmitter : MonoBehaviour
 
     private IEnumerator Attack2Routine() {
         foreach (Transform firePoint in firePoints) {
-            // fire 5 bullets towards the player
-            for (int i = 0; i < 5; i++) {
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position + new Vector3(0, 0, - 10), firePoint.rotation);
-                bullet.GetComponent<Bullet>().lifeTime = 20f;
-                Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                if (rb != null) {
-                    Vector3 direction = player.position - firePoint.position;
-                    rb.velocity = direction * bulletSpeed;
-                }    
-            }
+                for (int i = 0; i < 360; i += 10)
+                {
+                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                    bullet.GetComponent<Bullet>().lifeTime = 10f;
+
+                    Debug.Log("bullet created");
+                    bullet.transform.Rotate(0, i, 0);
+                    Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        Vector3 direction = bullet.transform.forward;
+                        rb.velocity = direction * bulletSpeed;
+                    }
+                    else
+                    {
+                        Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                    }
+                }
+                // wait for 1 second before shooting the next ring
+                yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(1f);
     }
 }
