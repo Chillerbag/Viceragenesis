@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         // check if we're in a level where we should load progress
         if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Level2")
         {
-            LoadProgress();
+            //LoadProgress();
         }
     }
 
