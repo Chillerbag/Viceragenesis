@@ -8,7 +8,7 @@ public class PlayerDigging : MonoBehaviour
     public LayerMask groundLayer;
     public Slider cooldownSlider;
     private bool isUnderground = false;
-    private float undergroundBuffer = 2.0f;
+    private float undergroundBuffer = 1.0f;
     private float timeInvisible = 1.5f;
     private Animator rigAnimator;
 
@@ -91,7 +91,7 @@ public class PlayerDigging : MonoBehaviour
         rigAnimator.SetTrigger("endDig");
         playerEffects.PlayUndergroundParticles(false);
         isUnderground = false;
-        undergroundBuffer = 2.0f;
+        undergroundBuffer = 1.0f;
         cooldownSlider.value = undergroundBuffer;
         MoveToTopMarker();
         StartCoroutine(DolphinDive());

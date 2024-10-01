@@ -14,7 +14,7 @@ public class BossUISetup : MonoBehaviour
     void Start()
     {
         Boss = GameObject.FindGameObjectWithTag("Boss");
-        bossText.text = Boss.GetComponent<TemplateBossBehaviour>().bossName;
+        bossText.text = Boss.GetComponent<StomachBossBehaviour>().bossName;
         
     }
 
@@ -22,7 +22,7 @@ public class BossUISetup : MonoBehaviour
     void Update()
     {
         if (Boss != null) {
-            BossHealth.value = Boss.GetComponent<TemplateBossBehaviour>().HP;
+            BossHealth.value = Boss.GetComponent<StomachBossBehaviour>().HP;
         }
         else {
             gameObject.SetActive(false);
