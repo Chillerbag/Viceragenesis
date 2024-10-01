@@ -1,5 +1,9 @@
 # Game Design Document (GDD)
 
+<p align="left">
+  <img src="gdd-images/logo.png" width="1000">
+</p>
+
 ### Table of contents
 * [Game Overview](#game-overview)
 * [Story and Narrative](#story-and-narrative)
@@ -92,11 +96,9 @@ The body is divided into different regions, each representing a critical part of
   
 * Macrophage: Large, amoeba-like cells that surround and kill microorganisms, remove dead cells, and stimulate the action of other immune system cells. A special type of white blood cell, macrophages are an elite enemy that aims to swallow the player.
   
-* Digestive Enzymes: Amorphous blobs resembling closed flowers that open to absorb and break down substances, including foreign organisms. Digestive Enzymes are not as dangerous as the neural defenders or white blood cells, but still need to be avoided.
+* Digestive Enzymes: Amorphous purple blobs resembling closed flowers that open to absorb and break down substances, including foreign organisms. Digestive Enzymes are not as dangerous as the neural defenders or white blood cells, but still need to be avoided.
   
 * Neural Defenders: Small, star-shaped cells that support and protect neurons and neurotransmitters in the host’s brain. Neural defenders are the most formidable enemy due to their complex and adaptive nature. They can adjust their patterns, react to instructions, support other enemies and summon reinforcements.
-  
-* Neurotransmitters: Neurotransmitters facilitate the communication between neurons. Because of this, the neurotransmitters in the game are used as a trigger to change the scene and cell behaviors - destroying neurotransmitters can prevent the passage of a signal to summon more enemies.
   
 * Red blood cells: Smooth, reddish biconcave cells that flow through blood vessels and transport oxygen. Rather than combative enemies, these disks act more as obstacles that the player needs to avoid.
 <p align="center">
