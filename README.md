@@ -152,6 +152,18 @@ We have tried to play to each group member's strengths in splitting up the work.
 
 Our team leader Ethan created a trello board that provides us with a visual representation of tasks, ensuring that each member has an equal amount of work assigned. Our team has regular check ins, and we each communicate our individual progress throughout the week. 
 
+## Objectives
+Our team has a few key questions we hope to answer with feedback from evaluations:
+
+1. Text duration for introduction and practice slides (too short? too long?)
+2. Text clarity for health bar, instructions, time limits (easy to read? positioning? font?)
+3. Difficulty of level 
+4. Engagement throughout the gameplay
+5. Emotions experienced during gameplay
+6. Clarity of objectives of level (is it easy enough to know where to go? what to do?)
+7. Clarity of game mechanics (i.e. how to dash, tunnel, dig to avoid enemies etc.)
+8. Adherence to theme (do they find it eerie?)
+
 # Evaluation Report
 
 TODO (due milestone 3) - see specification for details
