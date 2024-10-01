@@ -59,7 +59,6 @@
 
 * In terms of Scope, we want _Viceragenesis_ to consist of 3 main bosses, alligning with the traditional short length of bullet hell games, as well as keeeping the game in scope for what is possible in the semester. The simple mechanics accomodate this well.
 
-
 # Story and Narrative
 
 Taking the term “invasive species” to a whole other level, Viceragenesis’ progenitor has infected the world, destroying mankind’s autonomy. Spawning numerous strains, each strain strives to inhabit as many creatures as possible in a world where not very many are left. Viceragenesis, a lone strain occupying a host, has a unique opportunity: legacy. A parasite, it must exploit the host to survive, requiring specific neurotransmitter compounds from a human brain to reproduce. 
@@ -92,20 +91,32 @@ The body is divided into different regions, each representing a critical part of
 # Characters
 * Viceragenesis (Player): The last of its strain, Viceragenesis aims to infect the host’s brain and reproduce using the monster’s neurotransmitters.
 
-* White Blood Cells: Mobile, irregularly shaped blobs that attack infections and foreign objects within the host’s body.
-  
+* Stomach Ulcers: Large, irregularly shaped blobs that live in the host's stomach acid.
+<p align="center">
+  <img src="gdd-gifs/amorphousBlob.gif" width="250" />
+</p>
+<p align="center">
+  An untextured stomach ulcer we modelled in Blender.
+</p>  
+
 * Macrophage: Large, amoeba-like cells that surround and kill microorganisms, remove dead cells, and stimulate the action of other immune system cells. A special type of white blood cell, macrophages are an elite enemy that aims to swallow the player.
   
 * Digestive Enzymes: Amorphous purple blobs resembling closed flowers that open to absorb and break down substances, including foreign organisms. Digestive Enzymes are not as dangerous as the neural defenders or white blood cells, but still need to be avoided.
-  
+<p align="center">
+  <img src="gdd-gifs/digestiveenzyme.gif" width="250" />
+</p>
+<p align="center">
+  Our digestive enzyme model created with Blender.
+</p>
+
 * Neural Defenders: Small, star-shaped cells that support and protect neurons and neurotransmitters in the host’s brain. Neural defenders are the most formidable enemy due to their complex and adaptive nature. They can adjust their patterns, react to instructions, support other enemies and summon reinforcements.
   
 * Red blood cells: Smooth, reddish biconcave cells that flow through blood vessels and transport oxygen. Rather than combative enemies, these disks act more as obstacles that the player needs to avoid.
 <p align="center">
-  <img src="gdd-images/enemy-design-sketch.jpg" width="300">
-</p>  
+  <img src="gdd-gifs/redbloodcell.gif" width="250" /> 
+</p>
 <p align="center">
-  Sketches of enemy designs you might find in the different regions of Viceragenesis.
+  Our red blood cell enemy we modelled.
 </p>
 
 # Gameplay and Mechanics
@@ -127,8 +138,23 @@ The body is divided into different regions, each representing a critical part of
   * The entire map is one single level with multiple rooms as organs inside the body traversed through maze-like blood vessel structure. The player is provided with a top down, pixelated minimap to help traverse the word.
   * Each room has a different and unique gimmick, providing the player with a new experience throughout the game. Design wise, since rooms are modeled based on organs, they all have different themes, color palette and textures using real life inspiration.
   * The game world and maps are designed with game progression in mind. After completing one room, the player is granted the opening to the next level. Therefore it would be best to design rooms with increasing difficulty, with the first room acting as a tutorial playground. The final room is a boss room, completing it grants victory and the player finishes the game.
+ 
 * **Objects**
   * **Levels:** rooms are static but organic shaped, each with a different theme. Rooms are filled with traps that harm the player(tentacles, cysts, tumors) or non-hostile elements of the room(fluid, tunnels).
+    * Start Menu
+    <p align="center">
+      <img src="gdd-gifs/screen model.gif" width="250" /> 
+    </p>
+    <p align="center">
+    A floating sign we modelled for the Start Menu.
+    </p>
+    * Introduction Levels
+
+    * Stomach
+    * Heart
+    * Blood Vessel
+    * Brain
+      
   * **Enemies:** enemies are moving AI agents that target the player, presented as the immune system’s cells or other parasites. Randomization can also be added to enemy movements to add unpredictability. There are also static turret style enemies, and bosses within the main rooms.
 * **Physics**: The game implements simple collision based physics, which does not include complex rigid body movements but still have a number of different moving objects carrying colliders:
   * **Dynamic Colliders:** Enemies, the player, and any moving objects (like projectiles) use dynamic colliders. These objects will not be affected by gravity since we do not want strong gravitational force inside the body.
