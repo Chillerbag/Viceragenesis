@@ -71,7 +71,6 @@ The body is divided into different regions, each representing a critical part of
 * Bloodstream
   * **Environment**: A network of dark red, glowing pulsating veins and arteries. Dark and foggy, the player must traverse the blood vessels to reach each “checkpoint” (major organ). 
   * **Objective**: Evade and outmaneuver the white blood cells that are defending the host whilst finding the next major organ.
-
 * **Stomach:**
   * **Environment**: A curved cavern with a pool of acidic, yellowish liquid sitting at the bottom. The stomach walls are lined with digestive enzymes and can contract.
   * **Objective**: Survive the harsh environment. Avoid being crushed by the stomach walls and the digestive enzymes, and navigate around the areas covered by the corrosive stomach acid to the defeat the stomach.
