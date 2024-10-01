@@ -77,16 +77,10 @@ The body is divided into different regions, each representing a critical part of
   * **Objective**: Survive the harsh environment. Avoid being crushed by the stomach walls and the digestive enzymes, and navigate around the areas covered by the corrosive stomach acid to the defeat the stomach.
 * **Heart**:
   * **Environment**: A segregated, room-like area with empty, echoing chambers and rhythmic valves. 
-  * **Objectiv**: Maneuver the moving chambers and pass through the valves of the heart. Destroy the heart!. 
+  * **Objective**: Maneuver the moving chambers and pass through the valves of the heart. Destroy the heart!. 
 * **Brain**:
   * **Environment**: An intricate network of neural pathways and blood vessels. The atmosphere is ethereal rather than gross; active regions are more vibrant, with occasional bursts of bright flashes that indicate synaptic activity.
   * **Objective**: The final boss of the game. Destroy the brain!
-<p align="center">
-  <img src="gdd-images/boss-design-sketch.jpg" width="300">
-</p>  
-<p align="center">
-  Sketch of the boss environment for the heart, the second boss of the game.
-</p>
 
 # Characters
 * Viceragenesis (Player): The last of its strain, Viceragenesis aims to infect the host’s brain and reproduce using the monster’s neurotransmitters.
