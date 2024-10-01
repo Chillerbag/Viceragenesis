@@ -64,14 +64,14 @@ Shader "Unlit/point Shader"
             float brownianMotion(float x)
             {
 
-                float amplitude = x * 4 + 2;
-                float frequency = x * 2 + 2;
+                float amplitude = x * 4 + x;
+                float frequency = x * 5 + x;
                 float y = sin(x * frequency);
-                float t = 0.01*(-_Time.y*130.0);
-                y += sin(x*frequency*2.1 + t)*4.5;
-                y += sin(x*frequency*1.72 + t*1.121)*4.0;
-                y += sin(x*frequency*2.221 + t*0.437)*5.0;
-                y += sin(x*frequency*3.1122+ t*4.269)*2.5;
+                float t = 0.01*(-_Time.y*(130.0 + x * 2));
+                y += sin(x*frequency*2.1 + t)*4.5 + x;
+                y += sin(x*frequency*x + t*1.121)*4.0;
+                y += sin(x*frequency*2.221 + t*0.437)*5.0 * x;
+                y += sin(x*frequency*3.1122+ t*4.269)*x + x * 3;
                 y *= amplitude*0.06;
                 return y;
             }
@@ -214,14 +214,15 @@ Shader "Unlit/point Shader"
             float smin( float a, float b, float k )
             {
                 k *= 1.0;
-    float r = exp2(-a/k) + exp2(-b/k);
-    return -k*log2(r);
+                float r = exp2(-a/k) + exp2(-b/k);
+                return -k*log2(r);
             }
 
 
-            float voronoiSubtract(float2 value)
+            float4 voronoiSubtract(float2 value)
             {
                 float2 tile = floor(value);
+                float4 color = float4(0.0, 0.0, 0.0, 1.0);
             
                 float minDistToCore = 10;
                 float minDistToCoreSmooth = 10;
@@ -232,7 +233,7 @@ Shader "Unlit/point Shader"
                     [unroll]
                     for(int y=-2; y<=2; y++){
                         float2 core = tile + float2(x, y);
-                        core = core + 0.2f + 0.9f*rand2dTo2d(core) + 0.4f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
+                        core = core + 0.3f + 0.4f*rand2dTo2d(core) + 0.3f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
 
                         //float distToCore = length(core - value);
 
@@ -249,28 +250,44 @@ Shader "Unlit/point Shader"
                         minDistToCoreSmooth = smin(distToCore, minDistToCoreSmooth, _smoothness);
                         //res = min(distToCore, minDistToCore) - smin(distToCore, minDistToCore, _smoothness)/2;
                         //res = smin(distToCore, minDistToCore, _smoothness);
-                        if(distToCore < minDistToCore){
+                        if(distToCore == minDistToCore){
                             //minDistToCore = distToCore;
 
-                            //closestCore = core;
+                            closestCore = core;
                         }
                     }
                 }
 
                 res = minDistToCore - minDistToCoreSmooth * 0.8;
 
+
+                float contrast = 0.3f;
+                float1 randomTint = (rand2dTo1d(floor(closestCore))) * 0.2f + 0.5f;
                 
                 if(res < 0.13f)
                 {
-                    res = 1;
+                    color = float4(1 - 0.4f*minDistToCore, 0.7f-minDistToCore * contrast, 0.7f-minDistToCore * contrast, 1.0) * randomTint;
                 }
-                else if(res > 0.3f)
+                else if(res > 0.2f)
                 {
-                    res = 0;
+                    color = float4(0,0,0,1);
                 }
+                else
+                {
+                    color = float4(res,res,res,1);
+                }
+
+                if(minDistToCore < (randomTint-0.3) * 0.2f)
+                {
+                    color = float4(randomTint,randomTint,randomTint,1);
+                }
+
+                
+
+                
                     
 
-                return res;
+                return color;
             }
 
             float getBorder( float2 p )
@@ -353,7 +370,9 @@ Shader "Unlit/point Shader"
 
             fixed4 frag (vertOut v) : SV_Target
             {
-                float2 value = v.uv.xy / _pointSize;
+                //float2 value = v.uv.xy / _pointSize;
+
+                float2 value = float2(v.uv.x / _pointSize, v.uv.y / (_pointSize / 1.5));
 			    //float4 noise = voronoiNoise(value);
                 float4 noise = voronoiSubtract(value);
 
