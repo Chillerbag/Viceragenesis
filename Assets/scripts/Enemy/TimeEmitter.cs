@@ -8,7 +8,7 @@ public class TimeEmitter : MonoBehaviour
     public GameObject bulletPrefab; 
     public Transform[] firePoints; 
     public float shootingInterval = 20f; 
-    public float bulletSpeed = 15f; 
+    public float bulletSpeed = 10f; 
     private float shootingTimer;
 
     public Transform player;
@@ -56,13 +56,12 @@ public class TimeEmitter : MonoBehaviour
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 if (rb != null) {
                     Vector3 flatDirection = (player.position - transform.position).normalized;
-                    flatDirection.y = 0; // Ensure the bullet only travels on the flat axis
                     rb.velocity = flatDirection * bulletSpeed;
                 } else {
                     Debug.LogError("Rigidbody component not found on bulletPrefab.");
                 }
             }
-            yield return new WaitForSeconds(1f); 
+            yield return new WaitForSeconds(3f); 
         }
     }
 
