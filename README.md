@@ -1,14 +1,5 @@
 # Project 2 Report
 
-Read the [project 2
-specification](https://github.com/feit-comp30019/project-2-specification) for
-details on what needs to be covered here. You may modify this template as you see fit, but please
-keep the same general structure and headings.
-
-Remember that you must also continue to maintain the Game Design Document (GDD)
-in the `GDD.md` file (as discussed in the specification). We've provided a
-placeholder for it [here](GDD.md).
-
 ## Table of Contents
 
 - [Evaluation Plan](#evaluation-plan)
@@ -49,11 +40,14 @@ Here is our planned usability questionnaire.
 
 ## Participants
 Our target audience are late teens and early 20s that appreciate edgy themes, low poly aesthetics, and the bullet hell subgenre. 
+The reason for this particular target audience is that these kind of aesthetics have recently re-emerged in many independent games online that the age bracket we have selected is more likely to be familiar with. It harkens back to the Nintendo 64 and Playstation 1 era of modelling and texturing, which have often been marked as unsettling thanks to pioneer horror games like _Resident Evil_ and _Silent Hill_, which perhaps our audience is too young to be nostalgic for, but capable of recognising the eeriness instilled by these uncanny-valley worlds. This age is likely to be more cognizant of the breadth of game aesthetics, which will allow them to appreciate the surreal bizarre nature of ours, which may be lost on older generations or younger generations which associate games with a degree of realism and belivability. The bullet hell subgenre of our game also demands reflexes of those experienced with games, and those switched-on enough to have high reaction times in general. People too young or too old may not fit this criteria. 
 
 ### Recruiting Participants
-Due to time constraints, most of our participants will be friends and fellow students that fit in the age demographic of our target audience. Our reasoning behind this is friends are likely to be willing to dedicate time and effort to our experiments, ensuring we have engaged participants that are comfortable sharing their thoughts. 
+Due to time constraints, most of our participants will be friends and fellow students that fit in the age demographic of our target audience. Our reasoning behind this is friends are likely to be willing to dedicate time and effort to our experiments, ensuring we have engaged participants that are comfortable sharing their thoughts. We also believe that people that we know will be able to interpret and appreciate the central goals of our aesthetic, and be able to more easily interpret the game without excessive explanation, which should allign with our target audience neatly. 
 
-We recognize that this may introduce bias to our evaluation, however, the milestones timeline in this subject limits our options, so we believe this is the most effective recruitment strategy.
+Additionally, to provide greater insight regarding the clarity of our levels and tutorials, we will recruit people close to us, but not necessarily alligned with the "gamer" crowd we wish to be our target audience. For example parents and family, simply to understand how certain elements of the levels might not be clear to a general crowd, which will provide insights in relation to our target audience too. Even if they cannot play the game well, their observations may prove valuable
+
+We recognize that the reliance on friends may introduce bias to our evaluation, however, the milestones timeline in this subject limits our options, so we believe this is the most effective recruitment strategy.
 
 While we will aim to recruit friends that are experienced with games and have a good chance of appreciating our game's genre and aesthetics, we do not want to ignore the edge cases (still within our target audience) that could provide insight. These include inexperienced users, "uninterested" users, and users that do not have a personal relationship with any of our team. By "uninterested" users, we refer to users with either little interest in gaming or typically would not gravitate to this type of game genre. We plan on recruiting these users through classes, tutorials, and external activities, such as sports, workplaces, etc.
 
