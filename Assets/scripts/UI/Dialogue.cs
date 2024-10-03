@@ -8,6 +8,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textComponent;
     [SerializeField] private string[] lines;
     [SerializeField] private float speed;
+    [SerializeField] private bool useButton;
     private int index;
 
     void Start()
@@ -42,6 +43,10 @@ public class Dialogue : MonoBehaviour
         {
             textComponent.text += c;
             yield return new WaitForSeconds(speed);
+        }
+        if (useButton == false)
+        {
+            NextLine();
         }
     }
 

@@ -34,7 +34,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties: :m_LightmapFlags
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -129,6 +129,6 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.23201919, g: 1, b: 0, a: 1}
     - _Color: {r: 0.23201919, g: 1, b: 0, a: 1}
-    - _EmissionColor: {r: 2.6132114, g: 5.9921575, b: 0, a: 1}
+    - _EmissionColor: {r: 1.7240766, g: 3.9533494, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
