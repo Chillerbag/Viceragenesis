@@ -980,7 +980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1190173618}
   flashDuration: 0.1
-  flashColor: {r: 1, g: 0, b: 0, a: 0.5}
+  flashColorDamage: {r: 1, g: 0, b: 0, a: 0.5}
+  flashColorHeal: {r: 0, g: 1, b: 0, a: 0.5}
 --- !u!114 &335209129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8445,7 +8446,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3658476520967100352, guid: 51c225583e5254ee4a77e1b87ece7e6e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3fe3c5836a25240e7a11104e94129785, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 31c149e546314409ba21e059416df18a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -13817,7 +13818,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f891bc4f8c5e0bf448e8fc4df9dd276a, type: 3}
 --- !u!4 &1678118298 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8067820479469872248, guid: f891bc4f8c5e0bf448e8fc4df9dd276a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5485875246648459424, guid: f891bc4f8c5e0bf448e8fc4df9dd276a, type: 3}
   m_PrefabInstance: {fileID: 1678118297}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691810692
