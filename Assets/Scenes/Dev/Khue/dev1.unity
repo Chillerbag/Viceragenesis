@@ -3885,8 +3885,8 @@ MonoBehaviour:
   - {fileID: 1217440060}
   - {fileID: 1345689254}
   energyLevel: 16
-  activeColor: {r: 1.317647, g: 2.9960785, b: 0, a: 0}
-  emptyColor: {r: 0.32941177, g: 0.11372549, b: 0.72156864, a: 0}
+  activeColor: {r: 1.8634342, g: 4.237095, b: 0, a: 0}
+  emptyColor: {r: 0.3764706, g: 0.14117648, b: 0.5647059, a: 0}
 --- !u!1001 &2088611480
 PrefabInstance:
   m_ObjectHideFlags: 0
