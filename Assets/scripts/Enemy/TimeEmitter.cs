@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TimeEmitter : MonoBehaviour
 {
+    // todo: fix the different patterns. 
     public GameObject bulletPrefab; 
     public Transform[] firePoints; 
     public float shootingInterval = 20f; 
@@ -30,7 +31,7 @@ public class TimeEmitter : MonoBehaviour
             int attack = UnityEngine.Random.Range(0, 2);
             if (attack == 0)
             {
-                Attack1();
+                Attack2();
                 shootingTimer = shootingInterval;
             }
             if (attack == 1)
