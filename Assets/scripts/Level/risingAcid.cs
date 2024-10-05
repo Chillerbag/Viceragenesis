@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class risingAcid : MonoBehaviour
 {
     public bool isRising = false;
     public Transform player;
     // Start is called before the first frame update
+
+    [SerializeField] private TextMeshProUGUI LevelText; 
     void Start()
     {
-        
+        LevelText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.position.y > transform.position.y + 30) {
+        if (player.position.y > transform.position.y + 30 && !isRising) {
             // wait 5 seconds before acid starts rising
             StartCoroutine(Wait());
             isRising = true;
@@ -37,6 +41,9 @@ public class risingAcid : MonoBehaviour
     }
 
     IEnumerator Wait() {
+        LevelText.text = "Acid is rising! Run!";
+        LevelText.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
+        LevelText.gameObject.SetActive(false);
     }
 }
