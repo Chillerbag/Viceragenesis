@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 26, y: 0}
     m_Ints: []
     m_Floats:
-    - _DisplacementStrength: 3
+    - _DisplacementStrength: 0.75
     - _Emission: -1.8
     - _Glossiness: 0.71
     - _Metallic: 1
