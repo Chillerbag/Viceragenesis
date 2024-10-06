@@ -148,7 +148,7 @@ private void SetActiveStateForCubes(bool state, params string[] cubeNames)
         reduceBitDepthComponent.ReduceScreenBitDepth();
         yield return new WaitForSeconds(reduceBitDepthComponent.reductionDuration + 1);
         reduceBitDepthComponent.ResetScreenBitDepth();
-        SceneManager.LoadScene("GameOverScreen");
+        SceneManager.LoadScene("Game Over");
     }
 
     public void LoadProgress()

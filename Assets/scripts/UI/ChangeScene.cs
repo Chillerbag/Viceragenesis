@@ -12,8 +12,15 @@ public class ChangeScene : MonoBehaviour
 
     public void LoadProgress()
     {
-        int sceneIndex = PlayerPrefs.GetInt("RespawnScene");
-        SceneManager.LoadScene(sceneIndex);
+        try
+        {
+            int sceneIndex = PlayerPrefs.GetInt("RespawnScene");
+            SceneManager.LoadScene(sceneIndex);
+        }
+        catch
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     public void newGame()
