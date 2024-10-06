@@ -22,7 +22,6 @@ public class BossAttacks : MonoBehaviour
         stateMachine = GetComponent<Animator>();
         for (int i = 0; i < 100; i++) {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<Bullet>().lifeTime = 7f;
             Debug.Log("bullet created");
             // Set the bullet's velocity
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -55,7 +54,6 @@ public class BossAttacks : MonoBehaviour
             for (int i = 0; i < 360; i += 10)
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                bullet.GetComponent<Bullet>().lifeTime = 10f;
 
                 Debug.Log("bullet created");
                 bullet.transform.Rotate(0, i, 0);
@@ -102,7 +100,6 @@ public class BossAttacks : MonoBehaviour
             Vector3 bulletPosition = new Vector3(x, 0, z) + firePoint.position;
 
             GameObject bullet = Instantiate(bulletPrefab, bulletPosition, firePoint.rotation);
-            bullet.GetComponent<Bullet>().lifeTime = 10f;
             bullet.transform.LookAt(firePoint.position);
 
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
