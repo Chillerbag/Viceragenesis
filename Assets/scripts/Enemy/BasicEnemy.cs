@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    public Transform player; // Reference to the player's transform
+    public Transform player = null; // Reference to the player's transform
     public GameObject bulletPrefab; 
     public Transform firePoint; 
     public float shootingInterval = 2f; 
