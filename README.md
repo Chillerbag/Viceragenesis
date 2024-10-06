@@ -31,10 +31,10 @@ Though there is the risk of experimenter bias influencing observations, we belie
 #### 2.1 Interviews
 As mentioned above, we plan to conduct post-walkthrough interviews. By interviewing the users with adaptable questions, we hope to create an interview that is semi-structured. The structured aspect of the interview will help us ensure we ask crucial questions, and the adaptable aspect of the interview allows us to deviate for insight. 
 
-[Here]((./readme-eval-docs/PostWalkthroughQuestions.pdf) is an example semi-structured interview.
+[Here](./readme-eval-docs/PostWalkthroughQuestions.pdf) is an example semi-structured interview.
 
 #### 2.2 Scalar Questionnaire
-To end the experiment, we plan to ask the user to fill out a quick anonymous usability questionnaire, based on post-study questionnaires for User Interaction Satisfaction (Brooke 1996). This aims to uncover any usability or frustrations that the user may have encountered but either felt too awkward to express (hence the anonymity), or too abstract to articulate in an interview format. Additionally, the scalar nature of the questionnaire will provide us an easy metric for analysis of our game, a good foundation for evaluating the user experience.  
+To end the evaluation, we plan to ask the user to fill out a quick anonymous usability questionnaire, based on post-study questionnaires for User Interaction Satisfaction (Brooke 1996). This aims to uncover any usability or frustrations that the user may have encountered but either felt too awkward to express (hence the anonymity), or too abstract to articulate in an interview format. Additionally, the scalar nature of the questionnaire will provide us an easy metric for analysis of our game, a good foundation for evaluating the user experience.  
 
 [Here](./readme-eval-docs/Viceragenesis%20Game%20Experience%20Questionnaire.pdf) is our planned usability questionnaire.
 

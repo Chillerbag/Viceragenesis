@@ -23,11 +23,13 @@
 
 * You must avoid the attacks of various defenses that represent the body fighting back, such as white blood cells.
 
-* The game acts as one open level, the monster body you inhabit, and you need to move to the vital organs, the game's “boss battles” and destroy all of them to achieve your goal. 
+* ~~The game acts as one open level, the monster body you inhabit, and you need to move to the vital organs, the game's “boss battles” and destroy all of them to achieve your goal.~~
+* update 6/10 - The game is now following a more linear structure - moving through isolated levels. The reason for this is primarily due to time. We lack the time to create a intricately designed open level, and the knowledge of unity to optimise such structures. The levels are the stomach, the heart, and a final battle with the brain. We have gone from three levels to two, due to scope.  
 
 * There is foggy lighting that makes it difficult to see deep down blood vessels, obfuscating the render distance, with pulsating fleshy texture making your haunt of the body all the more eerie.
 
 * It falls into the “bullet hell” genre primarily, however lacking the other hallmarks of the “shoot-em-up” genre of which “bullet hells” are normally associated with, as in, you do not shoot back with a stream of bullets of your own, but a simple, weak dive.
+* update 6/10 - the gameplay uses a lot of platforming mechanics now too, as we found that during gameplay in a 3d space, avoiding bullets can be quite hard, but precise platformming lends itself well to our considered movement in the game. Its less bullet-hell style now, but still has some amount of bullet hell elements. 
 
 * This means there is a great degree of the classic hypnotic bullet patterns the player must weave through, much like the “bullet hell” segments of _Nier Automata (2017)_,  but lacking the top-down perspective.
 <p align="center">
@@ -68,9 +70,10 @@ Rendered with a low-poly aesthetic reminiscent of early 3D gaming, the game is s
 # Game progression
 
 The body is divided into different regions, each representing a critical part of the gameplay – each organ presents a new challenge:
-* Bloodstream
-  * **Environment**: A network of dark red, glowing pulsating veins and arteries. Dark and foggy, the player must traverse the blood vessels to reach each “checkpoint” (major organ). 
-  * **Objective**: Evade and outmaneuver the white blood cells that are defending the host whilst finding the next major organ.
+* ~~Bloodstream~~
+  * ~~**Environment**: A network of dark red, glowing pulsating veins and arteries. Dark and foggy, the player must traverse the blood vessels to reach each “checkpoint” (major organ).~~
+  * ~~**Objective**: Evade and outmaneuver the white blood cells that are defending the host whilst finding the next major organ.~~
+  * this environment was cut due to time constraints.
 * **Stomach:**
   * **Environment**: A curved cavern with a pool of acidic, yellowish liquid sitting at the bottom. The stomach walls are lined with digestive enzymes and can contract.
   * **Objective**: Survive the harsh environment. Avoid being crushed by the stomach walls and the digestive enzymes, and navigate around the areas covered by the corrosive stomach acid to the defeat the stomach.
@@ -116,11 +119,11 @@ The body is divided into different regions, each representing a critical part of
 
 * **Player Perspective:**: _Viceragenesis_ employs a third-person perspective, positioned slightly above the centipede-like player. This view is crucial because it provides the spatial awareness that the player requires to navigate the body and the depth perception that helps the player gauge distances and plan their paths, whilst also making them seem weak.
 
-* **Controls:** The player controls the parasite using standard keyboard and mouse input, but they are only move forward with W, and then change direction with the mouse. They are unable to strafe, as this would interfere with the functioning of the wormlike dynamic animation we seek to add. This also means bullet hells dont become too easy.
+* **Controls:** The player controls the parasite using standard keyboard and mouse input, the player can move in all directions to make it easy to avoid bullets, and then change direction with the mouse. ~~They are unable to strafe, as this would interfere with the functioning of the wormlike dynamic animation we seek to add. This also means bullet hells dont become too easy.~~ strafing has been added, as our animation works well with it and we can have more diverse platformming and bullet hell elements. 
 
 * **Progression:** The game progresses through the monster’s body. Instead of transitioning abruptly between discrete levels, the player navigates through a coherent and evolving world. With each major organ the enemies become more formidable and environmental hazards intensify, maintaining the difficulty scaling aspect that level-based games achieve but still contributing to the overarching narrative in a fluid way. The player loses health when it comes into contact with hazardous material like stomach acid, or is hit by enemies - upon death, the player is reset to the last major organ.
 
-* **Gameplay Mechanics:** Our game relies heavily on evasion and strategic movement. Viceragenesis moves like a centipede in 3d space. The parasite can tunnel in and out of tissues to avoid obstacles and enemies. Viceragenesis has minimal combat abilities, and instead relies on evasion to progress through the host. The lack of combat abilities was intentional, and is used to develop an eerie feeling whilst playing the game. Each organ presents a unique environment with its own hazards and features, making the player utilize different evasion and survival strategies, however, the player can still launch out of a dig into a dive, which can hurt an enemy it hits, which will be used in bosses. The player can take at most three hits before being destroyed, with the length of the centipede getting shorter to signify this. 
+* **Gameplay Mechanics:** Our game relies heavily on evasion and strategic movement. Viceragenesis moves like a centipede in 3d space. The parasite can tunnel in and out of tissues to avoid obstacles and enemies. Viceragenesis has minimal combat abilities, and instead relies on evasion to progress through the host. The lack of combat abilities was intentional, and is used to develop an eerie feeling whilst playing the game. Each organ presents a unique environment with its own hazards and features, making the player utilize different evasion and survival strategies, however, the player can still launch out of a dig into a dive, which can hurt an enemy it hits, which will be used in bosses. The player can take at most three hits before being destroyed, with the length of the centipede getting shorter to signify this. There are health pickups to get your health back after challenging sections. The digging and diving makes for satisfying precise platforming too. 
 
 * **Motivations:** The game has a fixed goal: destroy the brain, whilst the increase in difficulty with each organ provides the player a sense of accomplishment. There are three bosses to defeat before beating the game. 
 
@@ -128,7 +131,7 @@ The body is divided into different regions, each representing a critical part of
 
 * **Game World** The world is the inside of a body where each organ and blood vessel serves as a unique, interconnected environment. The game world was taken inspiration from real human anatomy incorporated with fictional elements, allowing for creativity and fantasy elements of a horror game.
   * The game world conveys a sense of eeriness using elements of body horror/ gore themes as well as a well designed cold and humid atmosphere inside a body.
-  * The entire map is one single level with multiple rooms as organs inside the body traversed through maze-like blood vessel structure. The player is provided with a top down, pixelated minimap to help traverse the word.
+  ~~* The entire map is one single level with multiple rooms as organs inside the body traversed through maze-like blood vessel structure. The player is provided with a top down, pixelated minimap to help traverse the word.~~ the minimap was cut as it provides no benefit with the refined gameplay structure to be more linear. as previously noted, the gameplay structure follows a linear structure now. 
   * Each room has a different and unique gimmick, providing the player with a new experience throughout the game. Design wise, since rooms are modeled based on organs, they all have different themes, color palette and textures using real life inspiration.
   * The game world and maps are designed with game progression in mind. After completing one room, the player is granted the opening to the next level. Therefore it would be best to design rooms with increasing difficulty, with the first room acting as a tutorial playground. The final room is a boss room, completing it grants victory and the player finishes the game.
  
