@@ -19,7 +19,7 @@ public class ChangeScene : MonoBehaviour
         }
         catch
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -29,7 +29,7 @@ public class ChangeScene : MonoBehaviour
         PlayerPrefs.DeleteAll();
 
         // load the first level 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
