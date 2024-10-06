@@ -19,7 +19,7 @@ public class ChangeScene : MonoBehaviour
         }
         catch
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(4);
         }
     }
 

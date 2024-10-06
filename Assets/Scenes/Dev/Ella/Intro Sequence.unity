@@ -1358,7 +1358,8 @@ PrefabInstance:
       propertyPath: playerRig
       value: 
       objectReference: {fileID: 1394852134}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7889298908007084000, guid: 956919c486c09a0438cc082b4fd4c78c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
