@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
@@ -12,14 +13,13 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerEffects playerEffects;
 
-    private float vspeed = 5; // how fast the player falls
+    private float vspeed = 0; // vertical speed
 
     public Vector3 lastDirection; // the last direction the player moved
 
     public float gravity = 9.8f; // the force of gravity after a player jumps
 
     private PlayerState playerState;
-
 
     void Start()
     {
@@ -36,32 +36,36 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, smoothTurn);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, smoothTurn);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-                if (playerState.GetState() != "DiggingUp") {
-                    controller.Move(moveDir.normalized * speed * Time.deltaTime);
-                }
+            if (playerState.GetState() != "DiggingUp") {
+                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
 
-                lastDirection = moveDir.normalized;
+            lastDirection = moveDir.normalized;
 
-                // play centipede crawl audio
-                playerEffects.PlayCrawlSound();
-        } else
+            // play centipede crawl audio
+            playerEffects.PlayCrawlSound();
+        } 
+        else
         {
             lastDirection = Vector3.zero;
         }
 
-         if (controller.isGrounded)
+        if (controller.isGrounded)
         {
-            vspeed = 0;
+            vspeed = -0.5f; // small downward force to keep the player grounded
+        }
+        else
+        {
+            vspeed -= gravity * Time.deltaTime;
         }
 
-        vspeed -= gravity * Time.deltaTime;
-        direction.y = vspeed;
-        controller.Move(direction * Time.deltaTime);
+        Vector3 verticalMovement = new Vector3(0, vspeed, 0);
+        controller.Move(verticalMovement * Time.deltaTime);
     }
 }

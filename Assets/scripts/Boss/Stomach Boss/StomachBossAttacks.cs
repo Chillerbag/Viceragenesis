@@ -24,7 +24,6 @@ public class StomachBossAttacks : MonoBehaviour
             foreach (Transform firePoint in firePoints)
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                bullet.GetComponent<Bullet>().lifeTime = 7f;
                 // Set the bullet's velocity
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 if (rb != null)
@@ -60,8 +59,6 @@ public class StomachBossAttacks : MonoBehaviour
             for (int i = 0; i < 5; i++) // Fire a few bullets towards the player
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                bullet.GetComponent<Bullet>().lifeTime = 10f;
-
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
@@ -103,7 +100,6 @@ public class StomachBossAttacks : MonoBehaviour
                 Vector3 bulletPosition = new Vector3(x, 0, z) + firePoint.position;
 
                 GameObject bullet = Instantiate(bulletPrefab, bulletPosition, firePoint.rotation);
-                bullet.GetComponent<Bullet>().lifeTime = 10f;
                 bullet.transform.LookAt(firePoint.position);
 
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();

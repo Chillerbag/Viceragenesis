@@ -9,6 +9,9 @@ TagManager:
   - Boss
   - Acid
   - ArenaWall
+  - DigUpTag
+  - IntroEnemyText
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - UI
   - Player
   - Shadow
-  - 
+  - UI 3D Model
   - WhatIsPlayers
   - UnderGroundIgnore
   - TopMarker

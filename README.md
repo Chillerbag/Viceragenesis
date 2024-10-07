@@ -31,12 +31,12 @@ Though there is the risk of experimenter bias influencing observations, we belie
 #### 2.1 Interviews
 As mentioned above, we plan to conduct post-walkthrough interviews. By interviewing the users with adaptable questions, we hope to create an interview that is semi-structured. The structured aspect of the interview will help us ensure we ask crucial questions, and the adaptable aspect of the interview allows us to deviate for insight. 
 
-Here is an example semi-structured interview.
+[Here](./readme-eval-docs/PostWalkthroughQuestions.pdf) is an example semi-structured interview.
 
 #### 2.2 Scalar Questionnaire
-To end the experiment, we plan to ask the user to fill out a quick anonymous usability questionnaire, based on post-study questionnaires for User Interaction Satisfaction (Brooke 1996). This aims to uncover any usability or frustrations that the user may have encountered but either felt too awkward to express (hence the anonymity), or too abstract to articulate in an interview format. Additionally, the scalar nature of the questionnaire will provide us an easy metric for analysis of our game, a good foundation for evaluating the user experience.  
+To end the evaluation, we plan to ask the user to fill out a quick anonymous usability questionnaire, based on post-study questionnaires for User Interaction Satisfaction (Brooke 1996). This aims to uncover any usability or frustrations that the user may have encountered but either felt too awkward to express (hence the anonymity), or too abstract to articulate in an interview format. Additionally, the scalar nature of the questionnaire will provide us an easy metric for analysis of our game, a good foundation for evaluating the user experience.  
 
-Here is our planned usability questionnaire.
+[Here](./readme-eval-docs/Viceragenesis%20Game%20Experience%20Questionnaire.pdf) is our planned usability questionnaire.
 
 ## Participants
 Our target audience are late teens and early 20s that appreciate edgy themes, low poly aesthetics, and the bullet hell subgenre. 
@@ -90,7 +90,7 @@ We will provide a consent form to each user, outlining the different recording o
 ### Tools Used for Data Collection
 While in-person gameplay observations and post-walkthrough interviews are preferred, we will utilize Zoom to conduct online interviews, as the share screen and recording features allow us to faciliate interviews in the case where in-person interviews are not an option.
 
-We will use [Snapforms](https://snapforms.com.au/survey-monkey-alternative/) software for our questionnaires, as they are they Australian alternative to SurveyMonkey and they host their data on-shore.
+We will use [Survey Monkey]([https://snapforms.com.au/survey-monkey-alternative/](https://www.surveymonkey.com/welcome/sem/?program=7013A000000ih75QAA&utm_bu=SVMK&utm_campaign=71700000058894454&utm_adgroup=58700005408390471&utm_content=43700079965418603&utm_medium=cpc&utm_source=adwords&utm_term=p79965418603&utm_kxconfid=s4bvpi0ju&gad_source=1&gclid=EAIaIQobChMIyLCP4pT2iAMVsqVmAh19FzQVEAAYASAAEgKlNvD_BwE&gclsrc=aw.ds)) software for our questionnaires, as they have student plans.
 
 Previous questionnaires have informed our current forms, including the basic usability questions from [SUS](https://doi.org/10.1201/9781498710411-35) and [Post-Study System Usability Questionnaire](https://trymata.com/learn/pssuq/#:~:text=The%20current%20iteration%20of%20the,end%20of%20a%20usability%20test.) (PSSUQ), and the desirability questions from the [Adoption Likelihood Factors Questionnaire](https://trymata.com/learn/alfq/) (ALFQ).
 
@@ -175,4 +175,4 @@ TODO (due milestone 3) - see specification for details
 Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
 
 ## External Resources
-[Snapforms](https://snapforms.com.au/survey-monkey-alternative/)
+[Our Survey Monkey questionnaire](https://www.surveymonkey.com/r/KK7ZBCY).
