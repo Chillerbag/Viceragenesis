@@ -7,7 +7,7 @@ public class EnergyBar : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] particles;
-    [Range(0, 16)][SerializeField] public int energyLevel;
+    [Range(0, 16)][SerializeField] private int energyLevel;
     [ColorUsageAttribute(false, true), SerializeField] private Color activeColor;
     [ColorUsageAttribute(false, true), SerializeField] private Color emptyColor;
     private int prevEnergyLevel;

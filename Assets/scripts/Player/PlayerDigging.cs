@@ -1,20 +1,18 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class PlayerDigging : MonoBehaviour
 {
     public CharacterController controller;
     public LayerMask groundLayer;
-    public GameObject energyBar;
     public Slider cooldownSlider;
     private bool isUnderground = false;
     private float undergroundBuffer = 1.0f;
     private float timeInvisible = 1.5f;
     private Animator rigAnimator;
 
-    public GameObject playerRig;
+    public GameObject playerRig; 
 
     private PlayerEffects playerEffects;
 
@@ -25,18 +23,17 @@ public class PlayerDigging : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerState playerState;
 
-    public int topLayer;
+    public int topLayer; 
 
 
     void Start()
     {
 
         rigAnimator = GetComponentInChildren<Animator>();
-        energyBar.GetComponent<EnergyBar>().energyLevel = 16;
         cooldownSlider.value = 0;
         playerEffects = GetComponent<PlayerEffects>();
         playerMovement = GetComponent<PlayerMovement>();
-        playerState = GetComponent<PlayerState>();
+        playerState = GetComponent<PlayerState>();  
         playerEffects.PlayUndergroundParticles(false);
         playerEffects.PlayAttackParticles(false);
     }
@@ -56,7 +53,6 @@ public class PlayerDigging : MonoBehaviour
         {
             undergroundBuffer -= Time.deltaTime;
             cooldownSlider.value = undergroundBuffer;
-            energyBar.GetComponent<EnergyBar>().energyLevel = 16 - Mathf.RoundToInt(undergroundBuffer * 16);
         }
 
         if (Input.GetKey(KeyCode.Space) && undergroundBuffer <= 0 && controller.isGrounded && !isUnderground)
@@ -85,9 +81,9 @@ public class PlayerDigging : MonoBehaviour
         SetLayerCollision(false);
         isUnderground = true;
         timeInvisible = 1.5f;
-        playerEffects.PlayDiggingSound();
+        playerEffects.PlayDiggingSound();  
         playerEffects.PlayUndergroundParticles(true);
-
+        
     }
 
     private void EndDigging()
@@ -97,11 +93,10 @@ public class PlayerDigging : MonoBehaviour
         isUnderground = false;
         undergroundBuffer = 1.0f;
         cooldownSlider.value = undergroundBuffer;
-        energyBar.GetComponent<EnergyBar>().energyLevel = Mathf.RoundToInt(undergroundBuffer * 16);
         MoveToTopMarker();
         StartCoroutine(DolphinDive());
         SetLayerCollision(true);
-
+        
     }
 
     private void SetLayerCollision(bool enabled)
@@ -156,7 +151,7 @@ public class PlayerDigging : MonoBehaviour
     {
         float launchDuration = 1.5f;
         float elapsedTime = 0f;
-        Vector3 launchVelocity = Vector3.up * 35f;
+        Vector3 launchVelocity = Vector3.up * 35f; 
 
         // Rotate player rig to be vertical
         Quaternion initialRotation = playerRig.transform.rotation;
