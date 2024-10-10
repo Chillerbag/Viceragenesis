@@ -71,7 +71,8 @@ public class PlayerAttacking : MonoBehaviour
     {
         float bounceDistance = 0.8f; // Adjust this value for a more satisfying bounce
         Vector3 bounceVector = -1 * bounceBack * bounceDistance * 15;
-        if (enemyTag == "Boss") {
+        if (enemyTag == "Boss")
+        {
             bounceDistance = 1.5f; // Adjust this value for a more satisfying bounce
             bounceVector = -1 * bounceBack * bounceDistance * 20;
         }

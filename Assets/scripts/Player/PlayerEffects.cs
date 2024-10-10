@@ -7,7 +7,7 @@ public class PlayerEffects : MonoBehaviour
 
     [SerializeField] private ParticleSystem[] undergroundParticles;
 
-    [SerializeField] private ParticleSystem attackParticles;
+    [SerializeField] private ParticleSystem[] attackParticles;
 
     public void PlayDiggingSound()
     {
@@ -31,7 +31,11 @@ public class PlayerEffects : MonoBehaviour
 
     public void PlayAttackParticles(bool play)
     {
-        var attackEmission = attackParticles.emission;
-        attackEmission.enabled = play;
+        foreach (ParticleSystem particleSystem in attackParticles)
+        {
+            var attackEmission = particleSystem.emission;
+            attackEmission.enabled = play;
+        }
+
     }
 }
