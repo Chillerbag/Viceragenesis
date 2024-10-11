@@ -24,28 +24,58 @@ public class HeartBossAttacks : MonoBehaviour
     }
 
     private IEnumerator Attack1Routine() {
-        foreach (Transform firePoint in firePoints1) {
-                for (int i = 0; i < 360; i += 30)
-                {
-                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Bullet>().lifeTime = 10f;
+        for (int j = 0; j<10 ;j++){
+            foreach (Transform firePoint in firePoints1) {
+                    for (int i = 0; i < 360; i += 30)
+                    {
+                        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                        bullet.GetComponent<BulletWithVarySpeed>().lifeTime = 10f;
+                        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
 
-                    Debug.Log("bullet created");
-                    bullet.transform.Rotate(0, i, 0);
-                    Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                    if (rb != null)
-                    {
-                        Vector3 direction = bullet.transform.forward;
-                        rb.velocity = direction * bulletSpeed;
+                        bullet.transform.Rotate(0, i, 0);
+                        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                        if (rb != null)
+                        {
+                            Vector3 direction = bullet.transform.forward;
+                            rb.velocity = direction * bulletSpeed;
+                        }
+                        else
+                        {
+                            Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                        }
                     }
-                    else
+            }
+            yield return new WaitForSeconds(0.15f);       
+
+        }
+
+
+        yield return new WaitForSeconds(0.5f);       
+        for (int j = 0; j<10 ;j++){
+
+            foreach (Transform firePoint in firePoints1) {
+                    for (int i = 15; i < 390; i += 30)
                     {
-                        Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                        bullet.GetComponent<BulletWithVarySpeed>().lifeTime = 10f;
+                        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+
+                        bullet.transform.Rotate(0, i, 0);
+                        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                        if (rb != null)
+                        {
+                            Vector3 direction = bullet.transform.forward;
+                            rb.velocity = direction * bulletSpeed;
+                        }
+                        else
+                        {
+                            Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                        }
                     }
                 }
-                yield return null;        
-            }
+            yield return new WaitForSeconds(0.15f);       
 
+        }
         stateMachine.SetTrigger("returnIdleAfterAttack");
         stateMachine.ResetTrigger("Attack1");
 
@@ -58,25 +88,58 @@ public class HeartBossAttacks : MonoBehaviour
     }
 
     private IEnumerator Attack2Routine() {
-        foreach (Transform firePoint in firePoints1) {
-                for (int i = 0; i < 360; i += 30)
-                {
-                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Bullet>().lifeTime = 10f;
+        for (int j = 0; j<10 ;j++){
+            foreach (Transform firePoint in firePoints1) {
+                    for (int i = 0; i < 360; i += 30)
+                    {
+                        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                        bullet.GetComponent<BulletWithVarySpeed>().lifeTime = 10f;
+                        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
 
-                    bullet.transform.Rotate(0, i, 0);
-                    Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                    if (rb != null)
-                    {
-                        Vector3 direction = bullet.transform.forward;
-                        rb.velocity = direction * bulletSpeed;
+                        bullet.transform.Rotate(0, i, 0);
+                        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                        if (rb != null)
+                        {
+                            Vector3 direction = bullet.transform.forward;
+                            rb.velocity = direction * bulletSpeed;
+                        }
+                        else
+                        {
+                            Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                        }
                     }
-                    else
+            }
+            yield return new WaitForSeconds(0.15f);       
+
+        }
+
+
+        yield return new WaitForSeconds(0.5f);       
+        for (int j = 0; j<10 ;j++){
+
+            foreach (Transform firePoint in firePoints1) {
+                    for (int i = 15; i < 390; i += 30)
                     {
-                        Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                        bullet.GetComponent<BulletWithVarySpeed>().lifeTime = 10f;
+
+                        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+
+                        bullet.transform.Rotate(0, i, 0);
+                        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                        if (rb != null)
+                        {
+                            Vector3 direction = bullet.transform.forward;
+                            rb.velocity = direction * bulletSpeed;
+                        }
+                        else
+                        {
+                            Debug.LogError("Rigidbody component not found on bulletPrefab.");
+                        }
                     }
                 }
-                yield return null;
+            yield return new WaitForSeconds(0.15f);       
+
         }
 
         stateMachine.SetTrigger("returnIdleAfterAttack");
