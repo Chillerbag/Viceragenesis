@@ -37,11 +37,11 @@ Material:
         m_Offset: {x: 44.93, y: 0}
     m_Ints: []
     m_Floats:
-    - _DisplacementStrength: 0.75
+    - _DisplacementStrength: 1
     - _Emission: -1.8
     - _Glossiness: 0.71
     - _Metallic: 1
-    - _Tiling: 3.04
+    - _Tiling: 2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.578375, g: 0.6415094, b: 0.37824848, a: 0}
