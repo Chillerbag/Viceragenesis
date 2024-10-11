@@ -22,36 +22,46 @@ public class PlayerAttacking : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected with: " + collision.gameObject.tag);
+           // Debug.Log("Collision detected with: " + collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            Debug.Log("Collision with enemy or boss detected.");
 
             if (playerState.GetState() == "Attacking")
             {
-                Debug.Log("Player is in Attacking state.");
+               // Debug.Log("Player is in Attacking state.");
 
                 Vector3 bounceDirection = -collision.GetContact(0).normal; // Opposite of collision normal
                 Vector3 hitPoint = collision.GetContact(0).point;
                 Quaternion hitRotation = Quaternion.LookRotation(hitPoint);
                 Instantiate(hitParticles, hitPoint, hitRotation);
-                Debug.Log("Calculated bounce direction: " + bounceDirection);
+                //Debug.Log("Calculated bounce direction: " + bounceDirection);
 
                 if (collision.gameObject.tag == "Enemy")
-                {
+                {   
                     BounceBack(bounceDirection.normalized, collision.gameObject.tag);
-                    collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
+                    //Debug.Log("Collision with Enemy.");
+
+                    if (collision.gameObject.GetComponent<EnemyHealthManager>()!= null)
+                    {
+                       collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
+                    }
                 }
                 else if (collision.gameObject.tag == "Boss")
                 {
+                    //Debug.Log("Collision with Boss.");
+
                     BounceBack(bounceDirection.normalized, collision.gameObject.tag);
-                    collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
+                    if (collision.gameObject.GetComponent<TemplateBossBehaviour>() != null)
+                    {
+                        collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
+
+                    }
                 }
             }
             else
             {
-                Debug.Log("Player is not in Attacking state.");
+                //Debug.Log("Player is not in Attacking state.");
             }
         }
     }
