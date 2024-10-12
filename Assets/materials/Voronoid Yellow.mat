@@ -43,6 +43,7 @@ Material:
     - _Ks: 1
     - _borderWidth: 0.04
     - _coreSize: 0
+    - _distanceMethod: 3
     - _fAtt: 1
     - _pointSize: 0.13
     - _smoothness: 0.11
@@ -52,5 +53,6 @@ Material:
     - _cellColor: {r: 0.8980393, g: 0.5019608, b: 0, a: 1}
     - _coreColor: {r: 1, g: 1, b: 1, a: 1}
     - _edgeColor: {r: 0.5943396, g: 0.1880494, b: 0.1541919, a: 1}
+    - _pointSize: {r: 0.16, g: 0.12, b: 1.06, a: 1}
     - _voidColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_BuildTextureStacks: []

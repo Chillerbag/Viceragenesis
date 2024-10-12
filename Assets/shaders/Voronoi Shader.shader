@@ -6,7 +6,7 @@ Shader "Unlit/point Shader"
 {
     Properties
     {
-        _pointSize ("cell Size", Range(0, 2)) = 2
+        [ShowAsVector2] _pointSize ("cell Size", Vector) = (1,1,1,1)
         _coreSize ("core Size", Range(0, 2)) = 0
         _smoothness("edge width", Float) = 1.0
         _borderWidth("border width", Float) = 1.0
@@ -15,6 +15,7 @@ Shader "Unlit/point Shader"
         _voidColor("void color", Color) = (1,1,1)
         _coreColor("core color", Color) = (1,1,1)
         _voidTex ("Void Texture", 2D) = "white" {}
+        _distanceMethod ("distance calculation method (1=Euclidian, 2=Manhattan, 3=Minkowski)", Range(1,3))=1
 
     }
     SubShader
@@ -55,7 +56,7 @@ Shader "Unlit/point Shader"
                 float4 uv : TEXCOORD4;
             };
 
-            float _pointSize;
+            float2 _pointSize;
             float _smoothness;
             float _coreSize;
             float _borderWidth;
@@ -64,6 +65,7 @@ Shader "Unlit/point Shader"
             float4 _edgeColor;
             float4 _coreColor;
             sampler2D _voidTex;
+            float _distanceMethod;
 
             float brownianMotion(float x)
             {
@@ -118,14 +120,29 @@ Shader "Unlit/point Shader"
                         float2 core = tile + float2(x, y);
                         core = core + 0.3f + 0.4f*rand2dTo2d(core) + 0.3f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
 
-                        //euclidian
-                        //float distToCore = length(core - value);
 
-                        //manhattan
-                        //float distToCore = abs(core.x - value.x) + abs(core.y - value.y);
+                        float distToCore = 0;
+                        if(floor(_distanceMethod) == 1)
+                        {
+                            //euclidian
+                            distToCore = length(core - value);
+                        }
+                        else if (floor(_distanceMethod) == 2)
+                        {
 
-                        //minkowski
-                        float distToCore = MinkowskiDistance(core, value, 3);
+                            //manhattan
+                            distToCore = abs(core.x - value.x) + abs(core.y - value.y);
+                        }
+                        else
+                        {
+                            //minkowski
+                            distToCore = MinkowskiDistance(core, value, 3);
+                        }
+                        
+
+                        
+
+                        
                         
                         // get min distance
                         
@@ -202,7 +219,7 @@ Shader "Unlit/point Shader"
             fixed4 frag (vertOut v) : SV_Target
             {
 
-                float2 value = float2(v.uv.x / _pointSize, v.uv.y / (_pointSize / 1.5));
+                float2 value = float2(v.uv.x / _pointSize.x, v.uv.y / _pointSize.y);
                 float4 voidColor = tex2D(_voidTex, v.uv);
                 float4 noise = voronoiSubtract(value, voidColor);
 
