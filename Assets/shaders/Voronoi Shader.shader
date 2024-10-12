@@ -6,14 +6,16 @@ Shader "Unlit/point Shader"
 {
     Properties
     {
-        _pointSize ("point Size", Range(0, 2)) = 2
-        _NormalMap ("Normal Map", 2D) = "white" {}
-        _smoothness("test value", Float) = 1.0
-		_Ka("Ka", Float) = 1.0
-		_Kd("Kd", Float) = 1.0
-		_Ks("Ks", Float) = 1.0
-		_fAtt("fAtt", Float) = 1.0
-		_specN("specN", Float) = 1.0
+        _pointSize ("cell Size", Range(0, 2)) = 2
+        _coreSize ("core Size", Range(0, 2)) = 0
+        _smoothness("edge width", Float) = 1.0
+        _borderWidth("border width", Float) = 1.0
+        _cellColor("cell color", Color) = (1,1,1)
+        _edgeColor("edge color", Color) = (1,1,1)
+        _voidColor("void color", Color) = (1,1,1)
+        _coreColor("core color", Color) = (1,1,1)
+        _voidTex ("Void Texture", 2D) = "white" {}
+
     }
     SubShader
     {
@@ -31,12 +33,7 @@ Shader "Unlit/point Shader"
             #include "Random.cginc"
             #include "UnityLightingCommon.cginc"
 
-            uniform float _smoothness;
-            uniform float _Ka;
-			uniform float _Kd;
-			uniform float _Ks;
-			uniform float _fAtt;
-			uniform float _specN;
+            
 
             struct vertIn
             {
@@ -59,7 +56,14 @@ Shader "Unlit/point Shader"
             };
 
             float _pointSize;
-            sampler2D _NormalMap;
+            float _smoothness;
+            float _coreSize;
+            float _borderWidth;
+            float4 _cellColor;
+            float4 _voidColor;
+            float4 _edgeColor;
+            float4 _coreColor;
+            sampler2D _voidTex;
 
             float brownianMotion(float x)
             {
@@ -89,127 +93,6 @@ Shader "Unlit/point Shader"
             }
 
 
-
-            float4 voronoiNoise(float2 value){
-                float2 tile = floor(value);
-                float2 tileFrac = frac( value );
-                float4 color = float4(0.0, 0.0, 0.0, 1.0);
-            
-                float minDistToCore = 10;
-                float2 closestCore;
-                [unroll]
-                for(int x=-1; x<=1; x++){
-                    [unroll]
-                    for(int y=-1; y<=1; y++){
-                        // get neighbor point
-                        float2 core = tile + float2(x, y);
-                        // random position
-                        core = core + 0.2f + 0.6f*rand2dTo2d(core) + 0.2f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
-                        //corePosition = 0.5f + 0.5f*corePosition;
-
-                        // vector distance between the pixel and the point core
-
-                        //euclidian
-                        float distToCore = length(core - value);
-
-                        //manhattan
-                        //float distToCore = abs(core.x - value.x) + abs(core.y - value.y);
-
-                        //minkowski
-                        //float distToCore = MinkowskiDistance(core, value, 3);
-                        
-                        // get min distance
-                        
-                        //distToCore = sin(distToCore + _Time.y);
-                        if(distToCore < minDistToCore){
-                            minDistToCore = distToCore;
-
-                            closestCore = core;
-                        }
-                    }
-                }
-
-
-                if(minDistToCore < 0.07f)
-                {
-                    minDistToCore -= 0.9f;
-                }
-
-                float1 randomTint = (rand2dTo1d(floor(closestCore))) * 0.2f + 0.5f;
-
-                float contrast = 0.3f;
-
-                color = float4(1 - 0.4f*minDistToCore, 0.7f-minDistToCore * contrast, 0.7f-minDistToCore * contrast, 1.0) * randomTint;
-                //color = float4(border,1,1,1);
-                return color;
-            }
-
-            float voronoiDistance( float2 x )
-            {
-                float2 p = floor( x );
-                float2 f = frac( x );
-
-                float2 mb;
-                float2 mr;
-
-                float res = 8.0;
-                for( int j=-1; j<=1; j++ )
-                {
-                    for( int i=-1; i<=1; i++ )
-                    {
-                        float2 b = float2(i, j);
-                        //float2  r = float2(b) + rand2dTo2d(p+b)-f;
-                        float2  r = b + 0.2f + 0.6f*rand2dTo2d(b+p) +0.2f*cos((rand2dTo2d(b+p) + brownianMotion(rand2dTo1d(b+p))));
-                        r = MinkowskiDistance(r, f, 3);
-                        
-                        //float2  r = float2(b) + 0.2f + 0.6f*rand2dTo2d(p+b) + 0.2f*cos((rand2dTo2d(p+b) + brownianMotion(rand2dTo1d(p+b))))-f;
-                        float d = dot(r,r);
-                        //float d = length(r);
-                        d = dot(d,d);
-
-                        if( d < res )
-                        {
-                            res = d;
-                            mr = r;
-                            mb = b;
-                        }
-                    }
-                }
-
-                /*
-                if(res > 0.2)
-                {
-                    res = 1;
-                }
-                else
-                {
-                    res = 0;
-                }*/
-                
-                /*
-                res = 8.0;
-                for( int j=-2; j<=2; j++ )
-                {
-                    for( int i=-2; i<=2; i++ )
-                    {
-                        float2 b = mb + float2(i, j);
-                        float2  r = b + 0.2f + 0.6f*rand2dTo2d(b+p) +0.2f*cos((rand2dTo2d(b+p) + brownianMotion(rand2dTo1d(b+p))));
-                        //r = MinkowskiDistance(r, f, 3);
-                        //float d = length(r - x);
-                        float d = dot(0.5*(mr+r), normalize(r-mr));
-
-                        res = min( res, d );
-                    }
-                }
-                    */
-                    
-                
-
-                float border = 1.0 - smoothstep(0.0,0.2,res);
-
-                return res;
-            }
-
             // exponential
             float smin( float a, float b, float k )
             {
@@ -219,7 +102,7 @@ Shader "Unlit/point Shader"
             }
 
 
-            float4 voronoiSubtract(float2 value)
+            float4 voronoiSubtract(float2 value, float4 voidColor)
             {
                 float2 tile = floor(value);
                 float4 color = float4(0.0, 0.0, 0.0, 1.0);
@@ -235,6 +118,7 @@ Shader "Unlit/point Shader"
                         float2 core = tile + float2(x, y);
                         core = core + 0.3f + 0.4f*rand2dTo2d(core) + 0.3f*cos((rand2dTo2d(core) + brownianMotion(rand2dTo1d(core))));
 
+                        //euclidian
                         //float distToCore = length(core - value);
 
                         //manhattan
@@ -248,11 +132,8 @@ Shader "Unlit/point Shader"
                         //distToCore = sin(distToCore + _Time.y);
                         minDistToCore = min(distToCore, minDistToCore);
                         minDistToCoreSmooth = smin(distToCore, minDistToCoreSmooth, _smoothness);
-                        //res = min(distToCore, minDistToCore) - smin(distToCore, minDistToCore, _smoothness)/2;
-                        //res = smin(distToCore, minDistToCore, _smoothness);
-                        if(distToCore == minDistToCore){
-                            //minDistToCore = distToCore;
 
+                        if(distToCore == minDistToCore){
                             closestCore = core;
                         }
                     }
@@ -266,76 +147,26 @@ Shader "Unlit/point Shader"
                 
                 if(res < 0.13f)
                 {
-                    color = float4(1 - 0.4f*minDistToCore, 0.7f-minDistToCore * contrast, 0.7f-minDistToCore * contrast, 1.0) * randomTint;
+                    color = float4(1-minDistToCore*0.8f, 1-minDistToCore*0.8f, 1-minDistToCore*0.8f, 1)*0.8f + _cellColor * randomTint;
                 }
-                else if(res > 0.2f)
+                else if(res > 0.13f + _borderWidth)
                 {
-                    color = float4(0,0,0,1);
+                    color = voidColor * _voidColor;
+                    
                 }
                 else
                 {
-                    color = float4(res,res,res,1);
+                    color = float4(res,res,res,1) + _edgeColor;
                 }
 
-                if(minDistToCore < (randomTint-0.3) * 0.2f)
+                if(minDistToCore < _coreSize)
                 {
-                    color = float4(randomTint,randomTint,randomTint,1);
+                    color = _coreColor;
                 }
-
-                
-
-                
-                    
+    
 
                 return color;
             }
-
-            float getBorder( float2 p )
-            {
-                float d = voronoiDistance( p );
-
-                return 1.0 - smoothstep(0.0,0.05,d);
-            }
-
-            float3 PerturbNormal ( float3 position ,float3 normal , float height )
-            {
-                float3 dpdx = ddx(position);
-                float3 dpdy = ddy(position);
-            
-                float dhdx = ddx(height);
-                float dhdy = ddy(height);
-
-                float3 r1 = cross(dpdy, normal);
-                float3 r2 = cross(normal, dpdx);
-
-                float3 surfaceGradient = (r1 * dhdx + r2 * dhdy) / dot(dpdx, r1);
-
-                float3 perturbNormal = normalize(normal - surfaceGradient);
-
-                return perturbNormal;
-            }
-
-            float3 Unity_NormalFromHeight_World_float(float In, float Strength, float3 Position, float3 normal)
-            {
-                float3 worldDerivativeX = ddx(Position);
-                float3 worldDerivativeY = ddy(Position);
-
-                float3 crossX = cross(normal, worldDerivativeX);
-                float3 crossY = cross(worldDerivativeY, normal);
-                float d = dot(worldDerivativeX, crossY);
-                float sgn = d < 0.0 ? (-1.0f) : 1.0f;
-                float surface = sgn / max(0.000000000000001192093f, abs(d));
-
-                float dHdx = ddx(In);
-                float dHdy = ddy(In);
-                float3 surfGrad = surface * (dHdx*crossY + dHdy*crossX);
-                
-                float3 returnNormal = normalize(normal - (Strength * surfGrad));
-                return mul(returnNormal, normal);
-            }
-                        
-
-            
 
             vertOut vert (vertIn v)
             {
@@ -370,69 +201,12 @@ Shader "Unlit/point Shader"
 
             fixed4 frag (vertOut v) : SV_Target
             {
-                //float2 value = v.uv.xy / _pointSize;
 
                 float2 value = float2(v.uv.x / _pointSize, v.uv.y / (_pointSize / 1.5));
-			    //float4 noise = voronoiNoise(value);
-                float4 noise = voronoiSubtract(value);
+                float4 voidColor = tex2D(_voidTex, v.uv);
+                float4 noise = voronoiSubtract(value, voidColor);
 
-                float4 unlitColor = noise;
-                float4 normal = tex2D(_NormalMap, v.uv) * 2 - 1;
-                float heightMap = tex2D(_NormalMap, v.uv);
-                float height = noise.y * 0.1f;
-                //float3 normal = PerturbNormal(v.uv, v.worldNormal, heightMap);
-                //float3 normal = Unity_NormalFromHeight_World_float(heightMap, 0.01f, v.uv, v.worldNormal);
-                //float3 normal = float4(heightMap, heightMap, heightMap, 1);
-                //float3 normal = v.worldNormal;
-
-
-                float3 worldNormal = v.worldNormal;
-                float3 worldBinormal = v.worldBinormal;
-                float3 worldTangent = v.worldTangent;
-                //float3 interpNormal = float4(noise.x, noise.y, noise.y, 1);
-                float3 interpNormal = (normal.z * worldNormal) + (normal.x * -worldTangent) + (normal.y * worldBinormal);
-
-                interpNormal = normalize(interpNormal);
-				// Our interpolated normal might not be of length 1
-				//float3 interpNormal = normalize(v.worldNormal);
-
-				// Calculate ambient RGB intensities
-				float Ka = _Ka;
-				float3 amb = unlitColor.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;
-
-				// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again
-				// (when calculating the reflected ray in our specular component)
-				float fAtt = _fAtt;
-				float Kd = _Kd;
-				float3 L = _WorldSpaceLightPos0; // Q6: Using built-in Unity light data: _WorldSpaceLightPos0.
-				                                 // Note that we are using a *directional* light in this instance,
-												 // so _WorldSpaceLightPos0 is actually a direction rather than
-												 // a point. Therefore there is no need to subtract the world
-												 // space vertex position like in our point-light shaders.
-				float LdotN = dot(L, interpNormal);
-				float3 dif = fAtt * _LightColor0 * Kd * unlitColor.rgb * saturate(LdotN); // Q6: Using built-in Unity light data: _LightColor0
-
-				// Calculate specular reflections
-				float Ks = _Ks;
-				float specN = _specN; // Values>>1 give tighter highlights
-				float3 V = normalize(_WorldSpaceCameraPos - v.worldVertex.xyz);
-                // Using classic reflection calculation:
-				float3 R = normalize((2.0 * LdotN * interpNormal) - L);
-				float3 spe = fAtt * Ks * pow(saturate(dot(V, R)), specN);
-				// Using Blinn-Phong approximation:
-				//specN = _specN; // We usually need a higher specular power when using Blinn-Phong
-				//float3 H = normalize(V + L);
-				//float3 spe = fAtt * _LightColor0 * Ks * pow(saturate(dot(interpNormal, H)), specN); // Q6: Using built-in Unity light data: _LightColor0
-
-				// Combine Phong illumination model components
-				float4 returnColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
-				returnColor.rgb = amb.rgb + dif.rgb + spe.rgb;
-				returnColor.a = unlitColor.a;
-
-
-                //float4 testcolor = float4(height, height, height, 1);
-                float4 testcolor = float4(normal.x, normal.y, normal.z, 1);
-                float4 diffuse = dot(normal, _WorldSpaceLightPos0);
+                
                 return noise;
             } 
 
