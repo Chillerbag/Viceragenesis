@@ -20195,6 +20195,10 @@ PrefabInstance:
       propertyPath: screenFlash
       value: 
       objectReference: {fileID: 1190173617}
+    - target: {fileID: 3819449685505055369, guid: 956919c486c09a0438cc082b4fd4c78c, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3842306028029258256, guid: 956919c486c09a0438cc082b4fd4c78c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -46.4
