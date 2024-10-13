@@ -4,6 +4,7 @@ Shader "Unlit Acid Shader/shader"
     {
         _DisplacementTex ("Displacement Texture", 2D) = "white" {}
         _DisplacementStrength  ("Displacement Strength", float) = 1
+        _Tiling  ("Tiling", int) = 1
         _OverlayTex ("Overlay Texture", 2D) = "white" {}
         [HDR] _EmissionColor("Color", Color) = (0,0,0)
     }
@@ -46,18 +47,19 @@ Shader "Unlit Acid Shader/shader"
             sampler2D _OverlayTex;
             fixed4 _EmissionColor;
             float _DisplacementStrength;
+            int _Tiling;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 UNITY_SETUP_INSTANCE_ID(v);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(outpout);
-                o.normal = UnityObjectToWorldNormal(v.normal);
+                o.normal = v.normal;
                 o.viewdir = normalize(WorldSpaceViewDir(v.vertex));
 
                 // moving displacement map
                 o.uv = v.uv;
-                float xMod = tex2Dlod(_DisplacementTex, float4(o.uv.xy, 0, 1));
+                float xMod = tex2Dlod(_DisplacementTex, float4(o.uv.x * _Tiling, o.uv.y * _Tiling, 0, 1));
                 xMod = xMod * 2 - 1;
                 o.uv.x = sin(xMod * 10 + _Time.y);
 
