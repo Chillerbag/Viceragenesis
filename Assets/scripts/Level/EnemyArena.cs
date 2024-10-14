@@ -18,7 +18,7 @@ public class EnemyArena : MonoBehaviour
 
     public GameObject[] Enemies;
 
-    public int enemyCount = 8;
+    public int enemyCount = 6;
     void Start()
     {   
         EnemyCountText.gameObject.SetActive(false);
@@ -43,7 +43,7 @@ public class EnemyArena : MonoBehaviour
 
             // check if an enemmy has been destroyed and remove
             for (int i = 0; i < Enemies.Length; i++) {
-                if (Enemies[i] == null) {
+                if (Enemies[i].GetComponent<EnemyHealthManager>().HP <= 0) {
                     enemyCount -= 1;
                     removeEnemy(Enemies[i]);
                 }

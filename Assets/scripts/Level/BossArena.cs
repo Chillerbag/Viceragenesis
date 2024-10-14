@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class BossArena : MonoBehaviour
 {
-
-    public bool bossActive = false;
-
     [SerializeField] private Slider BossHealth; 
     // Start is called before the first frame update
 
@@ -31,7 +28,7 @@ public class BossArena : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            bossActive = true;
+            Boss.SetActive(true);
             BossHealth.gameObject.SetActive(true);
             SetArenaBoundariesActive(true);
             

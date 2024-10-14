@@ -24,7 +24,7 @@ public class PlayerAttacking : MonoBehaviour
     {
         Debug.Log("Collision detected with: " + collision.gameObject.tag);
 
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss" || collision.gameObject.tag == "ArenaEnemy")
         {
             Debug.Log("Collision with enemy or boss detected.");
 
@@ -38,7 +38,7 @@ public class PlayerAttacking : MonoBehaviour
                 Instantiate(hitParticles, hitPoint, hitRotation);
                 Debug.Log("Calculated bounce direction: " + bounceDirection);
 
-                if (collision.gameObject.tag == "Enemy")
+                if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "ArenaEnemy")
                 {
                     BounceBack(bounceDirection.normalized, collision.gameObject.tag);
                     collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);

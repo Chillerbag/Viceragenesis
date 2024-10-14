@@ -10,26 +10,24 @@ public class StomachBossBehaviour : MonoBehaviour
 
     private float attackCooldown = 4f;
 
-    [SerializeField] GameObject bossArena; 
-
     // Start is called before the first frame update
     void Start()
     {
         stateMachine = GetComponent<Animator>();
-
-        
+        gameObject.SetActive(false);
+    }
+    void OnEnable() {
+        HP = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bossArena.GetComponent<BossArena>().bossActive) {
-            if (attackCooldown <= 0) {
-                Attack();
-                attackCooldown = 2f;
-            } else {
-                attackCooldown -= Time.deltaTime;
-            }
+        if (attackCooldown <= 0) {
+            Attack();
+            attackCooldown = 2f;
+        } else {
+            attackCooldown -= Time.deltaTime;
         }
     }
 
@@ -58,10 +56,8 @@ public class StomachBossBehaviour : MonoBehaviour
         }
 
         if (HP<=0) {
-            // we should probably trigger a Destroy state here. 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
-
     }
 
     public void EnrageBoss() 

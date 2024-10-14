@@ -9,11 +9,10 @@ public class BossUISetup : MonoBehaviour
     [SerializeField] private Slider BossHealth;
     [SerializeField] private TextMeshProUGUI bossText;
 
-    private GameObject Boss;
+    public GameObject Boss;
     // Start is called before the first frame update
     void Start()
     {
-        Boss = GameObject.FindGameObjectWithTag("Boss");
         bossText.text = Boss.GetComponent<StomachBossBehaviour>().bossName;
         
     }
@@ -21,11 +20,10 @@ public class BossUISetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Boss != null) {
             BossHealth.value = Boss.GetComponent<StomachBossBehaviour>().HP;
-        }
-        else {
-            gameObject.SetActive(false);
-        }
+
+            if (Boss.GetComponent<StomachBossBehaviour>().HP <= 0) {
+                BossHealth.gameObject.SetActive(false);
+            }
     }
 }
