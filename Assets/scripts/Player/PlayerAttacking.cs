@@ -56,6 +56,7 @@ public class PlayerAttacking : MonoBehaviour
         }
     }
 
+    // this is out of scope for this script. Fix later.
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Acid")
@@ -65,6 +66,10 @@ public class PlayerAttacking : MonoBehaviour
             StartCoroutine(SmoothBounceUp());
             Debug.Log("Player hit acid and took damage.");
         }
+        else if (other.gameObject.tag == "Lightning") {
+            playerHealth.TakeDamage(1);
+        }
+
     }
 
     private void BounceBack(Vector3 bounceBack, string enemyTag)
