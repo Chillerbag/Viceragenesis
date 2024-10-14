@@ -10,7 +10,6 @@ public class TemplateBossBehaviour : MonoBehaviour
 
     private float attackCooldown = 4f;
 
-    [SerializeField] GameObject bossArena; 
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +21,13 @@ public class TemplateBossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bossArena.GetComponent<BossArena>().bossActive) {
-            if (attackCooldown <= 0) {
-                Attack();
-                attackCooldown = 2f;
-            } else {
-                attackCooldown -= Time.deltaTime;
-            }
+        if (attackCooldown <= 0) {
+            Attack();
+            attackCooldown = 2f;
+        } else {
+            attackCooldown -= Time.deltaTime;
         }
+
     }
 
 

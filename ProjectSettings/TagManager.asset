@@ -12,6 +12,8 @@ TagManager:
   - DigUpTag
   - IntroEnemyText
   - SpawnPoint
+  - ArenaEnemy
+  - Lightning
   layers:
   - Default
   - TransparentFX

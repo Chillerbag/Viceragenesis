@@ -24,7 +24,7 @@ public class PlayerAttacking : MonoBehaviour
     {
         Debug.Log("Collision detected with: " + collision.gameObject.tag);
 
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss" || collision.gameObject.tag == "ArenaEnemy")
         {
             Debug.Log("Collision with enemy or boss detected.");
 
@@ -38,7 +38,7 @@ public class PlayerAttacking : MonoBehaviour
                 Instantiate(hitParticles, hitPoint, hitRotation);
                 Debug.Log("Calculated bounce direction: " + bounceDirection);
 
-                if (collision.gameObject.tag == "Enemy")
+                if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "ArenaEnemy")
                 {
                     BounceBack(bounceDirection.normalized, collision.gameObject.tag);
                     collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
@@ -56,6 +56,7 @@ public class PlayerAttacking : MonoBehaviour
         }
     }
 
+    // this is out of scope for this script. Fix later.
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Acid")
@@ -65,6 +66,10 @@ public class PlayerAttacking : MonoBehaviour
             StartCoroutine(SmoothBounceUp());
             Debug.Log("Player hit acid and took damage.");
         }
+        else if (other.gameObject.tag == "Lightning") {
+            playerHealth.TakeDamage(1);
+        }
+
     }
 
     private void BounceBack(Vector3 bounceBack, string enemyTag)

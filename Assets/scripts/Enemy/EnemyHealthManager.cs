@@ -9,8 +9,7 @@ public class EnemyHealthManager : MonoBehaviour
     public void DamageToEnemy(int dmg) {
         HP-=dmg;
         if (HP<=0) {
-
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
