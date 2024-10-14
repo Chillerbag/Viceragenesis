@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class StomachCystBehaviour : MonoBehaviour
 {
-    void OnDisable() {
-        GameObject.FindGameObjectWithTag("Boss").GetComponent<StomachBossBehaviour>().DamageToStomachBoss(1);
+    public void OnDisable() {
+        if (gameObject.GetComponent<EnemyHealthManager>().HP <= 0) {
+            GameObject.FindGameObjectWithTag("Boss").GetComponent<StomachBossBehaviour>().DamageToStomachBoss(1);
+        }
+
     }
 }

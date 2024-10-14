@@ -25,5 +25,8 @@ public class BossUISetup : MonoBehaviour
             if (Boss.GetComponent<StomachBossBehaviour>().HP <= 0) {
                 BossHealth.gameObject.SetActive(false);
             }
+            else {
+                BossHealth.gameObject.SetActive(true);
+            }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class StomachBossBehaviour : MonoBehaviour
@@ -9,6 +10,8 @@ public class StomachBossBehaviour : MonoBehaviour
     public string bossName = "The Stomach";
 
     private float attackCooldown = 4f;
+
+    public bool defeated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class StomachBossBehaviour : MonoBehaviour
         }
 
         if (HP<=0) {
+            defeated = true;
             gameObject.SetActive(false);
         }
     }

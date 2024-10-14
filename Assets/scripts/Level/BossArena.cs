@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossArena : MonoBehaviour
 {
@@ -19,9 +20,12 @@ public class BossArena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if boss dies take down the collider boundaries
-        if (Boss == null ) {
+        if (Boss.GetComponent<StomachBossBehaviour>().defeated == true) {
             SetArenaBoundariesActive(false);
+            // move to next scene 
+            StartCoroutine(BossDefeated());
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
         
     }
@@ -41,5 +45,9 @@ public class BossArena : MonoBehaviour
         {
             boundary.enabled = active;
         }
+    }
+
+    public IEnumerator BossDefeated() {
+        yield return new WaitForSeconds(2);
     }
 }
