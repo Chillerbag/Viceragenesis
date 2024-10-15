@@ -2,20 +2,19 @@ using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class StomachBossBehaviour : MonoBehaviour
+public class StomachBossBehaviour : BossBehaviour
 {
     private Animator stateMachine;
-    public int HP;
 
-    public string bossName = "The Stomach";
-
-    private float attackCooldown = 4f;
-
-    public bool defeated = false;
+    [SerializeField] GameObject bossArena; 
 
     // Start is called before the first frame update
     void Start()
     {
+        HP = 3;
+        bossName = "The Stomach";
+        attackCooldown = 4f;
+        defeated = false;
         stateMachine = GetComponent<Animator>();
         gameObject.SetActive(false);
     }
@@ -35,7 +34,7 @@ public class StomachBossBehaviour : MonoBehaviour
     }
 
 
-    private void Attack() {
+    public override void Attack() {
         // choose random int from 1 to 2 to determine which attack to use every 2 seconds, and choose between 1 3 if enraged
         int attackChoice = UnityEngine.Random.Range(1, 3);
         if (stateMachine.GetCurrentAnimatorStateInfo(0).IsName("BossEnrage")) {
@@ -48,31 +47,5 @@ public class StomachBossBehaviour : MonoBehaviour
         } else {
             stateMachine.SetTrigger("Attack3");
         } 
-    }
-    
-    public void DamageToStomachBoss(int dmg) {
-        HP-=dmg;
-
-        if (HP == 1) {
-            // change state to enraged
-            stateMachine.SetTrigger("Enraged");
-        }
-
-        if (HP<=0) {
-            defeated = true;
-            gameObject.SetActive(false);
-        }
-    }
-
-    public void EnrageBoss() 
-    {
-        // Change color to red
-        Renderer renderer = GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.material.color = Color.red;
-        }
-
-        transform.localScale *= 1.5f; // Increase size by 50%
     }
 }
