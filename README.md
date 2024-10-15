@@ -1,14 +1,5 @@
 # Project 2 Report
 
-Read the [project 2
-specification](https://github.com/feit-comp30019/project-2-specification) for
-details on what needs to be covered here. You may modify this template as you see fit, but please
-keep the same general structure and headings.
-
-Remember that you must also continue to maintain the Game Design Document (GDD)
-in the `GDD.md` file (as discussed in the specification). We've provided a
-placeholder for it [here](GDD.md).
-
 ## Table of Contents
 
 - [Evaluation Plan](#evaluation-plan)
@@ -40,20 +31,23 @@ Though there is the risk of experimenter bias influencing observations, we belie
 #### 2.1 Interviews
 As mentioned above, we plan to conduct post-walkthrough interviews. By interviewing the users with adaptable questions, we hope to create an interview that is semi-structured. The structured aspect of the interview will help us ensure we ask crucial questions, and the adaptable aspect of the interview allows us to deviate for insight. 
 
-Here is an example semi-structured interview.
+[Here](./readme-eval-docs/PostWalkthroughQuestions.pdf) is an example semi-structured interview.
 
 #### 2.2 Scalar Questionnaire
-To end the experiment, we plan to ask the user to fill out a quick anonymous usability questionnaire, based on post-study questionnaires for User Interaction Satisfaction (Brooke 1996). This aims to uncover any usability or frustrations that the user may have encountered but either felt too awkward to express (hence the anonymity), or too abstract to articulate in an interview format. Additionally, the scalar nature of the questionnaire will provide us an easy metric for analysis of our game, a good foundation for evaluating the user experience.  
+To end the evaluation, we plan to ask the user to fill out a quick anonymous usability questionnaire, based on post-study questionnaires for User Interaction Satisfaction (Brooke 1996). This aims to uncover any usability or frustrations that the user may have encountered but either felt too awkward to express (hence the anonymity), or too abstract to articulate in an interview format. Additionally, the scalar nature of the questionnaire will provide us an easy metric for analysis of our game, a good foundation for evaluating the user experience.  
 
-Here is our planned usability questionnaire.
+[Here](./readme-eval-docs/Viceragenesis%20Game%20Experience%20Questionnaire.pdf) is our planned usability questionnaire.
 
 ## Participants
 Our target audience are late teens and early 20s that appreciate edgy themes, low poly aesthetics, and the bullet hell subgenre. 
+The reason for this particular target audience is that these kind of aesthetics have recently re-emerged in many independent games online that the age bracket we have selected is more likely to be familiar with. It harkens back to the Nintendo 64 and Playstation 1 era of modelling and texturing, which have often been marked as unsettling thanks to pioneer horror games like _Resident Evil_ and _Silent Hill_, which perhaps our audience is too young to be nostalgic for, but capable of recognising the eeriness instilled by these uncanny-valley worlds. This age is likely to be more cognizant of the breadth of game aesthetics, which will allow them to appreciate the surreal bizarre nature of ours, which may be lost on older generations or younger generations which associate games with a degree of realism and belivability. The bullet hell subgenre of our game also demands reflexes of those experienced with games, and those switched-on enough to have high reaction times in general. People too young or too old may not fit this criteria. 
 
 ### Recruiting Participants
-Due to time constraints, most of our participants will be friends and fellow students that fit in the age demographic of our target audience. Our reasoning behind this is friends are likely to be willing to dedicate time and effort to our experiments, ensuring we have engaged participants that are comfortable sharing their thoughts. 
+Due to time constraints, most of our participants will be friends and fellow students that fit in the age demographic of our target audience. Our reasoning behind this is friends are likely to be willing to dedicate time and effort to our experiments, ensuring we have engaged participants that are comfortable sharing their thoughts. We also believe that people that we know will be able to interpret and appreciate the central goals of our aesthetic, and be able to more easily interpret the game without excessive explanation, which should allign with our target audience neatly. 
 
-We recognize that this may introduce bias to our evaluation, however, the milestones timeline in this subject limits our options, so we believe this is the most effective recruitment strategy.
+Additionally, to provide greater insight regarding the clarity of our levels and tutorials, we will recruit people close to us, but not necessarily alligned with the "gamer" crowd we wish to be our target audience. For example parents and family, simply to understand how certain elements of the levels might not be clear to a general crowd, which will provide insights in relation to our target audience too. Even if they cannot play the game well, their observations may prove valuable
+
+We recognize that the reliance on friends may introduce bias to our evaluation, however, the milestones timeline in this subject limits our options, so we believe this is the most effective recruitment strategy.
 
 While we will aim to recruit friends that are experienced with games and have a good chance of appreciating our game's genre and aesthetics, we do not want to ignore the edge cases (still within our target audience) that could provide insight. These include inexperienced users, "uninterested" users, and users that do not have a personal relationship with any of our team. By "uninterested" users, we refer to users with either little interest in gaming or typically would not gravitate to this type of game genre. We plan on recruiting these users through classes, tutorials, and external activities, such as sports, workplaces, etc.
 
@@ -96,7 +90,7 @@ We will provide a consent form to each user, outlining the different recording o
 ### Tools Used for Data Collection
 While in-person gameplay observations and post-walkthrough interviews are preferred, we will utilize Zoom to conduct online interviews, as the share screen and recording features allow us to faciliate interviews in the case where in-person interviews are not an option.
 
-We will use [Snapforms](https://snapforms.com.au/survey-monkey-alternative/) software for our questionnaires, as they are they Australian alternative to SurveyMonkey and they host their data on-shore.
+We will use [Survey Monkey]([https://snapforms.com.au/survey-monkey-alternative/](https://www.surveymonkey.com/welcome/sem/?program=7013A000000ih75QAA&utm_bu=SVMK&utm_campaign=71700000058894454&utm_adgroup=58700005408390471&utm_content=43700079965418603&utm_medium=cpc&utm_source=adwords&utm_term=p79965418603&utm_kxconfid=s4bvpi0ju&gad_source=1&gclid=EAIaIQobChMIyLCP4pT2iAMVsqVmAh19FzQVEAAYASAAEgKlNvD_BwE&gclsrc=aw.ds)) software for our questionnaires, as they have student plans.
 
 Previous questionnaires have informed our current forms, including the basic usability questions from [SUS](https://doi.org/10.1201/9781498710411-35) and [Post-Study System Usability Questionnaire](https://trymata.com/learn/pssuq/#:~:text=The%20current%20iteration%20of%20the,end%20of%20a%20usability%20test.) (PSSUQ), and the desirability questions from the [Adoption Likelihood Factors Questionnaire](https://trymata.com/learn/alfq/) (ALFQ).
 
@@ -152,6 +146,18 @@ We have tried to play to each group member's strengths in splitting up the work.
 
 Our team leader Ethan created a trello board that provides us with a visual representation of tasks, ensuring that each member has an equal amount of work assigned. Our team has regular check ins, and we each communicate our individual progress throughout the week. 
 
+## Objectives
+Our team has a few key questions we hope to answer with feedback from evaluations:
+
+1. Text duration for introduction and practice slides (too short? too long?)
+2. Text clarity for health bar, instructions, time limits (easy to read? positioning? font?)
+3. Difficulty of level 
+4. Engagement throughout the gameplay
+5. Emotions experienced during gameplay
+6. Clarity of objectives of level (is it easy enough to know where to go? what to do?)
+7. Clarity of game mechanics (i.e. how to dash, tunnel, dig to avoid enemies etc.)
+8. Adherence to theme (do they find it eerie?)
+
 # Evaluation Report
 
 TODO (due milestone 3) - see specification for details
@@ -169,4 +175,4 @@ TODO (due milestone 3) - see specification for details
 Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
 
 ## External Resources
-[Snapforms](https://snapforms.com.au/survey-monkey-alternative/)
+[Our Survey Monkey questionnaire](https://www.surveymonkey.com/r/KK7ZBCY).

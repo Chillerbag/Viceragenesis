@@ -2,19 +2,10 @@ using UnityEngine;
 
 public class StomachCystBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void OnDisable() {
+        if (gameObject.GetComponent<EnemyHealthManager>().HP <= 0) {
+            GameObject.FindGameObjectWithTag("Boss").GetComponent<StomachBossBehaviour>().DamageToStomachBoss(1);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnDestroy() {
-        GameObject.FindGameObjectWithTag("Boss").GetComponent<StomachBossBehaviour>().DamageToStomachBoss(1);
     }
 }

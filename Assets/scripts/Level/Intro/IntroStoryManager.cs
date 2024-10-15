@@ -7,6 +7,6 @@ public class IntroStoryManager : MonoBehaviour
 {
     public void OnStorySwitch()
     {
-        SceneManager.LoadScene("Intro Sequence", LoadSceneMode.Single);
+        SceneManager.LoadScene(2);
     }
 }

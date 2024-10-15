@@ -17,7 +17,7 @@ public class EnemyHealthManager : MonoBehaviour
             {   
                 DeathEffect.Death();
             } else{
-                Destroy(gameObject);
+                gameObject.SetActive(false);
 
             }
         }

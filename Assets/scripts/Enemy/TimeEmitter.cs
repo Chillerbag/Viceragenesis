@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class TimeEmitter : MonoBehaviour
 {
+    // todo: fix the different patterns. 
     public GameObject bulletPrefab; 
     public Transform[] firePoints; 
     public float shootingInterval = 20f; 
-    public float bulletSpeed = 20f; 
+    public float bulletSpeed = 10f; 
     private float shootingTimer;
 
     public Transform player;
@@ -30,7 +31,7 @@ public class TimeEmitter : MonoBehaviour
             int attack = UnityEngine.Random.Range(0, 2);
             if (attack == 0)
             {
-                Attack1();
+                Attack2();
                 shootingTimer = shootingInterval;
             }
             if (attack == 1)
@@ -52,15 +53,15 @@ public class TimeEmitter : MonoBehaviour
             print(firePoint);
             for (int i = 0; i < 9; i++) {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position + new Vector3(0, 0, - 10) + BulletLocs[i], firePoint.rotation);
-                bullet.GetComponent<Bullet>().lifeTime = 20f;
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 if (rb != null) {
-                    rb.velocity = firePoint.forward * bulletSpeed;
+                    Vector3 flatDirection = (player.position - transform.position).normalized;
+                    rb.velocity = flatDirection * bulletSpeed;
                 } else {
                     Debug.LogError("Rigidbody component not found on bulletPrefab.");
                 }
             }
-            yield return new WaitForSeconds(1f); 
+            yield return new WaitForSeconds(3f); 
         }
     }
 
@@ -73,7 +74,6 @@ public class TimeEmitter : MonoBehaviour
                 for (int i = 0; i < 360; i += 10)
                 {
                     GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Bullet>().lifeTime = 10f;
 
                     Debug.Log("bullet created");
                     bullet.transform.Rotate(0, i, 0);

@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class IntroPracticeManager : MonoBehaviour
 {
-    public void OnStart()
+    public void loadStartLevel()
     {
+        print("here!");
         SceneManager.LoadScene("Level1");
     }
+
+
 }

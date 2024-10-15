@@ -12,8 +12,15 @@ public class ChangeScene : MonoBehaviour
 
     public void LoadProgress()
     {
-        int sceneIndex = PlayerPrefs.GetInt("RespawnScene");
-        SceneManager.LoadScene(sceneIndex);
+        try
+        {
+            int sceneIndex = PlayerPrefs.GetInt("RespawnScene");
+            SceneManager.LoadScene(sceneIndex);
+        }
+        catch
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
     public void newGame()
@@ -22,7 +29,7 @@ public class ChangeScene : MonoBehaviour
         PlayerPrefs.DeleteAll();
 
         // load the first level 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
