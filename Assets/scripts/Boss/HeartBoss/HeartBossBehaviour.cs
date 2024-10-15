@@ -12,6 +12,8 @@ public class HeartBossBehaviour : MonoBehaviour
 
     [SerializeField] GameObject bossArena; 
 
+    [SerializeField] private GameObject Boss;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +25,11 @@ public class HeartBossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bossArena.GetComponent<BossArena>().bossActive) {
-            if (attackCooldown <= 0) {
-                Attack();
-                attackCooldown = 2f;
-            } else {
-                attackCooldown -= Time.deltaTime;
-            }
+        if (attackCooldown <= 0) {
+            Attack();
+            attackCooldown = 2f;
+        } else {
+            attackCooldown -= Time.deltaTime;
         }
     }
 
