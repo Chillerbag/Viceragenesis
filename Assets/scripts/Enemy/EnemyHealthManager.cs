@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    public int HP;
-
+    public int HP = 1;
+    private EnemyDeath DeathEffect;
+    private Boolean isDead = false;
     public void DamageToEnemy(int dmg) {
         HP-=dmg;
         if (HP<=0) {
-            gameObject.SetActive(false);
+            isDead = true;
+            DeathEffect = GetComponent<EnemyDeath>();
+            if (DeathEffect != null)
+            {   
+                DeathEffect.Death();
+            } else{
+                gameObject.SetActive(false);
+
+            }
         }
     }
 }
