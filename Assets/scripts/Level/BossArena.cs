@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BossArena : MonoBehaviour
 {
-    [SerializeField] private Slider BossHealth; 
+    [SerializeField] private GameObject  BossHealth; 
     // Start is called before the first frame update
 
     [SerializeField] private Collider[] arenaBoundaries;
@@ -20,7 +20,7 @@ public class BossArena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Boss.GetComponent<StomachBossBehaviour>().defeated == true) {
+        if (Boss.GetComponent<BossBehaviour>().defeated == true) {
             SetArenaBoundariesActive(false);
             // move to next scene 
             StartCoroutine(BossDefeated());
@@ -33,7 +33,7 @@ public class BossArena : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
             Boss.SetActive(true);
-            BossHealth.gameObject.SetActive(true);
+            BossHealth.SetActive(true);
             SetArenaBoundariesActive(true);
             
         }

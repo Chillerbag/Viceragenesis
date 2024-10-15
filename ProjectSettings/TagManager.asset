@@ -30,7 +30,7 @@ TagManager:
   - Post Processng
   - NoCollision
   - Bullet
-  - 
+  - NoBulletCollision
   - 
   - 
   - 
