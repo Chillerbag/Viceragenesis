@@ -8,7 +8,7 @@ public class TimeEmitter : MonoBehaviour
     // todo: fix the different patterns. 
     public GameObject bulletPrefab; 
     public Transform[] firePoints; 
-    public float shootingInterval = 20f; 
+    public float shootingInterval = 5f; 
     public float bulletSpeed = 10f; 
     private float shootingTimer;
 
@@ -18,6 +18,7 @@ public class TimeEmitter : MonoBehaviour
     {
         
         shootingTimer = shootingInterval;
+        shootingTimer = 0f;
     }
 
     void Update()

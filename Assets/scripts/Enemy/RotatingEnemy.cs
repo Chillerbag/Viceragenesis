@@ -1,51 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class RotatingEnemy : MonoBehaviour
+using AbstractEnemy;
+public class RotatingEnemy : AbstractEnemy.AbstractEnemy
 {
-    public GameObject bulletPrefab; 
-    public Transform[] firePoints; 
-    public float rotationSpeed = 25f; 
-    public float shootingInterval = 1f; 
-    public float bulletSpeed = 5f; 
-    private float shootingTimer;
+    public Transform[] firePoints;
+    public float rotationSpeed = 25f;
 
-    void Start()
+    protected override void Update()
     {
-        
-        shootingTimer = shootingInterval;
-    }
-
-    void Update()
-    {
-        // Rotate the enemy slowly around the Y-axis
+        base.Update();
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-
-        // Handle shooting at intervals
-        shootingTimer -= Time.deltaTime;
-        if (shootingTimer <= 0f)
-        {
-            ShootInAllDirections();
-            shootingTimer = shootingInterval;
-        }
     }
 
-    void ShootInAllDirections()
+    protected override void Attack()
     {
-        // Shoot bullets from each fire point
         foreach (Transform firePoint in firePoints)
         {
             if (firePoint != null)
             {
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.velocity = firePoint.forward * bulletSpeed;
-                }
+                ShootBullet(firePoint.forward, firePoint.position);
             }
         }
     }
 }
-

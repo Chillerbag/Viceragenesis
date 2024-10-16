@@ -1,49 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
-public class risingAcid : MonoBehaviour
+public class RisingAcid : MonoBehaviour
 {
-    public bool isRising = false;
     public Transform player;
-    // Start is called before the first frame update
+    public float riseSpeed = 0.015f;
+    public float maxHeight = 680f;
+    public float triggerHeight = 30f;
 
-    [SerializeField] private TextMeshProUGUI LevelText; 
+    [SerializeField] private TextMeshProUGUI LevelText;
+
+    private bool hasStartedRising = false;
+
     void Start()
     {
         LevelText.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player.position.y > transform.position.y + 30 && !isRising) {
-            // wait 5 seconds before acid starts rising
-            StartCoroutine(Wait());
-            isRising = true;
+        if (!hasStartedRising && player.position.y > transform.position.y + triggerHeight)
+        {
+            StartCoroutine(StartRising());
         }
-        if(isRising) {
-            transform.position += new Vector3(0, 0.015f, 0);
 
-        }
-        if (transform.position.y >= 680) {
-            isRising = false;
-        }
-        
-    }
-
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player") {
-            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(3);
+        if (hasStartedRising && transform.position.y < maxHeight)
+        {
+            transform.position += new Vector3(0, riseSpeed, 0);
         }
     }
 
-    IEnumerator Wait() {
+    IEnumerator StartRising()
+    {
+        hasStartedRising = true;
         LevelText.text = "Acid is rising! Run!";
         LevelText.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
         LevelText.gameObject.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerHealth>()?.TakeDamage(3);
+        }
     }
 }
