@@ -36,6 +36,7 @@ public class EnemyArena : MonoBehaviour
         if (Enemies.Length == 0) {
             ArenaActive = false;
             music.GetComponent<MusicHandler>().changeMusic(0);
+            music.GetComponent<MusicHandler>().changeVolume(1);
             EnemyCountText.gameObject.SetActive(false);
             SetArenaBoundariesActive(false);
         }
@@ -60,6 +61,8 @@ public class EnemyArena : MonoBehaviour
             ArenaActive = true;
             EnemyCountText.gameObject.SetActive(true);
             music.GetComponent<MusicHandler>().changeMusic(1);
+            // lower volume
+            music.GetComponent<MusicHandler>().changeVolume(0.3f);
             SetArenaBoundariesActive(true);
             for (int i = 0; i < Enemies.Length; i++) {
                 Enemies[i].SetActive(true);

@@ -19,4 +19,8 @@ public class MusicHandler : MonoBehaviour
         musicSource.clip = musicClips[index];
         musicSource.Play();
     }
+
+    public void changeVolume(float volume) {
+        musicSource.volume = volume;
+    }
 }

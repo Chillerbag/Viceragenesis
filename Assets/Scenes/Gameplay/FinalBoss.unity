@@ -4069,6 +4069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402320440}
   - component: {fileID: 1402320441}
+  - component: {fileID: 1402320442}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -4187,6 +4188,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1402320442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402320439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763daa6fd2586c348a4538adc41b3537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClips:
+  - {fileID: 8300000, guid: 31c149e546314409ba21e059416df18a, type: 3}
+  - {fileID: 8300000, guid: 2e7bfcabab22d6049a3ff3655b02c4e6, type: 3}
+  - {fileID: 8300000, guid: ea76f11237e24bd4db78f286da4b5c9c, type: 3}
+  musicSource: {fileID: 1402320441}
 --- !u!1001 &1416409383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43891,6 +43909,10 @@ PrefabInstance:
       propertyPath: Boss
       value: 
       objectReference: {fileID: 1645496222}
+    - target: {fileID: 8906277452510998770, guid: e36891b2bb77a454895b55f8f2acb506, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1402320439}
     - target: {fileID: 8906277452510998770, guid: e36891b2bb77a454895b55f8f2acb506, type: 3}
       propertyPath: BossHealth
       value: 

@@ -44,7 +44,8 @@ public class BossArena : MonoBehaviour
             Boss.SetActive(true);
             BossHealth.SetActive(true);
             SetArenaBoundariesActive(true);
-            music.GetComponent<MusicHandler>().changeMusic(1);
+            music.GetComponent<MusicHandler>().changeMusic(2);
+            music.GetComponent<MusicHandler>().changeVolume(0.3f);
         }
     }
 
@@ -58,6 +59,7 @@ public class BossArena : MonoBehaviour
 
     public IEnumerator BossDefeated() {
         music.GetComponent<MusicHandler>().changeMusic(0);
+        music.GetComponent<MusicHandler>().changeVolume(1f);
         yield return new WaitForSeconds(5);
     }
 }
