@@ -35,10 +35,10 @@ public class RespawnManager : MonoBehaviour
         if (other.gameObject.tag == "SpawnPoint") {
             StartCoroutine(saveProgressText("SpawnPoint"));
             currentRespawnPoint = other.gameObject.GetComponent<Transform>().position;   
-            PlayerPrefs.SetFloat("SpawnX", currentRespawnPoint.x);
-            PlayerPrefs.SetFloat("SpawnY", currentRespawnPoint.y);
-            PlayerPrefs.SetFloat("SpawnZ", currentRespawnPoint.z);
-            PlayerPrefs.SetInt("SpawnScene", SceneManager.GetActiveScene().buildIndex);
+            PlayerPrefs.SetFloat("RespawnX", currentRespawnPoint.x);
+            PlayerPrefs.SetFloat("RespawnY", currentRespawnPoint.y);
+            PlayerPrefs.SetFloat("RespawnZ", currentRespawnPoint.z);
+            PlayerPrefs.SetInt("RespawnScene", SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.Save();
         }
     }
@@ -51,7 +51,10 @@ public class RespawnManager : MonoBehaviour
                 LevelText.text = "Level 1: The Stomach";
             } 
             if (SceneManager.GetActiveScene().buildIndex == 5) {
-                LevelText.text = "Level 2: The Stomach";
+                LevelText.text = "Level 2: The Heart";
+            } 
+            if (SceneManager.GetActiveScene().buildIndex == 6) {
+                LevelText.text = "Final Level: The Brain";
             } 
         } else {
             LevelText.text = "Respawn point saved!";
