@@ -51,7 +51,7 @@ public class RespawnManager : MonoBehaviour
                 LevelText.text = "Level 1: The Stomach";
             } 
             if (SceneManager.GetActiveScene().buildIndex == 5) {
-                LevelText.text = "Level 2: The Stomach";
+                LevelText.text = "Level 2: The Heart";
             } 
         } else {
             LevelText.text = "Respawn point saved!";

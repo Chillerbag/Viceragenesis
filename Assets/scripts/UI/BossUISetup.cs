@@ -13,16 +13,16 @@ public class BossUISetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossText.text = Boss.GetComponent<StomachBossBehaviour>().bossName;
+        bossText.text = Boss.GetComponent<BossBehaviour>().bossName;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-            BossHealth.value = Boss.GetComponent<StomachBossBehaviour>().HP;
+            BossHealth.value = Boss.GetComponent<BossBehaviour>().HP;
 
-            if (Boss.GetComponent<StomachBossBehaviour>().HP <= 0) {
+            if (Boss.GetComponent<BossBehaviour>().HP <= 0) {
                 BossHealth.gameObject.SetActive(false);
             }
             else {
