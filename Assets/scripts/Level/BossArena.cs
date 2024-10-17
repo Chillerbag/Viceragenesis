@@ -20,16 +20,23 @@ public class BossArena : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    // none of this code here should be an update. We shouldnt check this every time. Too late to fix now.
     void Update()
     {
         if (Boss.GetComponent<BossBehaviour>().defeated == true) {
             SetArenaBoundariesActive(false);
             // move to next scene 
             StartCoroutine(BossDefeated());
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            if (SceneManager.GetActiveScene().buildIndex == 6) {
+                // beat the game!
+                SceneManager.LoadScene(0);
+            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
 
         }
-        
     }
 
     void OnTriggerEnter(Collider other) {
@@ -51,6 +58,6 @@ public class BossArena : MonoBehaviour
 
     public IEnumerator BossDefeated() {
         music.GetComponent<MusicHandler>().changeMusic(0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
     }
 }
