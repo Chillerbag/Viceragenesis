@@ -7,7 +7,7 @@ public class EnemyHealthManager : MonoBehaviour
 {
     public int HP = 1;
     private EnemyDeath DeathEffect;
-    private Boolean isDead = false;
+    public Boolean isDead = false;
     public void DamageToEnemy(int dmg) {
         HP-=dmg;
         if (HP<=0) {

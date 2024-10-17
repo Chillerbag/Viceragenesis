@@ -12,7 +12,7 @@ public class DeathChangeColour : EnemyDeath
     {
         foreach(GameObject gameObject in gameobjects){
             Renderer render = gameObject.GetComponent<Renderer>();
-
+        
             render.material = material;
         }
     }
