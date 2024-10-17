@@ -18,6 +18,8 @@ public class EnemyArena : MonoBehaviour
 
     public GameObject[] Enemies;
 
+    [SerializeField] private GameObject music;
+
     public int enemyCount = 6;
     void Start()
     {   
@@ -33,6 +35,7 @@ public class EnemyArena : MonoBehaviour
     {
         if (Enemies.Length == 0) {
             ArenaActive = false;
+            music.GetComponent<MusicHandler>().changeMusic(0);
             EnemyCountText.gameObject.SetActive(false);
             SetArenaBoundariesActive(false);
         }
@@ -56,6 +59,7 @@ public class EnemyArena : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             ArenaActive = true;
             EnemyCountText.gameObject.SetActive(true);
+            music.GetComponent<MusicHandler>().changeMusic(1);
             SetArenaBoundariesActive(true);
             for (int i = 0; i < Enemies.Length; i++) {
                 Enemies[i].SetActive(true);
