@@ -9,7 +9,7 @@ public class PlayerAttacking : MonoBehaviour
 
     public GameObject hitParticles;
 
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
 
 
     void Start()
@@ -53,6 +53,9 @@ public class PlayerAttacking : MonoBehaviour
                     if (collision.gameObject.GetComponent<BossBehaviour>() != null)
                     {
                         collision.gameObject.GetComponent<BossBehaviour>().Damage(1);
+                        if (collision.gameObject.GetComponent<InvincibilityManager>() != null) {
+                            collision.gameObject.GetComponent<InvincibilityManager>().ActivateInvincibility();
+                        }
 
                     }
                 }
