@@ -20,9 +20,9 @@ public class BossUISetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            BossHealth.value = Boss.GetComponent<StomachBossBehaviour>().HP;
+            BossHealth.value = Boss.GetComponent<BossBehaviour>().HP;
 
-            if (Boss.GetComponent<StomachBossBehaviour>().HP <= 0) {
+            if (Boss.GetComponent<BossBehaviour>().HP <= 0) {
                 BossHealth.gameObject.SetActive(false);
             }
             else {

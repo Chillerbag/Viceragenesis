@@ -12,6 +12,8 @@ public class BossArena : MonoBehaviour
     [SerializeField] private Collider[] arenaBoundaries;
 
     [SerializeField] private GameObject Boss;
+
+    [SerializeField] private GameObject music;
     void Start()
     {
         SetArenaBoundariesActive(false);
@@ -35,7 +37,7 @@ public class BossArena : MonoBehaviour
             Boss.SetActive(true);
             BossHealth.SetActive(true);
             SetArenaBoundariesActive(true);
-            
+            music.GetComponent<MusicHandler>().changeMusic(1);
         }
     }
 
@@ -48,6 +50,7 @@ public class BossArena : MonoBehaviour
     }
 
     public IEnumerator BossDefeated() {
+        music.GetComponent<MusicHandler>().changeMusic(0);
         yield return new WaitForSeconds(2);
     }
 }
