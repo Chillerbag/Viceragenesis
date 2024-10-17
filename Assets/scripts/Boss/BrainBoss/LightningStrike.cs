@@ -15,7 +15,7 @@ public class LightningStrike : MonoBehaviour
         yield return new WaitForSeconds(0.5f); 
         // activate the lightning strike effect and wait for 1 second
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
