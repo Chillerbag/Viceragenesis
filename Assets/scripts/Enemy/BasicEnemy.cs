@@ -1,54 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AbstractEnemy;
 
-public class BasicEnemy : MonoBehaviour
+public class BasicEnemy : AbstractEnemy.AbstractEnemy
 {
-    public Transform player = null; // Reference to the player's transform
-    public GameObject bulletPrefab; 
-    public Transform firePoint; 
-    public float shootingInterval = 2f; 
-    public float bulletSpeed = 1f; 
-    private float shootingTimer;
+    public Transform player;
+    public Transform firePoint;
 
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
         FacePlayer();
-
-        
-        shootingTimer -= Time.deltaTime;
-        if (shootingTimer <= 0f)
-        {
-            Attack();
-            shootingTimer = shootingInterval;
-        }
     }
 
     void FacePlayer()
     {
-        
-        Vector3 direction = player.position - transform.position;
-        direction.y = 0; // Ignore the vertical difference
-
-        // Rotate towards the player on the horizontal plane
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
+        if (player != null)
+        {
+            Vector3 direction = player.position - transform.position;
+            direction.y = 0;
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
     }
 
-    public void Attack()
+    protected override void Attack()
     {
-        // Instantiate a bullet
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        // Set the bullet's velocity to only move on the flat axis
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (player != null)
         {
-            Vector3 flatDirection = (player.position - transform.position).normalized;
-            flatDirection.y = 0; // Ensure the bullet only travels on the flat axis
-            rb.velocity = flatDirection * bulletSpeed;
+            Vector3 direction = (player.position - firePoint.position).normalized;
+            direction.y = 0;
+            ShootBullet(direction, firePoint.position);
         }
     }
 }
-

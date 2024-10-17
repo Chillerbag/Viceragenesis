@@ -15,6 +15,7 @@ public class TimeArena : MonoBehaviour
     [SerializeField] private Collider[] arenaBoundaries;
 
     [SerializeField] private GameObject TimeEmitter;
+    [SerializeField] private GameObject music;
 
     public float timeLeft = 20.0f;
     void Start()
@@ -34,6 +35,8 @@ public class TimeArena : MonoBehaviour
                 TimerText.gameObject.SetActive(false);
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
+                music.GetComponent<MusicHandler>().changeMusic(0);
+                music.GetComponent<MusicHandler>().changeVolume(1);
                 Destroy(gameObject);
             }
         }
@@ -49,6 +52,8 @@ public class TimeArena : MonoBehaviour
             timeActive = true;
             TimeEmitter.SetActive(true);
             TimerText.gameObject.SetActive(true);
+            music.GetComponent<MusicHandler>().changeMusic(1);
+            music.GetComponent<MusicHandler>().changeVolume(0.3f);
             SetArenaBoundariesActive(true);
             
         }

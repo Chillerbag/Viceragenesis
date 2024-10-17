@@ -49,19 +49,17 @@ public class PlayerAttacking : MonoBehaviour
                 }
                 else if (collision.gameObject.tag == "Boss")
                 {
-                    //Debug.Log("Collision with Boss.");
-
                     BounceBack(bounceDirection.normalized, collision.gameObject.tag);
-                    if (collision.gameObject.GetComponent<TemplateBossBehaviour>() != null)
+                    if (collision.gameObject.GetComponent<BossBehaviour>() != null)
                     {
-                        collision.gameObject.GetComponent<TemplateBossBehaviour>().DamageToBoss(1);
+                        collision.gameObject.GetComponent<BossBehaviour>().Damage(1);
 
                     }
                 }
             }
-            else
+            if (collision.gameObject.tag == "Lightning")
             {
-                //Debug.Log("Player is not in Attacking state.");
+                playerHealth.TakeDamage(1);
             }
         }
     }

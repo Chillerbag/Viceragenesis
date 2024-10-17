@@ -14,6 +14,7 @@ TagManager:
   - SpawnPoint
   - ArenaEnemy
   - Lightning
+  - Invincible
   layers:
   - Default
   - TransparentFX

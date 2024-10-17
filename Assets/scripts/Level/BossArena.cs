@@ -12,22 +12,31 @@ public class BossArena : MonoBehaviour
     [SerializeField] private Collider[] arenaBoundaries;
 
     [SerializeField] private GameObject Boss;
+
+    [SerializeField] private GameObject music;
     void Start()
     {
         SetArenaBoundariesActive(false);
     }
 
     // Update is called once per frame
+
+    // none of this code here should be an update. We shouldnt check this every time. Too late to fix now.
     void Update()
     {
         if (Boss.GetComponent<BossBehaviour>().defeated == true) {
             SetArenaBoundariesActive(false);
             // move to next scene 
             StartCoroutine(BossDefeated());
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            if (SceneManager.GetActiveScene().buildIndex == 6) {
+                // beat the game!
+                SceneManager.LoadScene(0);
+            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
 
         }
-        
     }
 
     void OnTriggerEnter(Collider other) {
@@ -35,7 +44,8 @@ public class BossArena : MonoBehaviour
             Boss.SetActive(true);
             BossHealth.SetActive(true);
             SetArenaBoundariesActive(true);
-            
+            music.GetComponent<MusicHandler>().changeMusic(2);
+            music.GetComponent<MusicHandler>().changeVolume(0.3f);
         }
     }
 
@@ -48,6 +58,8 @@ public class BossArena : MonoBehaviour
     }
 
     public IEnumerator BossDefeated() {
-        yield return new WaitForSeconds(2);
+        music.GetComponent<MusicHandler>().changeMusic(0);
+        music.GetComponent<MusicHandler>().changeVolume(1f);
+        yield return new WaitForSeconds(5);
     }
 }
