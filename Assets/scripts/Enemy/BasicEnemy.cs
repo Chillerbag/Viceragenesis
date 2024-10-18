@@ -8,6 +8,8 @@ public class BasicEnemy : AbstractEnemy.AbstractEnemy
     public Transform player;
     public Transform firePoint;
 
+
+
     protected override void Update()
     {
         base.Update();
