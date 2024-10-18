@@ -29,13 +29,6 @@ public class BossArena : MonoBehaviour
             // move to next scene 
             StartCoroutine(BossDefeated());
 
-            if (SceneManager.GetActiveScene().buildIndex == 6) {
-                // beat the game!
-                SceneManager.LoadScene(0);
-            } else {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-
         }
     }
 
@@ -61,5 +54,12 @@ public class BossArena : MonoBehaviour
         music.GetComponent<MusicHandler>().changeMusic(0);
         music.GetComponent<MusicHandler>().changeVolume(1f);
         yield return new WaitForSeconds(5);
+
+        if (SceneManager.GetActiveScene().buildIndex == 6) {
+                // beat the game!
+                SceneManager.LoadScene(0);
+        } else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
