@@ -35,8 +35,8 @@ public class TimeArena : MonoBehaviour
                 TimerText.gameObject.SetActive(false);
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
-                music.GetComponent<MusicHandler>().changeMusic(0);
                 music.GetComponent<MusicHandler>().changeVolume(1);
+                music.GetComponent<MusicHandler>().changeMusic(0);
                 Destroy(gameObject);
             }
         }
