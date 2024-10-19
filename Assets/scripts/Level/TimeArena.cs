@@ -17,11 +17,16 @@ public class TimeArena : MonoBehaviour
     [SerializeField] private GameObject TimeEmitter;
     [SerializeField] private GameObject music;
 
+    private MusicHandler musicHandler;
+
+
+
     public float timeLeft = 20.0f;
     void Start()
     {   
         SetArenaBoundariesActive(false);
         TimeEmitter.SetActive(false);
+         musicHandler = music.GetComponent<MusicHandler>();
     }
 
     // Update is called once per frame
@@ -35,8 +40,8 @@ public class TimeArena : MonoBehaviour
                 TimerText.gameObject.SetActive(false);
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
-                music.GetComponent<MusicHandler>().changeVolume(1);
-                music.GetComponent<MusicHandler>().changeMusic(0);
+
+                // probably shouldnt do this. 
                 Destroy(gameObject);
             }
         }
@@ -45,6 +50,11 @@ public class TimeArena : MonoBehaviour
             SetArenaBoundariesActive(false);
         }
         
+    }
+
+    void OnDestroy() {
+        musicHandler.changeMusic(0);
+        musicHandler.changeVolume(1f);
     }
 
     void OnTriggerEnter(Collider other) {

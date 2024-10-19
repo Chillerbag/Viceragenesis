@@ -22,4 +22,8 @@ public class EnemyHealthManager : MonoBehaviour
             }
         }
     }
+
+    public Boolean getIsDead(){
+        return isDead;
+    }
 }
