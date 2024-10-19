@@ -7,8 +7,12 @@ public class IntroPracticeManager : MonoBehaviour
 {
     public void loadStartLevel()
     {
-        print("here!");
         SceneManager.LoadScene("Level1");
+    }
+
+    public void loadPracticeLevel()
+    {
+        SceneManager.LoadScene("Intro Practice");
     }
 
 

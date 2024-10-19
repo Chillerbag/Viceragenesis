@@ -13,7 +13,7 @@ public class IntroEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
         introEnemy.SetActive(true);
     }

@@ -8,6 +8,12 @@ public class BasicEnemy : AbstractEnemy.AbstractEnemy
     public Transform player;
     public Transform firePoint;
 
+    public void Start()
+    {
+        shootingInterval = 3f;
+        shootingTimer = shootingInterval;
+    }
+
 
 
     protected override void Update()

@@ -113,6 +113,11 @@ private void SetActiveStateForCubes(bool state, params string[] cubeNames)
         }
     }
 
+    public void invulnerability()
+    {
+        StartCoroutine(InvulnerabilityCoroutine());
+    }
+
     public void Heal(int healAmount)
     {
         currentHealth += healAmount;
