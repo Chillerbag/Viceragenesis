@@ -7,13 +7,11 @@ public class DefeatTutorial : MonoBehaviour
 {
 
     private EnemyHealthManager enemyHealthManager;
-    public GameObject successText;
     public PlayableDirector director;
     private TimelineController timelineController;
     void Start()
     {
         enemyHealthManager = GetComponent<EnemyHealthManager>();
-        successText.SetActive(false);
         timelineController = director.GetComponent<TimelineController>();
         
     }
@@ -22,16 +20,9 @@ public class DefeatTutorial : MonoBehaviour
     {
         if (enemyHealthManager.getIsDead())
         {
-            successText.SetActive(true);
-            StartCoroutine(HideText());
             timelineController.ResumeTimeline(); 
         }
     }
 
-    private IEnumerator HideText()
-    {
-        yield return new WaitForSeconds(3);
-        successText.SetActive(false);
-    }
 
 }
