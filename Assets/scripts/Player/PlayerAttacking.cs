@@ -60,6 +60,7 @@ public class PlayerAttacking : MonoBehaviour
             }
             if (collision.gameObject.tag == "Lightning")
             {
+
                 playerHealth.TakeDamage(1);
             }
         }

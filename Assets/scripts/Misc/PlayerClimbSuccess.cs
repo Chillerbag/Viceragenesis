@@ -10,12 +10,9 @@ public class PlayerClimbSuccess : MonoBehaviour
 
     private TimelineController timelineController;
 
-    public GameObject successText;
-
 
     void Start()
     {
-        successText.SetActive(false);
         timelineController = director.GetComponent<TimelineController>();
         
     }
@@ -24,17 +21,9 @@ public class PlayerClimbSuccess : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-           successText.SetActive(true);
-            StartCoroutine(HideText());
            timelineController.ResumeTimeline(); 
 
         }
-    }
-
-    private IEnumerator HideText()
-    {
-        yield return new WaitForSeconds(3);
-        successText.SetActive(false);
     }
 
 }

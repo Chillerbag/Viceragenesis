@@ -40,9 +40,10 @@ public class TimeArena : MonoBehaviour
                 TimerText.gameObject.SetActive(false);
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
-
+                musicHandler.changeMusic(0);
+                musicHandler.changeVolume(1f);
                 // probably shouldnt do this. 
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
         // if boss dies take down the collider boundaries
@@ -52,10 +53,6 @@ public class TimeArena : MonoBehaviour
         
     }
 
-    void OnDestroy() {
-        musicHandler.changeMusic(0);
-        musicHandler.changeVolume(1f);
-    }
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {

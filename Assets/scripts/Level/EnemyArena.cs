@@ -39,6 +39,7 @@ public class EnemyArena : MonoBehaviour
             music.GetComponent<MusicHandler>().changeVolume(1);
             EnemyCountText.gameObject.SetActive(false);
             SetArenaBoundariesActive(false);
+            gameObject.SetActive(false);
         }
 
         if (ArenaActive) {
