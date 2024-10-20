@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Gameplay/Level1.unity
     guid: 257ef241f70376e41bd167fcec2c322c
   - enabled: 1
-    path: Assets/Scenes/Dev/Alex/LeveL2.unity
+    path: Assets/Scenes/Gameplay/LeveL2.unity
     guid: b71c6e8c818a20244b5c429942be28b9
   - enabled: 1
     path: Assets/Scenes/Gameplay/FinalBoss.unity

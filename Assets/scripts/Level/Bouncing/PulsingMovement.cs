@@ -15,7 +15,7 @@ public class PulsingMovementWithCurve : Bouncing
 
     void Start()
     {
-        isActive = false; 
+        active = true; 
         startPosition = transform.position;
     }
 
@@ -28,14 +28,13 @@ public class PulsingMovementWithCurve : Bouncing
                 flag = true;
             }
         }
-        if (flag){
+        if (flag & active){
             float curveValue = pulseCurve.Evaluate((Time.time * frequency) % 1f)*amplitude;
             transform.position = startPosition + new Vector3(0, curveValue, 0);
-            isActive = true;
 
         } else{
             transform.position = startPosition;
-            isActive = false;
+            active = false;
 
         }
     }

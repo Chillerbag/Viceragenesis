@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bouncing : MonoBehaviour
 {   
-    public bool isActive = false;
+    public bool active = true;
     // Start is called before the first frame update
     void Start()
     {

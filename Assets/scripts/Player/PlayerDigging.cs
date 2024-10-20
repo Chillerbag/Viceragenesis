@@ -215,7 +215,7 @@ public class PlayerDigging : MonoBehaviour
         if(gameObject.tag == "Pulsing Platform"){
             Debug.Log("detected");
 
-            if(isUnderground && gameObject.GetComponentInParent<Bouncing>().isActive){
+            if(isUnderground && gameObject.GetComponentInParent<Bouncing>().active){
                 AbruptDigging();
             }
         }
