@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RhythmStrech : Bouncing
 {   
-    public bool isBeating = false;
+    private bool isBeating = false;
     
     private Vector3 startScale;
     public float maxSize = 2f;
@@ -37,7 +37,7 @@ public class RhythmStrech : Bouncing
             newScale.y = startScale.y * currentSize;
             transform.localScale =newScale;
 
-        yield return null;
+            yield return null;
         }
         yield return new WaitForSeconds(stopTime);
 
@@ -47,7 +47,7 @@ public class RhythmStrech : Bouncing
             newScale.y = startScale.y * currentSize;
             transform.localScale =newScale;
 
-        yield return null;
+             yield return null;
         }
         currentSize = minSize;
         yield return new WaitForSeconds(stopTime);
