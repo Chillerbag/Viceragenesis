@@ -10,8 +10,6 @@ public class PlayerAttacking : MonoBehaviour
     public GameObject hitParticles;
 
     private PlayerHealth playerHealth;
-
-
     void Start()
     {
         playerState = GetComponent<PlayerState>();
@@ -62,6 +60,7 @@ public class PlayerAttacking : MonoBehaviour
             }
             if (collision.gameObject.tag == "Lightning")
             {
+
                 playerHealth.TakeDamage(1);
             }
         }
@@ -118,6 +117,9 @@ public class PlayerAttacking : MonoBehaviour
 
     private IEnumerator ApplyBounceBack(Vector3 bounceVector)
     {
+        // during this period, the player should be invulnerable i think
+        playerHealth.invulnerability();
+
         float duration = 0.7f; // Duration of the bounce-back effect
         float elapsedTime = 0f;
         float arcHeight = 2.5f; // Adjust this value for a higher or lower arc

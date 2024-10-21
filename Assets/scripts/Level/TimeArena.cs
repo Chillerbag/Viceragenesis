@@ -17,11 +17,16 @@ public class TimeArena : MonoBehaviour
     [SerializeField] private GameObject TimeEmitter;
     [SerializeField] private GameObject music;
 
+    private MusicHandler musicHandler;
+
+
+
     public float timeLeft = 20.0f;
     void Start()
     {   
         SetArenaBoundariesActive(false);
         TimeEmitter.SetActive(false);
+         musicHandler = music.GetComponent<MusicHandler>();
     }
 
     // Update is called once per frame
@@ -35,9 +40,10 @@ public class TimeArena : MonoBehaviour
                 TimerText.gameObject.SetActive(false);
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
-                music.GetComponent<MusicHandler>().changeMusic(0);
-                music.GetComponent<MusicHandler>().changeVolume(1);
-                Destroy(gameObject);
+                musicHandler.changeMusic(0);
+                musicHandler.changeVolume(1f);
+                // probably shouldnt do this. 
+                gameObject.SetActive(false);
             }
         }
         // if boss dies take down the collider boundaries
@@ -46,6 +52,7 @@ public class TimeArena : MonoBehaviour
         }
         
     }
+
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {

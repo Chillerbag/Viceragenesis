@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AbstractEnemy;
+using Unity.VisualScripting.Antlr3.Runtime;
 public class RotatingEnemy : AbstractEnemy.AbstractEnemy
 {
     public Transform[] firePoints;
     public float rotationSpeed = 25f;
+
+    public void Start()
+    {
+        shootingInterval = 3f;
+        shootingTimer = shootingInterval;
+    }
 
     protected override void Update()
     {

@@ -10,12 +10,11 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public float invulnerabilityDuration = 2f; // Duration of invulnerability in seconds
     private bool isInvulnerable = false;
-
-    private int currentLevel = 1;
-
     public GameObject screenFlash;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private GameObject deathEffect;
+
+    [SerializeField] private GameObject[] bodyCubes;
 
     private Vector3 respawnPoint;
 
@@ -30,64 +29,36 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        OnHealthLoss();
-        OnHealthGain();
-    }
-
-    private void OnHealthLoss()
-{
-    string NodeToDestroy = "Node." + currentHealth;
-    GameObject node = GameObject.Find(NodeToDestroy);
-    if (node != null)
-    {
-        node.SetActive(false);
-    }
-
-    if (currentHealth == 2)
-    {
-        SetActiveStateForCubes(false, "Cube.018", "Cube.017", "Cube.016", "Cube.015", "Cube.014", "Cube.013");
-    }
-
-    if (currentHealth == 1)
-    {
-        SetActiveStateForCubes(false, "Cube.012", "Cube.011", "Cube.010", "Cube.009", "Cube.008", "Cube.007");
-    }
-}
-
-private void OnHealthGain()
-{
-    string NodeToRestore = "Node." + currentHealth;
-    GameObject node = GameObject.Find(NodeToRestore);
-    if (node != null)
-    {
-        node.SetActive(true);
-    }
-
-    if (currentHealth == 3)
-    {
-        SetActiveStateForCubes(true, "Cube.018", "Cube.017", "Cube.016", "Cube.015", "Cube.014", "Cube.013");
-    }
-
-    if (currentHealth == 2)
-    {
-        SetActiveStateForCubes(true, "Cube.012", "Cube.011", "Cube.010", "Cube.009", "Cube.008", "Cube.007");
+private void bodyCubesHandler() {
+    // check health and determine what cubes to show
+    switch (currentHealth) {
+        case 3: 
+            foreach (GameObject cube in bodyCubes) {
+                cube.SetActive(true);
+            }
+            break;
+        case 2:
+            // first 6 els of bodyCubes should be disabled
+            for (int i = 0; i < 5; i++) {
+                bodyCubes[i].SetActive(false);
+            }
+            //remainder should be enabled
+            for (int i = 5; i < bodyCubes.Length; i++) {
+                bodyCubes[i].SetActive(true);
+            }
+            break;
+        case 1:
+            // first 12 els of body cubes should be disabled
+            for (int i = 0; i < 10; i++) {
+                bodyCubes[i].SetActive(false);
+            }
+            // remainder should be enabled
+            for (int i = 10; i < bodyCubes.Length; i++) {
+                bodyCubes[i].SetActive(true);
+            }
+            break;
     }
 }
-
-private void SetActiveStateForCubes(bool state, params string[] cubeNames)
-{
-    foreach (string cubeName in cubeNames)
-    {
-        GameObject cube = GameObject.Find(cubeName);
-        if (cube != null)
-        {
-            cube.SetActive(state);
-        }
-    }
-}
-
     public void TakeDamage(int damage)
     {
         if (isInvulnerable) return; // If the player is invulnerable, do nothing
@@ -96,7 +67,7 @@ private void SetActiveStateForCubes(bool state, params string[] cubeNames)
         SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 1f);
 
         currentHealth -= damage;
-        Debug.Log("Player Health: " + currentHealth);
+        bodyCubesHandler();
 
         if (screenFlash != null)
         {
@@ -113,6 +84,11 @@ private void SetActiveStateForCubes(bool state, params string[] cubeNames)
         }
     }
 
+    public void invulnerability()
+    {
+        StartCoroutine(InvulnerabilityCoroutine());
+    }
+
     public void Heal(int healAmount)
     {
         currentHealth += healAmount;
@@ -121,6 +97,7 @@ private void SetActiveStateForCubes(bool state, params string[] cubeNames)
         {
             currentHealth = maxHealth;
         }
+        bodyCubesHandler();
 
         if (screenFlash != null)
         {
