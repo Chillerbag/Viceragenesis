@@ -164,8 +164,8 @@ MonoBehaviour:
   m_text: You are Viceragenesis, a virus fighting to survive. Inside this beast,
     your only goal is to infect.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
-  m_sharedMaterial: {fileID: -1697110807403262442, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
+  m_sharedMaterial: {fileID: -8065420479163083805, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -353,8 +353,8 @@ MonoBehaviour:
   m_text: Only by infecting the brain can you survive. Fail, and your strain dies
     with you.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
-  m_sharedMaterial: {fileID: -1697110807403262442, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
+  m_sharedMaterial: {fileID: -8065420479163083805, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255540
+    rgba: 65460
   m_fontColor: {r: 0.70700634, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -696,6 +696,8 @@ PlayableDirector:
     value: {fileID: 556901303}
   - key: {fileID: -5799869337894799932, guid: fec59934ca5b146e890dd8412589876e, type: 2}
     value: {fileID: 751041477}
+  - key: {fileID: -1101743206304701293, guid: fec59934ca5b146e890dd8412589876e, type: 2}
+    value: {fileID: 1472773621}
   m_ExposedReferences:
     m_References:
     - 1b119b61ab7a246f3a06e7ffcab2e52a: {fileID: 722385234}
@@ -1772,8 +1774,8 @@ MonoBehaviour:
   m_text: To reach the brain and harvest the neurotransmitters you need, you must
     evade the host's defenses.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
-  m_sharedMaterial: {fileID: -1697110807403262442, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
+  m_sharedMaterial: {fileID: -8065420479163083805, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
