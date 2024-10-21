@@ -207,4 +207,29 @@ public class PlayerDigging : MonoBehaviour
         playerEffects.PlayAttackParticles(false);
         playerState.SetState("Idle");
     }
+    
+    void OnCollisionEnter(Collision collision){
+        GameObject gameObject = collision.gameObject;
+        Debug.Log(gameObject.tag);
+
+        if(gameObject.tag == "Pulsing Platform"){
+            Debug.Log("detected");
+
+            if(isUnderground && gameObject.GetComponentInParent<Bouncing>().active){
+                AbruptDigging();
+            }
+        }
+          
+    }
+    private void AbruptDigging()
+    {
+        rigAnimator.SetTrigger("endDig");
+        playerEffects.PlayUndergroundParticles(false);
+        isUnderground = false;
+        undergroundBuffer = 1.0f;
+        energyBar.GetComponent<EnergyBar>().energyLevel = Mathf.RoundToInt(undergroundBuffer * 16);
+        MoveToTopMarker();
+        SetLayerCollision(true);
+
+    }
 }

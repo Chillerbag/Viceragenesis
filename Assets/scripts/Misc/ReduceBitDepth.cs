@@ -11,6 +11,10 @@ public class ReduceBitDepth : MonoBehaviour
 
     private Coroutine reductionCoroutine;
 
+    void start(){
+        material.SetFloat("_ColorResolution", startValue);
+
+    }
     void Update()
     {
         /*
