@@ -13,7 +13,7 @@ public class BossUISetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossText.text = Boss.GetComponent<BossBehaviour>().bossName;
+        bossText.text = Boss.GetComponent<StomachBossBehaviour>().bossName;
         
     }
 
