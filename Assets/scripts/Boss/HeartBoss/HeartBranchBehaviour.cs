@@ -1,14 +1,8 @@
 using UnityEngine;
 
-public class HeartBranchBehaviour : EnemyDeath
+public class HeartBranchBehaviour : MonoBehaviour
 {   
     public GameObject boss;
-
-        // Start is called before the first frame update
-    public GameObject[] gameobjects;
-    public Material material;
-    // Update is called once per frame
-
     // Start is called before the first frame update
     void Start()
     {   
@@ -16,18 +10,16 @@ public class HeartBranchBehaviour : EnemyDeath
         boss = GameObject.FindGameObjectWithTag("Boss");
     }
 
-    public override void Death()
+    // Update is called once per frame
+    void Update()
     {
-        boss.GetComponent<BossBehaviour>().Damage(1);
-
-        foreach(GameObject gameObject in gameobjects){
-            Renderer render = gameObject.GetComponent<Renderer>();
         
-            render.material = material;
-        }
-        GetComponentInChildren<AoeAttack>().active = false;
     }
 
+    void OnDisable() {
+        if (boss != null){
+            boss.GetComponent<BossBehaviour>().Damage(1);
 
+        }
+    }
 }
- 

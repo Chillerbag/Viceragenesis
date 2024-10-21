@@ -15,7 +15,6 @@ TagManager:
   - ArenaEnemy
   - Lightning
   - Invincible
-  - Pulsing Platform
   layers:
   - Default
   - TransparentFX
@@ -26,7 +25,7 @@ TagManager:
   - Player
   - Shadow
   - UI 3D Model
-  - WhatIsPlayer
+  - WhatIsPlayers
   - UnderGroundIgnore
   - TopMarker
   - Post Processng

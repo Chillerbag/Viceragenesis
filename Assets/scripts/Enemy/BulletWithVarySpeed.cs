@@ -41,7 +41,7 @@ private IEnumerator Travel()
         {
             // Reverse direction and recalculate speed when limits are reached
             isIncreasing *= -1;
-            //Debug.Log("change direction");
+            Debug.Log("change direction");
             newSpeed = rb.velocity.magnitude + acceleration * Time.deltaTime * isIncreasing;
             rb.velocity = transform.forward * newSpeed;
             Stretch(newSpeed);
