@@ -7,6 +7,8 @@ public class PlayerAttacking : MonoBehaviour
     private CharacterController controller;
     private Animator rigAnimator;
 
+    private PlayerEffects playerEffects;
+
     public GameObject hitParticles;
 
     private PlayerHealth playerHealth;
@@ -16,6 +18,7 @@ public class PlayerAttacking : MonoBehaviour
         controller = GetComponent<CharacterController>();
         rigAnimator = GetComponentInChildren<Animator>();
         playerHealth = GetComponent<PlayerHealth>();
+        playerEffects = GetComponent<PlayerEffects>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -43,6 +46,7 @@ public class PlayerAttacking : MonoBehaviour
                     if (collision.gameObject.GetComponent<EnemyHealthManager>()!= null)
                     {
                        collision.gameObject.GetComponent<EnemyHealthManager>().DamageToEnemy(1);
+                       playerEffects.PlayAttackSound();
                     }
                 }
                 else if (collision.gameObject.tag == "Boss")
@@ -51,6 +55,7 @@ public class PlayerAttacking : MonoBehaviour
                     if (collision.gameObject.GetComponent<BossBehaviour>() != null)
                     {
                         collision.gameObject.GetComponent<BossBehaviour>().Damage(1);
+                        playerEffects.PlayAttackSound();
                         if (collision.gameObject.GetComponent<InvincibilityManager>() != null) {
                             collision.gameObject.GetComponent<InvincibilityManager>().ActivateInvincibility();
                         }
@@ -60,8 +65,8 @@ public class PlayerAttacking : MonoBehaviour
             }
             if (collision.gameObject.tag == "Lightning")
             {
-
                 playerHealth.TakeDamage(1);
+                playerEffects.PlayZapSound();
             }
         }
     }

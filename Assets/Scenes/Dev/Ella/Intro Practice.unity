@@ -263,9 +263,37 @@ PrefabInstance:
       value: -0.042374723
       objectReference: {fileID: 0}
     - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c890fa0fe621c4717b9412630ffa891b, type: 3}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 38cabfa31a32a4745b4be71d0aa57a72, type: 3}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1310218a5e2fb4284805ad836d232b47, type: 3}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: lightningDamage
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3c3e16635e74d2a9004caeb997625a, type: 3}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: zapAudioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
       propertyPath: crawlAudioClips.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: zapAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bb687750dc37449048e3389b03e951d5, type: 3}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: zapAudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a94c9778acc954d3e9eddde8c8d0120c, type: 3}
     - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
       propertyPath: diggingAudioClips.Array.size
       value: 2
