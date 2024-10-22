@@ -61,7 +61,7 @@ public class TemplateBossBehaviour : MonoBehaviour
 
     }
 
-    public void EnrageBoss() 
+    public virtual void EnrageBoss() 
     {
         // Change color to red
         Renderer renderer = GetComponent<Renderer>();

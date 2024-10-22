@@ -16,9 +16,14 @@ public class ChangeScene : MonoBehaviour
         {
             int sceneIndex = PlayerPrefs.GetInt("RespawnScene");
             SceneManager.LoadScene(sceneIndex);
+            Debug.Log("load spawnx"+PlayerPrefs.GetFloat("RespawnX"));
+            Debug.Log("load spawny"+PlayerPrefs.GetFloat("RespawnY"));
+            Debug.Log("load spawnz"+PlayerPrefs.GetFloat("RespawnZ"));
         }
         catch
         {
+
+            
             SceneManager.LoadScene(4);
         }
     }

@@ -6,17 +6,22 @@ public class HeartBossBehaviour : BossBehaviour
 {
     private Animator stateMachine;
     [SerializeField] GameObject bossArena; 
-
+    public int MaxHealth;
+    public HeartBossMainBranch mainBranch;
+    public GameObject attack;
+    public Material material; 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        HP = 3; 
         bossName = "The Heart";
         attackCooldown = 4f;
         stateMachine = GetComponent<Animator>();
+        mainBranch = GetComponentInChildren<HeartBossMainBranch>();
+    }
+    void Start(){
+        HP = MaxHealth; 
 
-        
     }
     public override void Attack() {
         // choose random int from 1 to 2 to determine which attack to use every 2 seconds, and choose between 1 3 if enraged
@@ -37,9 +42,6 @@ public class HeartBossBehaviour : BossBehaviour
             HP-=dmg;
             Debug.Log(HP);
 
-        } else if (HP == 1) {
-            // change state to enraged
-            stateMachine.SetTrigger("Enraged");
         } else if (HP<=0) {
             defeated = true;
             Debug.Log("deactive");
@@ -49,15 +51,26 @@ public class HeartBossBehaviour : BossBehaviour
 
             }
         }
+        if (HP == 5) {
+            // change state to enraged
+            Debug.Log("Enraged");
+            stateMachine.SetTrigger("Enraged");
+            mainBranch.Enrage();
+            attack.GetComponent<AoeAttack>().material = material;
+            
+        } 
     }
     // Update is called once per frame
     void Update()
     {
         if (attackCooldown <= 0) {
             Attack();
-            attackCooldown = 2f;
+            attackCooldown = 4f;
         } else {
             attackCooldown -= Time.deltaTime;
         }
     }
+
+        public override void EnrageBoss(){} 
+
 }

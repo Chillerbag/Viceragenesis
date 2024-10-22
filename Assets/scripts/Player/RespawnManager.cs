@@ -31,6 +31,11 @@ public class RespawnManager : MonoBehaviour
             PlayerPrefs.SetFloat("RespawnZ", currentRespawnPoint.z);
             PlayerPrefs.SetInt("RespawnScene", SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.Save();
+            Debug.Log("set respawn" + currentRespawnPoint+ "in the scene" + SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("spawnx"+PlayerPrefs.GetFloat("RespawnX"));
+            Debug.Log("spawny"+PlayerPrefs.GetFloat("RespawnY"));
+            Debug.Log("spawnz"+PlayerPrefs.GetFloat("RespawnZ"));
+
         }
         if (other.gameObject.tag == "SpawnPoint") {
             StartCoroutine(saveProgressText("SpawnPoint"));
@@ -40,6 +45,11 @@ public class RespawnManager : MonoBehaviour
             PlayerPrefs.SetFloat("RespawnZ", currentRespawnPoint.z);
             PlayerPrefs.SetInt("RespawnScene", SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.Save();
+
+            Debug.Log("set respawn" + currentRespawnPoint+ "in the scene" + SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("spawnx"+PlayerPrefs.GetFloat("RespawnX"));
+            Debug.Log("spawny"+PlayerPrefs.GetFloat("RespawnY"));
+            Debug.Log("spawnz"+PlayerPrefs.GetFloat("RespawnZ"));
         }
     }
 
