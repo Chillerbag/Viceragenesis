@@ -15,7 +15,7 @@ public class SineWaveMotion : MonoBehaviour
         startPosition = transform.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // Calculate the new Y position based on sine wave
         float newY = Mathf.Sin(Time.time * frequency) * amplitude;
