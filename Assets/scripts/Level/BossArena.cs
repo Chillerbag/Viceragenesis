@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BossArena : MonoBehaviour
 {
-    [SerializeField] private GameObject  BossHealth; 
+    [SerializeField] private GameObject BossHealth;
     // Start is called before the first frame update
 
     [SerializeField] private Collider[] arenaBoundaries;
@@ -14,6 +14,7 @@ public class BossArena : MonoBehaviour
     [SerializeField] private GameObject Boss;
 
     [SerializeField] private GameObject music;
+    [SerializeField] private GameObject transitionEffect;
     void Start()
     {
         SetArenaBoundariesActive(false);
@@ -24,7 +25,8 @@ public class BossArena : MonoBehaviour
     // none of this code here should be an update. We shouldnt check this every time. Too late to fix now.
     void Update()
     {
-        if (Boss.GetComponent<BossBehaviour>().defeated == true) {
+        if (Boss.GetComponent<BossBehaviour>().defeated == true)
+        {
             SetArenaBoundariesActive(false);
             // move to next scene 
             StartCoroutine(BossDefeated());
@@ -32,8 +34,10 @@ public class BossArena : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player") {
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
             Boss.SetActive(true);
             BossHealth.SetActive(true);
             SetArenaBoundariesActive(true);
@@ -50,15 +54,22 @@ public class BossArena : MonoBehaviour
         }
     }
 
-    public IEnumerator BossDefeated() {
+    public IEnumerator BossDefeated()
+    {
         music.GetComponent<MusicHandler>().changeMusic(0);
         music.GetComponent<MusicHandler>().changeVolume(1f);
+
+        ReduceBitDepth reduceBitDepthComponent = transitionEffect.GetComponent<ReduceBitDepth>();
+        reduceBitDepthComponent.ReduceScreenBitDepth();
         yield return new WaitForSeconds(5);
 
-        if (SceneManager.GetActiveScene().buildIndex == 6) {
-                // beat the game!
-                SceneManager.LoadScene(0);
-        } else {
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            // beat the game!
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

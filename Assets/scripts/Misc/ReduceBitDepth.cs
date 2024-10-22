@@ -13,7 +13,6 @@ public class ReduceBitDepth : MonoBehaviour
 
     public float startValue = 1f;      // The value that will be reduced
     public float reductionDuration = 1f; // Duration over which the value is reduced
-    public Material material;
     public RawImage image;
     private Coroutine reductionCoroutine;
 
@@ -40,7 +39,7 @@ public class ReduceBitDepth : MonoBehaviour
 
     public void ResetScreenBitDepth()
     {
-        material.SetFloat("_ColorResolution", startValue);
+        StartCoroutine(IncreaseValueOverTime());
     }
 
     IEnumerator ReduceValueOverTime()
@@ -52,6 +51,23 @@ public class ReduceBitDepth : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             value = Mathf.Lerp(startValue, 0f, elapsedTime / reductionDuration);
+            value = Mathf.Clamp(value, 0f, 1f);
+
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 1 - value);
+            //material.SetFloat("_ColorResolution", value);
+            yield return null; // Wait for the next frame
+        }
+    }
+
+    IEnumerator IncreaseValueOverTime()
+    {
+        float elapsedTime = 0f;
+        float value = startValue;
+
+        while (elapsedTime < reductionDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            value = Mathf.Lerp(0f, startValue, elapsedTime / reductionDuration);
             value = Mathf.Clamp(value, 0f, 1f);
 
             image.color = new Color(image.color.r, image.color.g, image.color.b, 1 - value);
