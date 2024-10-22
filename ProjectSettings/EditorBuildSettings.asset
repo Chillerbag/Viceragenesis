@@ -9,24 +9,24 @@ EditorBuildSettings:
     path: Assets/StartScene.unity
     guid: 9a7ed0f18f9540b4b84cdf67d94abb0b
   - enabled: 1
-    path: Assets/Scenes/Dev/Ella/Intro Story.unity
+    path: Assets/Scenes/Gameplay/Intro Story.unity
     guid: 1ebf5c837585040c9b7af9b1469a09ff
   - enabled: 1
-    path: Assets/Scenes/Dev/Ella/Intro Sequence.unity
+    path: Assets/Scenes/Gameplay/Intro Sequence.unity
     guid: 9ef703859c1044bf2bbecdfb7d203ed1
   - enabled: 1
-    path: Assets/Scenes/Dev/Ella/Intro Practice.unity
+    path: Assets/Scenes/Gameplay/Intro Practice.unity
     guid: d1460d4c9d6c244728957d97282fe3a2
   - enabled: 1
     path: Assets/Scenes/Gameplay/Level1.unity
     guid: 257ef241f70376e41bd167fcec2c322c
   - enabled: 1
-    path: Assets/Scenes/Gameplay/LeveL2.unity
+    path: Assets/Scenes/Dev/Alex/LeveL2.unity
     guid: b71c6e8c818a20244b5c429942be28b9
   - enabled: 1
     path: Assets/Scenes/Gameplay/FinalBoss.unity
     guid: 1fef920fa3b0fc846a2b383f205643fb
   - enabled: 1
-    path: Assets/Scenes/Dev/Ella/Game Over.unity
+    path: Assets/Scenes/Gameplay/Game Over.unity
     guid: 0ae070d22af19424187a60028f08baae
   m_configObjects: {}
