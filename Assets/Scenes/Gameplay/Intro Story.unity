@@ -164,8 +164,8 @@ MonoBehaviour:
   m_text: You are Viceragenesis, a virus fighting to survive. Inside this beast,
     your only goal is to infect.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
-  m_sharedMaterial: {fileID: -1697110807403262442, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
+  m_sharedMaterial: {fileID: -8065420479163083805, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -353,8 +353,8 @@ MonoBehaviour:
   m_text: Only by infecting the brain can you survive. Fail, and your strain dies
     with you.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
-  m_sharedMaterial: {fileID: -1697110807403262442, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
+  m_sharedMaterial: {fileID: -8065420479163083805, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -696,6 +696,8 @@ PlayableDirector:
     value: {fileID: 556901303}
   - key: {fileID: -5799869337894799932, guid: fec59934ca5b146e890dd8412589876e, type: 2}
     value: {fileID: 751041477}
+  - key: {fileID: -1101743206304701293, guid: fec59934ca5b146e890dd8412589876e, type: 2}
+    value: {fileID: 1472773621}
   m_ExposedReferences:
     m_References:
     - 1b119b61ab7a246f3a06e7ffcab2e52a: {fileID: 722385234}
@@ -1202,8 +1204,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722385234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 69}
-  m_LocalScale: {x: 0.6, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 70.09}
+  m_LocalScale: {x: 0.6, y: 1, z: 1.35}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 556901301}
@@ -1591,8 +1593,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472773619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -293}
-  m_LocalScale: {x: 9.42, y: 9.42, z: 9.42}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalScale: {x: 6.5573773, y: 6.5573773, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 499905642}
@@ -1600,8 +1602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 690, y: 474}
-  m_SizeDelta: {x: 55.049, y: 10.322}
+  m_AnchoredPosition: {x: 600, y: -226}
+  m_SizeDelta: {x: 40, y: 10.322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1472773621
 Animator:
@@ -1658,9 +1660,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9150943, g: 0.375534, b: 0.375534, a: 1}
+    m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.68898493, g: 0.9245283, b: 0.2747419, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1772,8 +1774,8 @@ MonoBehaviour:
   m_text: To reach the brain and harvest the neurotransmitters you need, you must
     evade the host's defenses.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
-  m_sharedMaterial: {fileID: -1697110807403262442, guid: 4fd3a8e1fb982924db37d82c6d249aa5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
+  m_sharedMaterial: {fileID: -8065420479163083805, guid: 66199e2de4ba34a6ebd388d8cb4b7b7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
