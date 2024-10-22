@@ -3486,7 +3486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startValue: 10
   reductionDuration: 2
-  material: {fileID: 2100000, guid: f8b572783b058d543831bac03f9ff738, type: 2}
+  image: {fileID: 0}
 --- !u!4 &763794110
 Transform:
   m_ObjectHideFlags: 0
@@ -6070,7 +6070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 239}
+  m_AnchoredPosition: {x: 1, y: 207}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683199709
