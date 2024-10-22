@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         {
             LoadProgress();
         }
+        Debug.Log("actual spawn at " +transform.position);
     }
 
 private void bodyCubesHandler() {
@@ -114,7 +115,7 @@ private void bodyCubesHandler() {
 
     void Die()
     {
-        Debug.Log("Player Died!");
+        //Debug.Log("Player Died!");
         StartCoroutine(ChangeToDeathScreen());
 
     }

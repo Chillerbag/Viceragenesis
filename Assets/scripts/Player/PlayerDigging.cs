@@ -104,7 +104,7 @@ public class PlayerDigging : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up);
         if (hits.Length > 0)
         {
-            Debug.Log("Found " + hits.Length + " hits");
+            //Debug.Log("Found " + hits.Length + " hits");
             foreach (RaycastHit hit in hits)
             {
                 Transform topMarker = hit.collider.transform.Find("TopMarker");
@@ -210,10 +210,10 @@ public class PlayerDigging : MonoBehaviour
     
     void OnCollisionEnter(Collision collision){
         GameObject gameObject = collision.gameObject;
-        Debug.Log(gameObject.tag);
+       // Debug.Log(gameObject.tag);
 
         if(gameObject.tag == "Pulsing Platform"){
-            Debug.Log("detected");
+            //Debug.Log("detected");
 
             if(isUnderground && gameObject.GetComponentInParent<Bouncing>().active){
                 AbruptDigging();

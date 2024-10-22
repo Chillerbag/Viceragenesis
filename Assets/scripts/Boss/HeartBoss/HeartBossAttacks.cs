@@ -97,7 +97,7 @@ public class HeartBossAttacks : MonoBehaviour
     }
 
     private IEnumerator Attack2Routine() {
-        Debug.Log("Start Attack");
+        //Debug.Log("Start Attack");
         aoeAttack.active = true;
         yield return null;
         while(aoeAttack.isAttacking){
