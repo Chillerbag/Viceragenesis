@@ -3,7 +3,11 @@ guid: 784cb955618816144900711034518be7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lightningDamage: {fileID: 8300000, guid: dc3c3e16635e74d2a9004caeb997625a, type: 3}
+  - attackSound: {fileID: 8300000, guid: c890fa0fe621c4717b9412630ffa891b, type: 3}
+  - healthSound: {fileID: 8300000, guid: 1310218a5e2fb4284805ad836d232b47, type: 3}
+  - damageSound: {fileID: 8300000, guid: 38cabfa31a32a4745b4be71d0aa57a72, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
