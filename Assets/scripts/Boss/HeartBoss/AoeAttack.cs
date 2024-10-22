@@ -15,9 +15,9 @@ public class AoeAttack : MonoBehaviour
     public Vector3 startScale;
     public GameObject branch;
     public Material GlowMaterial;
-    private bool isAttacking = false;
+    public bool isAttacking = false;
     public bool active = true;
-    private Material material; 
+    public Material material; 
     void Start() {
         //gameObject.GetComponent<MeshRenderer>().enabled = false;
         startScale = transform.localScale;
