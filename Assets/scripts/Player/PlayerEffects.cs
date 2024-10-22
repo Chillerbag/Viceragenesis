@@ -9,6 +9,7 @@ public class PlayerEffects : MonoBehaviour
     [SerializeField] private AudioClip lightningDamage;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private AudioClip healthSound;
+    [SerializeField] private AudioClip damageSound;
 
     [SerializeField] private ParticleSystem[] undergroundParticles;
 
@@ -42,6 +43,11 @@ public class PlayerEffects : MonoBehaviour
     public void PlayHealthSound()
     {
         SoundFXManager.instance.PlaySoundFXClip(healthSound, transform, 0.5f);
+    }
+
+    public void PlayDamageSound()
+    {
+        SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 1f);
     }
 
     public void PlayUndergroundParticles(bool play)

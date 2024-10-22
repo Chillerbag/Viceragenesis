@@ -267,6 +267,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: c890fa0fe621c4717b9412630ffa891b, type: 3}
     - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 38cabfa31a32a4745b4be71d0aa57a72, type: 3}
+    - target: {fileID: 4757691216442616132, guid: f21d6b7593a1dc44199f565dfa1aa613, type: 3}
       propertyPath: healthSound
       value: 
       objectReference: {fileID: 8300000, guid: 1310218a5e2fb4284805ad836d232b47, type: 3}

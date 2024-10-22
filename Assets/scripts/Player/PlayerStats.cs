@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
 
     private PlayerEffects playerEffects;
 
-    [SerializeField] private AudioClip damageSound;
     [SerializeField] private GameObject deathEffect;
 
     [SerializeField] private GameObject[] bodyCubes;
@@ -75,7 +74,7 @@ public class PlayerHealth : MonoBehaviour
         if (isInvulnerable) return; // If the player is invulnerable, do nothing
 
         // handle audio
-        SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 1f);
+        playerEffects.PlayDamageSound();
 
         if (currentHealth > 0)
         {
