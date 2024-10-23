@@ -159,8 +159,57 @@ Our team has a few key questions we hope to answer with feedback from evaluation
 8. Adherence to theme (do they find it eerie?)
 
 # Evaluation Report
+In total, we interviewed 10 individuals, and the demographic is as follows:
+| User Demographic  | Number of Users |
+| ------------- |:-------------:|
+| Experienced, interested | 6    |
+| Inexperienced or "uninterested" | 3 |
+| "Random"      | 2  |
 
-TODO (due milestone 3) - see specification for details
+The experienced and interested players, as well as the inexperienced or "uninterested" players were recruited through friends and family connections, whilst the "random" players were found at a SWOTVAC study hall. The "random" demographic provided us with insight about our game without the bias of family or friend connections. 
+
+The interviews and questionnaire provided important data, influencing changes and informing our development team of issues within the game. 
+
+## Key Findings
+### Positive Feedback
+As expected, positive feedback was less vocalized in interviews compared to critiques, however, our hybrid evaluation system, specifically our questionnaire, helped us identify the positive aspects of the game. Overall, our game was well-received stylistically and engagement-wise:
+< will insert two pics of questionnaire >
+Figure 1: Questionnaire Result for Engagement Level
+Figure 2: Questionnaire Result for Style and Theme
+Individual comments during the gameplay were mainly about the following:
+* Sounds: three individuals commented on the digging sound: "it is so gross!", and four on the crawling sound. It was apparent that this contributed positively to the gameplay experience.
+* Acid Shader: five individuals mentioned the acid shader by Hoang, stating that it made the gameplay more immersive and interesting.
+* Platforms: the ability to dig up platforms was an interesting game mechanic, mentioned by 7 out of 10 individuals during gameplay.
+* Respawn Loading Button: in all of the gameplay evaluations the respawn button was used often and easily, and two individuals made slight, indirect comments towards its use: "Imagine if this button was not here".
+* Centipede Rig: four individuals commented that the centipede rig was cool, and that the movement added to the experience.
+
+We also determined that the game was engaging based on our qualitative observations. Many individuals did not want to finish the evaluation and wanted to continue to play and eventually beat the boss, and a few were raised their voices and were clearly emotionally engaged throughout the game play. This gave us key indications that the theme and visuals in our game were engaging, and enhanced the gameplay experience. 
+
+### Constructive Feedback
+The constructive feedback mainly related to the difficulty and the introduction of the game. All of the individuals we interviewed felt that the arenas in level 1 and 3 were too difficult, and that some of the game geometry was frustrating (the initial jumping from platform to platform, attacking was too difficult, and the brain boss laser sequences along with the shield was too hard to beat). Majority of the individuals rated the understanding of the game low:
+< will insert survey pic here>
+Figure 3: Questionnaire Result for Understanding of Viceragenesis
+
+After post-walkthrough questioning, we were able to pinpoint the main issues related to the critque:
+1. It is not intuitive to players, until after many tries to release the dig (the spacebar) while pushing the W key. Some individuals actually never attempted this technique, until our team member conducting the evaluation hinted that it was a useful technique when needing to attack and jump.
+2. The green health pickup was interpreted by some as an enemy, and in turn, individuals would avoid the health pickup, making it harder for them to pass checkpoints and win the game.
+3. The platform featured in introduction practice scene (IntroPracticeScene) disappears too quickly. This is a cascading effect, as if the player misses the platform tutorial, they are not informed that they can dig up platforms.
+
+Our evaluation also alerted us to small edge cases:
+* There were a few instances in the level one stomach where if the individual made a jump and missed the platform, landing in the acid, the player rig would get stuck within the lower plane, and would not be able to resurface. This forced the player to respawn, without the grace of one damage point.
+* The player could get stuck underneath the tongue, or be trapped between the monster's skull and the throat quad in the Intro Practice scene (the tutorial scene of our game). 
+  
+## Changes Post-Evaluation
+Below are the list of changes made post-evaluation, along with their justifications (how they address the evaluation insight):
+
+| Change Description  | Related Evaluation Plan Insight  | Justification |
+| ------------- |:-------------:|:-------------:|
+| Making the platform dig up mandatory in the tutorial scene  |   | |
+| Adding an attack and health pick up task in the tutorial scene | | |
+| Lowering the brain boss' health |   | |
+| Reducing frequency of bullets in Level 1's arena |  | |
+
+Additionally, we addressed the small bugs we discovered.
 
 # Shaders and Special Effects
 
