@@ -776,7 +776,7 @@ MonoBehaviour:
     to launch out and gain vertical height!
 
     Try
-    digging under the block in front of you'
+    digging under the block in front of you.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1982,7 +1982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522607545a09eff439b02be1f9ece66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introEnemy: {fileID: 411501651}
 --- !u!114 &386315106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3389,6 +3388,189 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c14140efd8cc7e469e3a8f7765fde51, type: 3}
   m_PrefabInstance: {fileID: 797972148}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &821543900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821543905}
+  - component: {fileID: 821543904}
+  - component: {fileID: 821543903}
+  - component: {fileID: 821543902}
+  - component: {fileID: 821543901}
+  m_Layer: 0
+  m_Name: Practice Guide Timeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &821543901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821543900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5278f439f26f3df49a1bb602aef16aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &821543902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821543900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769c47115e5de4aed99ae5e83ceb830e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &821543903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821543900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: b4b539279a186453689372c42cc470d1, type: 2}
+    - {fileID: 11400000, guid: c96eaf3c76a81094293336d03a895fbc, type: 2}
+    - {fileID: 11400000, guid: e06b72af4bd7703459116b50c553d5c8, type: 2}
+    - {fileID: 11400000, guid: e6e07945a0e02f1488f5c8d19b85648b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 821543902}
+          m_TargetAssemblyTypeName: IntroPracticeManager, Assembly-CSharp
+          m_MethodName: OnGKeyPress
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 821543901}
+          m_TargetAssemblyTypeName: TimelineController, Assembly-CSharp
+          m_MethodName: PauseTimeline
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 821543901}
+          m_TargetAssemblyTypeName: TimelineController, Assembly-CSharp
+          m_MethodName: PauseTimeline
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 821543901}
+          m_TargetAssemblyTypeName: TimelineController, Assembly-CSharp
+          m_MethodName: PauseTimeline
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &821543904
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821543900}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 8842013103882658210, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 691989157}
+  - key: {fileID: -1590372062116678696, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 1450804595}
+  - key: {fileID: 4211459942103081486, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 834569457}
+  - key: {fileID: -4762742808196362068, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 119786506}
+  - key: {fileID: -3715226875869202254, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 1156595176}
+  - key: {fileID: -2621900767884247218, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 2091505676}
+  - key: {fileID: 8362187706692441802, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 2091505682}
+  - key: {fileID: -8946101389689589588, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 172662157}
+  - key: {fileID: 4150031654398277735, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 1796495217}
+  - key: {fileID: -2137356799602804885, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 1956388156}
+  - key: {fileID: -6033892860935261277, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 1200790442}
+  - key: {fileID: 3804641193618023367, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 411501651}
+  - key: {fileID: -4778188685056209729, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 1348300844}
+  - key: {fileID: -8307974464650309472, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 386315104}
+  - key: {fileID: -4749257989443772217, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6691749819641233748, guid: 69f3a5f22b99f4915b28f9f56f65bb64, type: 2}
+    value: {fileID: 628142886}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &821543905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821543900}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 564, y: 341.5, z: 0}
+  m_LocalScale: {x: 0.63549, y: 0.63549, z: 0.63549}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824193556
 GameObject:
   m_ObjectHideFlags: 0
@@ -5993,14 +6175,14 @@ RectTransform:
   m_GameObject: {fileID: 1683199707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.4400055, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 861747639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: 199.9}
+  m_AnchoredPosition: {x: -1.9, y: 215.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683199709
@@ -6659,7 +6841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522607545a09eff439b02be1f9ece66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introEnemy: {fileID: 1348300844}
 --- !u!114 &1956388159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7098,7 +7279,7 @@ RectTransform:
   m_GameObject: {fileID: 2091505676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -58.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4461871, y: 0.74367, z: 0.74367}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 757761272}
@@ -7106,7 +7287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 163.5, y: 139.8}
+  m_AnchoredPosition: {x: 155.3, y: -41.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091505678
@@ -7143,9 +7324,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.62450945, g: 0.8018868, b: 0.28368637, a: 1}
+    m_PressedColor: {r: 0.8113208, g: 0.11863652, b: 0.11863652, a: 1}
+    m_SelectedColor: {r: 0.7924528, g: 0.33268064, b: 0.33268064, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7398,3 +7579,4 @@ SceneRoots:
   - {fileID: 763794110}
   - {fileID: 1616172479}
   - {fileID: 1722691124}
+  - {fileID: 821543905}
