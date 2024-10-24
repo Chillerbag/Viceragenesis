@@ -143,7 +143,7 @@ public class PlayerHealth : MonoBehaviour
     public void LoadProgress()
     {
         Debug.Log("Loading progress...");
-        if (PlayerPrefs.HasKey("RespawnX"))
+        if (PlayerPrefs.HasKey("RespawnX") && PlayerPrefs.GetInt("RespawnScene") == SceneManager.GetActiveScene().buildIndex)
         {
             float x = PlayerPrefs.GetFloat("RespawnX");
             float y = PlayerPrefs.GetFloat("RespawnY");
