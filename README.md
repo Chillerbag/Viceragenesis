@@ -159,14 +159,14 @@ Our team has a few key questions we hope to answer with feedback from evaluation
 8. Adherence to theme (do they find it eerie?)
 
 # Evaluation Report
-In total, we interviewed 10 individuals, and the demographic is as follows:
+In total, we interviewed 10 individuals, and the resulting demographic was as follows:
 | User Demographic  | Number of Users |
 | ------------- |:-------------:|
 | Experienced, interested | 6    |
 | Inexperienced or "uninterested" | 3 |
 | "Random"      | 2  |
 
-The experienced and interested players, as well as the inexperienced or "uninterested" players were recruited through friends and family connections, whilst the "random" players were found at a SWOTVAC study hall. The "random" demographic provided us with insight about our game without the bias of family or friend connections. 
+The experienced and interested players, as well as the inexperienced or "uninterested" players were recruited through friends and family connections, whilst the "random" players were found at a SWOTVAC study hall. The "random" demographic provided us with insight about our game without the bias of a family or friend connection. 
 
 The interviews and questionnaire provided important data, influencing changes and informing our development team of issues within the game. 
 
@@ -197,19 +197,37 @@ After post-walkthrough questioning, we were able to pinpoint the main issues rel
 
 Our evaluation also alerted us to small edge cases:
 * There were a few instances in the level one stomach where if the individual made a jump and missed the platform, landing in the acid, the player rig would get stuck within the lower plane, and would not be able to resurface. This forced the player to respawn, without the grace of one damage point.
-* The player could get stuck underneath the tongue, or be trapped between the monster's skull and the throat quad in the Intro Practice scene (the tutorial scene of our game). 
+* The player could get stuck underneath the tongue, or be trapped between the monster's skull and the throat quad in the Intro Practice scene (the tutorial scene of our game).
+* A stomach ucler enemy in Level 1, in certain gameplays, would disappear prematurely. 
   
 ## Changes Post-Evaluation
-Below are the list of changes made post-evaluation, along with their justifications (how they address the evaluation insight):
+Below are the list of changes made post-evaluation, along with their justifications, i.e. how they address evaluation insights.
 
-| Change Description  | Related Evaluation Plan Insight  | Justification |
-| ------------- |:-------------:|:-------------:|
-| Making the platform dig up mandatory in the tutorial scene  |   | |
-| Adding an attack and health pick up task in the tutorial scene | | |
-| Lowering the brain boss' health |   | |
-| Reducing frequency of bullets in Level 1's arena |  | |
+### Mandatory Tutorial Tasks
+#### Mandatory Platform Dig
+From interview results, players do not recognize they can dig up platforms without explicit instructions. By mandating a platform dig, it ensures the player is prepared enough for the game so the counterproductive frustrations experienced during evaluations does not occur. This addresses some of the Level 1 difficulties experienced by individuals during evaluation gameplay. 
 
-Additionally, we addressed the small bugs we discovered.
+#### Mandatory Attack and Health Pickup 
+Additionally, it was apparent from observing gameplay that the health pickups were not intuitive to players. By mandating a health pickup task in the tutorial, it informs the player and consequently addresses the difficulty frustrations expressed in our interviews. An attack was also added to the tutorial, to allow the player to fully understand the game mechanics involved in a dash/attack.
+
+By introducing mandatory tasks, we believe the initial frustrations of getting the hang of the game are minimized, without removing any productive frustrations (the game should not be too easy).
+
+### More Descriptive Tutorial Titles
+A counterproductive difficulty we were able to observe during gameplays was the initial jumping from platform to platform in the Level 1 scene. Several individuals took, on average, 5-6 tries to land the jumps, having to respawn repeatedly. From interviews and the questionnaire results, we were able to obtain the insight that this negatively impacted their gameplay experience, as individuals need to experience intial accomplishments relatively quickly after beginning the game, or else their attention is diverted by frustration. We addressed this through adding a title that encourages players to release the space bar whilst holding W, essentially performing a jump or a dash. 
+
+This new title was tested on two of the original individuals performing the evaluation, and they stated that they found this change helpful: "When I first played the game, it took me a really long time to figure out the mechanic of jumping. I think if you add this instruction in, you know how to do it, and then it doesn't take as long to try to play the game."
+
+### Introduction Story Slide Duration / Skip Button Additions
+In a few interviews, and during gameplay, individuals commented on the duration of the IntroStoryScene's slides. Two individuals commented that they transitioned too quickly, and that they could not read the titles in time, whilst two individuals commented that the slides were too slow. To compromise, and provide options for different paces of reading, we increased the duration of the introduction titles, and added a skip button. The skip button caters to the fast readers, allowing them to skip to the tutorial section, and it also provides a shortcut for players who have already played the game. In the tutorial scene, we followed suit, adding a skip button for those who wish to skip the tutorial.
+
+### Brain Boss Health
+To mitigate the "unfair" difficulty experienced in the final boss arena (the brain), we have decided to lower the brain's health. In doing so, we don't eliminate the challenge of dodging the lasers and lightning, or the timing strategy with the shield, but we effectively rebalance the final challenge.
+
+### Level 1 Arena
+Much like the brain boss health reduction, we reduced the frequency of bullets in Level 1's arena. Nearly all of the individuals in the evaluations (7/10) stated that the level 1 arena was too difficult, and one of our team members had to surpass the gameplay and skip to the brain boss to continue the evaluation, as two individuals could not pass the level. By reducing the frequency of bullets, we also rebalance the difficulty to ensure individuals can still be challenged but have fun playing Viceragenesis.
+
+### Addressing Small Bugs
+Additionally, we addressed the small bugs we discovered through observing gameplay: geometry in Level 1, premature death of a stomach ulcer in Level 1, and a "no-mans-land" in the tutorial practice scene.
 
 # Shaders and Special Effects
 
