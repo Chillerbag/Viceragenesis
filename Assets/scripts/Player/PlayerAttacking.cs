@@ -66,7 +66,7 @@ public class PlayerAttacking : MonoBehaviour
             if (collision.gameObject.tag == "Lightning")
             {
                 playerHealth.TakeDamage(1);
-                playerEffects.PlayZapSound();
+                //playerEffects.PlayZapSound();
             }
         }
     }
