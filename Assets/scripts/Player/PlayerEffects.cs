@@ -47,7 +47,7 @@ public class PlayerEffects : MonoBehaviour
 
     public void PlayDamageSound()
     {
-        SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 1.5f);
+        SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 5f);
     }
 
     public void PlayUndergroundParticles(bool play)
