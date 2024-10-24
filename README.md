@@ -173,10 +173,13 @@ The interviews and questionnaire provided important data, influencing changes an
 ## Key Findings
 ### Positive Feedback
 As expected, positive feedback was less vocalized in interviews compared to critiques, however, our hybrid evaluation system, specifically our questionnaire, helped us identify the positive aspects of the game. Overall, our game was well-received stylistically and engagement-wise:
-![Alt text](./final-report-images/EngagedRating.png)
+
+<img src="./final-report-images/EngagedRating.png" alt="Engagement Rating" width="400" />
 Figure 1: Questionnaire Result for Engagement Level
-![Alt text](./final-report-images/StyleRating.png)
-Figure 2: Questionnaire Result for Style and Theme
+
+<img src="./final-report-images/StyleRating.png" alt="Style Rating" width="400" />
+Figure 2: Questionnaire Result for Style and Theme  
+
 Individual comments during the gameplay were mainly about the following:
 * Sounds: three individuals commented on the digging sound: "it is so gross!", and four on the crawling sound. It was apparent that this contributed positively to the gameplay experience.
 * Acid Shader: five individuals mentioned the acid shader by Hoang, stating that it made the gameplay more immersive and interesting.
@@ -188,7 +191,9 @@ We also determined that the game was engaging based on our qualitative observati
 
 ### Constructive Feedback
 The constructive feedback mainly related to the difficulty and the introduction of the game. All of the individuals we interviewed felt that the arenas in level 1 and 3 were too difficult, and that some of the game geometry was frustrating (the initial jumping from platform to platform, attacking was too difficult, and the brain boss laser sequences along with the shield was too hard to beat). Majority of the individuals rated the understanding of the game low:
-![Alt text](./final-report-images/NavigationRating.png)
+
+<img src="./final-report-images/NavigationRating.png" alt="Navigation Rating" width="400" />
+
 Figure 3: Questionnaire Result for Understanding of Viceragenesis
 
 After post-walkthrough questioning, we were able to pinpoint the main issues related to the critque:
@@ -208,8 +213,8 @@ Below are the list of changes made post-evaluation, along with their justificati
 #### Mandatory Platform Dig
 From interview results, players do not recognize they can dig up platforms without explicit instructions. By mandating a platform dig, it ensures the player is prepared enough for the game so the counterproductive frustrations experienced during evaluations does not occur. This addresses some of the Level 1 difficulties experienced by individuals during evaluation gameplay. 
 
-![Platform Dig GIF](./final-report-gifs/digup.gif)
 <img src="./final-report-gifs/digup.gif" alt="Platform Dig GIF" width="400" />
+Figure 4: Mandatory Platform Dig in Tutorial Scene (IntroPractice)
 
 #### Mandatory Attack and Health Pickup 
 Additionally, it was apparent from observing gameplay that the health pickups were not intuitive to players. By mandating a health pickup task in the tutorial, it informs the player and consequently addresses the difficulty frustrations expressed in our interviews. An attack was also added to the tutorial, to allow the player to fully understand the game mechanics involved in a dash/attack.
@@ -223,11 +228,14 @@ This new title was tested on two of the original individuals performing the eval
 
 We also added an arrow, to ensure the cooldown bar for digging was clear.
 
-![Cooldown Bar GIF](./final-report-gifs/cooldown.gif)
 <img src="./final-report-gifs/cooldown.gif" alt="Cooldown Bar GIF" width="400" />
+Figure 5: Cooldown Bar Arrow Addition 
 
 ### Introduction Story Slide Duration / Skip Button Additions
 In a few interviews, and during gameplay, individuals commented on the duration of the IntroStoryScene's slides. Two individuals commented that they transitioned too quickly, and that they could not read the titles in time, whilst two individuals commented that the slides were too slow. To compromise, and provide options for different paces of reading, we increased the duration of the introduction titles, and added a skip button. The skip button caters to the fast readers, allowing them to skip to the tutorial section, and it also provides a shortcut for players who have already played the game. In the tutorial scene, we followed suit, adding a skip button for those who wish to skip the tutorial.
+
+<img src="./final-report-gifs/intro-story.gif" alt="Intro Story GIF" width="400" />
+Figure 6: Slide Duration and Skip Button
 
 ### Brain Boss Health
 To mitigate the "unfair" difficulty experienced in the final boss arena (the brain), we have decided to lower the brain's health. In doing so, we don't eliminate the challenge of dodging the lasers and lightning, or the timing strategy with the shield, but we effectively rebalance the final challenge.
@@ -249,6 +257,14 @@ TODO (due milestone 3) - see specification for details
 # References and External Resources
 ## References
 Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
+### Models:
+  **Crown in Victory Screen**:
+  
+  Dadaev. Crown 3D Model. Free3D, November 20th, 2019, [free3d.com/3d-model/crown](https://free3d.com/3d-model/crown-10070.html).
+### Sound FX:
+  **Player Attack Sound**:
+  
+  Damnsatinist.  (November, 2019). Retro Punch [attack.ogg]. Freesound. [freesound.org/people/damnsatinist/sounds/493915/](https://freesound.org/people/damnsatinist/sounds/493915/).
 
 ## External Resources
 [Our Survey Monkey questionnaire](https://www.surveymonkey.com/r/KK7ZBCY).
