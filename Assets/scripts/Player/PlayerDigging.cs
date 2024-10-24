@@ -52,6 +52,7 @@ public class PlayerDigging : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && undergroundBuffer <= 0 && controller.isGrounded && !isUnderground)
         {
             StartDigging();
+            StartCoroutine(ReduceEnergy());
         }
 
         if (isUnderground)
@@ -80,13 +81,33 @@ public class PlayerDigging : MonoBehaviour
 
     }
 
+    private IEnumerator ReduceEnergy()
+    {
+        float duration = 0.5f; // Total duration in seconds
+        float startTime = Time.time;
+        int energyLevel = 16;
+        while (energyLevel > 0)
+        {
+            // Calculate how much time has passed
+            float elapsed = Time.time - startTime;
+
+            // Calculate the new value based on elapsed time
+            energyLevel = Mathf.Max(0, 16 - Mathf.FloorToInt((elapsed / duration) * 16));
+            energyBar.GetComponent<EnergyBar>().energyLevel = energyLevel;
+            // Wait for the next frame
+            yield return null;
+        }
+
+
+    }
+
     private void EndDigging()
     {
         rigAnimator.SetTrigger("endDig");
         playerEffects.PlayUndergroundParticles(false);
         isUnderground = false;
         undergroundBuffer = 1.0f;
-        energyBar.GetComponent<EnergyBar>().energyLevel = Mathf.RoundToInt(undergroundBuffer * 16);
+        //energyBar.GetComponent<EnergyBar>().energyLevel = Mathf.RoundToInt(undergroundBuffer * 16);
         MoveToTopMarker();
         StartCoroutine(DolphinDive());
         SetLayerCollision(true);
@@ -104,7 +125,7 @@ public class PlayerDigging : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up);
         if (hits.Length > 0)
         {
-            //Debug.Log("Found " + hits.Length + " hits");
+            Debug.Log("Found " + hits.Length + " hits");
             foreach (RaycastHit hit in hits)
             {
                 Transform topMarker = hit.collider.transform.Find("TopMarker");
@@ -206,30 +227,5 @@ public class PlayerDigging : MonoBehaviour
 
         playerEffects.PlayAttackParticles(false);
         playerState.SetState("Idle");
-    }
-    
-    void OnCollisionEnter(Collision collision){
-        GameObject gameObject = collision.gameObject;
-       // Debug.Log(gameObject.tag);
-
-        if(gameObject.tag == "Pulsing Platform"){
-            //Debug.Log("detected");
-
-            if(isUnderground && gameObject.GetComponentInParent<Bouncing>().active){
-                AbruptDigging();
-            }
-        }
-          
-    }
-    private void AbruptDigging()
-    {
-        rigAnimator.SetTrigger("endDig");
-        playerEffects.PlayUndergroundParticles(false);
-        isUnderground = false;
-        undergroundBuffer = 1.0f;
-        energyBar.GetComponent<EnergyBar>().energyLevel = Mathf.RoundToInt(undergroundBuffer * 16);
-        MoveToTopMarker();
-        SetLayerCollision(true);
-
     }
 }
