@@ -11,7 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public float invulnerabilityDuration = 2f; // Duration of invulnerability in seconds
     private bool isInvulnerable = false;
     public GameObject screenFlash;
-    [SerializeField] private AudioClip damageSound;
+
+    private PlayerEffects playerEffects;
+
     [SerializeField] private GameObject deathEffect;
 
     [SerializeField] private GameObject[] bodyCubes;
@@ -22,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Start method called.");
         currentHealth = maxHealth;
+        playerEffects = GetComponent<PlayerEffects>();
         // check if we're in a level where we should load progress
         if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "LeveL2" || SceneManager.GetActiveScene().name == "FinalBoss")
         {
@@ -69,9 +72,8 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isInvulnerable) return; // If the player is invulnerable, do nothing
-
-        // handle audio
-        SoundFXManager.instance.PlaySoundFXClip(damageSound, transform, 1f);
+        
+        playerEffects.PlayDamageSound();
 
         if (currentHealth > 0)
         {
@@ -104,6 +106,7 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int healAmount)
     {
         currentHealth += healAmount;
+        playerEffects.PlayHealthSound();
 
         if (currentHealth > maxHealth)
         {
