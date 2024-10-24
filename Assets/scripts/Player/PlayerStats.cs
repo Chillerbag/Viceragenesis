@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Start method called.");
         currentHealth = maxHealth;
         // check if we're in a level where we should load progress
-        if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Level2")
+        if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "LeveL2" || SceneManager.GetActiveScene().name == "FinalBoss")
         {
             LoadProgress();
         }
@@ -146,11 +146,8 @@ public class PlayerHealth : MonoBehaviour
         if (PlayerPrefs.HasKey("RespawnX"))
         {
             float x = PlayerPrefs.GetFloat("RespawnX");
-            Debug.Log("RespawnX: " + x);
             float y = PlayerPrefs.GetFloat("RespawnY");
-            Debug.Log("RespawnY: " + y);
             float z = PlayerPrefs.GetFloat("RespawnZ");
-            Debug.Log("RespawnZ: " + z);
             respawnPoint = new Vector3(x, y, z);
             GetComponent<Transform>().position = respawnPoint;
         }

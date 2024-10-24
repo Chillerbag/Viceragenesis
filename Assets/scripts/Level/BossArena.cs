@@ -42,7 +42,7 @@ public class BossArena : MonoBehaviour
             BossHealth.SetActive(true);
             SetArenaBoundariesActive(true);
             music.GetComponent<MusicHandler>().changeMusic(2);
-            music.GetComponent<MusicHandler>().changeVolume(0.3f);
+            music.GetComponent<MusicHandler>().changeVolume(0.5f);
         }
     }
 
@@ -57,10 +57,15 @@ public class BossArena : MonoBehaviour
     public IEnumerator BossDefeated()
     {
         music.GetComponent<MusicHandler>().changeMusic(0);
-        music.GetComponent<MusicHandler>().changeVolume(1f);
+        music.GetComponent<MusicHandler>().changeVolume(0.6f);
+        PlayerPrefs.DeleteKey("RespawnX");
+        PlayerPrefs.DeleteKey("RespawnY");
+        PlayerPrefs.DeleteKey("RespawnZ");
 
         ReduceBitDepth reduceBitDepthComponent = transitionEffect.GetComponent<ReduceBitDepth>();
         reduceBitDepthComponent.ReduceScreenBitDepth();
+
+
         yield return new WaitForSeconds(5);
 
         if (SceneManager.GetActiveScene().buildIndex == 6)

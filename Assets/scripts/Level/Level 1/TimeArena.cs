@@ -41,7 +41,7 @@ public class TimeArena : MonoBehaviour
                 Destroy(TimeEmitter);
                 SetArenaBoundariesActive(false);
                 musicHandler.changeMusic(0);
-                musicHandler.changeVolume(1f);
+                musicHandler.changeVolume(0.6f);
                 // probably shouldnt do this. 
                 gameObject.SetActive(false);
             }
