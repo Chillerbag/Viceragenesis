@@ -10,7 +10,7 @@ public class EnemyHealthManager : MonoBehaviour
     public Boolean isDead = false;
     public virtual void DamageToEnemy(int dmg) {
         HP-=dmg;
-        if (HP<=0) {
+        if (HP<=0 && !isDead) {
             isDead = true;
             DeathEffects = GetComponents<EnemyDeath>();
             Debug.Log(DeathEffects == null);

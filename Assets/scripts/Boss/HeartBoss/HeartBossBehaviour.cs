@@ -42,7 +42,8 @@ public class HeartBossBehaviour : BossBehaviour
             HP-=dmg;
             Debug.Log(HP);
 
-        } else if (HP<=0) {
+        } 
+        if (HP<=0) {
             defeated = true;
             Debug.Log("deactive");
 
