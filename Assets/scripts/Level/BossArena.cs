@@ -68,13 +68,10 @@ public class BossArena : MonoBehaviour
 
         yield return new WaitForSeconds(5);
 
-        if (SceneManager.GetActiveScene().buildIndex == 6)
-        {
-            // beat the game!
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
+        if (SceneManager.GetActiveScene().buildIndex == 6) {
+                // beat the game!
+                SceneManager.LoadScene(8);
+        } else {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
