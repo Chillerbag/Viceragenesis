@@ -12,7 +12,7 @@ public class LightningStrike : MonoBehaviour
         StartCoroutine(StrikeLightningCoroutine());
     }
     public IEnumerator StrikeLightningCoroutine() {
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(2f); 
         // activate the lightning strike effect and wait for 1 second
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
