@@ -57,7 +57,7 @@ public class BossArena : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 6) {
                 // beat the game!
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(8);
         } else {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
