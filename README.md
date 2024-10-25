@@ -263,20 +263,75 @@ Additionally, we addressed the small bugs we discovered through observing gamepl
 TODO (due milestone 3) - see specification for details
 
 # Summary of Contributions
+### Gameplay Programming
+- Gameplay programming was handled by Ethan and Alex. Ethan worked on level 1 and the final boss, assisting with some components of the intro sequence, whilst Alex focussed on level 2 and enemy development. Gameplay programming covered all level elements, player elements, bosses, and enemies. Ethan focussed on player programming primarily.
+### Sound
+- Sound was primarily handled by Ella, both in terms of implementation and design. Ella acquired and implemented all sound effects into the code. Ethan assisted by acquiring two of the music tracks - for boss battles and arenas.
+### Graphics
+- Graphics programming was handled by Hoang. He did all the shaders, and the particle effects, as well as the UI elements. Other work included the death effect.
+### scenes
+- Intro cutscenes were handled by Ella, including the story, tutorial, and fly in cutscene. 
+- Ella also handled the death screen and the win screen.
+- The title screen was developed by Hoang.
+- Ethan developed the first level and final boss level
+- Alex developed the second level
+### Asset collection
+- Asset collection was predominantly handled by Ella and Hoang. They both curated models and textures for use in the game, which were implemented by Alex and Ethan in gameplay.
+### Organization
+- Hoang developed the file structure for game, which was immensely helpful in keeping our development process organized
+- Ethan worked on the DevOps side of things, managing the main branch and dealing with merge conflicts. Ethan also managed the Trello for organizing tasks, and meeting setup.
+### Other tasks
+- Ella did our evaluation plan and led the writing of the final report.
+- Ethan was responsible for the creation of our video trailer and part of the final report writing
+- Ethan & Ella both worked on keeping the GDD up to date with recent changes.
 
-TODO (due milestone 3) - see specification for details
+# Bonus sections
+
+## Sound Design
+We carefully considered our sound design, as we found it an important component in eeriness conceptually. We used gross crawling sounds for movement and digging, that sound visceral and squishy. The unsettling ambiance was also important in adding to this feeling. We still included some tracks that were more powerful however, as players felt the constant unsettling ambiance didn’t fit certain sequences, and we included areas in which you battle enemies, which didn’t really make sense to have the eerie ambiance. We don’t think these moments violate the overall eeriness of the game, however. 
+
+## Gameplay Programming
+This section will cover a discussion of our gameplay programming process, as the learning involved makes it worth highlighting in this report.
+ 
+### Reflection on development principles
+In the initial stages of the project, object oriented design was not being well followed. There were many classes that had far too many responsibilities, which made debugging difficult and the purpose of game objects difficult to understand. On the start of project 2, one of the first steps was factoring components of the player functionality into distinct purposeful classes, which act as component in the unity engine to act appropriately. Indeed, this still isn't great object oriented design, as these classes are not components of a broader player class, but to the unity engine, that would be functionally the same, and would break the ability to interact with manually configured variables.
+ 
+Enemies and Bosses were given abstract classes that created default and expected behaviours for these types of objects. Interfaces weren't added, as the concept of enemies and bosses in the game can have enough variation that the additional boilerplate contract of maybe 1 or 2 methods seemed pointless. Unity engine C# code doesn't adhere to many object oriented principles, so attempting to enforce them here wasn't especially helpful.
+ 
+On reflection, the manual coding of things like bullet patterns in our game could have been streamlined into a particle effect system or something, as the writing of complex vector3 changes over time was time consuming as opposed to the use of animations or particle effects which allow for the same, without the overhead and inability to see what you're actually doing until you build. Since the gameplay designers Alex and Ethan come from a programming background, the first instinct was to implement bullet patterns and such in this way, but it may have been a better idea to take advantage of the low-code systems Unity provides as to not create complex code that is difficult to read and trace.
+ 
+Lots of our scripts have serializable variables, which results in a lot of config between scenes and makes debugging difficult. We encountered lots of issues with variables not being set properly, or pointing at the wrong thing. In some ways within unity, this is inevitable, but we should have strived to bind variable values more strongly, using tools such as getters within the unity engine.
+ 
+Most of these reflections stem from a gradual understanding of how to best use the unity engine to create extensible, well thought out games. We didn’t quite make or code base as refined as possible, but we got to a decent place with our code structure.
+ 
+### Things we did well in programming
+In general, script structure was quite good. We used helper functions where possible, but it might have been better to create a helper function namespace in a separate folder.
+ 
+Our bosses made use of the animation timeline to trigger attacks like a state machine. This made it  really easy to visualise boss behaviour, and meant we only had to program the attacks the boss would use, rather than a complex behaviour system. For us, this represented a good compromise between what unity does well, and our coding experience.
+ 
+We learnt a lot about C# and working with a framework like UnityEngine while coding, and we ended up writing managers to optimise the game. Unity is great for doing these kind of tasks easily, and we appreciated how even with our gradual learning of unity engine (and writing good code for it), it was easy to optimise our game.
+ 
+ 
+### Reflection on the Unity engine
+The key problem we had is how much the Unity Engine abstracts behaviour outside of what the code does. Variables are set outside the code when serializable, and GameObjects can just get the code of any other GameObject, creating high dependencies between other objects and not adhering to good OOP. For example, if a new programmer comes onto our project, the highly abstracted boss state machine and how it interfaces with code will be harder to understand than raw code, even if it's more efficient / easy to develop with once learnt.
+ 
+Unity represents good learning for 3d development, but as programmers, we take some issue with its structure.
+
 
 # References and External Resources
 ## References
-Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
+- Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Usability Evaluation In Industry, 207–212. [doi 10.1201 9781498710411 35](https://doi.org/10.1201/9781498710411-35).
 ### Models:
-  **Crown in Victory Screen**:
-  
+  - **Crown in Victory Screen**:
   Dadaev. Crown 3D Model. Free3D, November 20th, 2019, [free3d.com/3d-model/crown](https://free3d.com/3d-model/crown-10070.html).
 ### Sound FX:
-  **Player Attack Sound**:
-  
+  - **Player Attack Sound**:
   Damnsatinist.  (November, 2019). Retro Punch [attack.ogg]. Freesound. [freesound.org/people/damnsatinist/sounds/493915/](https://freesound.org/people/damnsatinist/sounds/493915/).
+### Music
+  - **Arena music**:
+  Everson, S. (2010, June 13). Throwdown, Homestuck Vol 5 [Music].
+  - **Boss music**
+  I’m Gonna Teach You a Freakin’ Lesson! - Ribby: The Game (SPC700). (2024, July 19). [Music]. https://soundcloud.com/nununoisy/im-gonna-teach-you-a-freakin-lesson-ribby-the-game-spc700
 
 ## External Resources
 [Our Survey Monkey questionnaire](https://www.surveymonkey.com/r/KK7ZBCY).
