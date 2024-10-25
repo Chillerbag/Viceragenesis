@@ -221,6 +221,12 @@ Additionally, it was apparent from observing gameplay that the health pickups we
 
 By introducing mandatory tasks, we believe the initial frustrations of getting the hang of the game are minimized, without removing any productive frustrations (the game should not be too easy).
 
+<img src="./final-report-gifs/enemy-attack-intro.gif" alt="Enemy Attack Intro GIF" width="400" />
+Figure 5: Mandatory Enemy Attack in Tutorial Scene (IntroPractice)
+
+<img src="./final-report-gifs/health-pickup-intro.gif" alt="Health Pickup Intro GIF" width="400" />
+Figure 6: Mandatory Health Pickup in Tutorial Scene (IntroPractice)
+
 ### More Descriptive Tutorial Titles
 A counterproductive difficulty we were able to observe during gameplays was the initial jumping from platform to platform in the Level 1 scene. Several individuals took, on average, 5-6 tries to land the jumps, having to respawn repeatedly. From interviews and the questionnaire results, we were able to obtain the insight that this negatively impacted their gameplay experience, as individuals need to experience intial accomplishments relatively quickly after beginning the game, or else their attention is diverted by frustration. We addressed this through adding a title that encourages players to release the space bar whilst holding W, essentially performing a jump or a dash. 
 
@@ -229,19 +235,25 @@ This new title was tested on two of the original individuals performing the eval
 We also added an arrow, to ensure the cooldown bar for digging was clear.
 
 <img src="./final-report-gifs/cooldown.gif" alt="Cooldown Bar GIF" width="400" />
-Figure 5: Cooldown Bar Arrow Addition 
+Figure 7: Cooldown Bar Arrow Addition 
 
 ### Introduction Story Slide Duration / Skip Button Additions
 In a few interviews, and during gameplay, individuals commented on the duration of the IntroStoryScene's slides. Two individuals commented that they transitioned too quickly, and that they could not read the titles in time, whilst two individuals commented that the slides were too slow. To compromise, and provide options for different paces of reading, we increased the duration of the introduction titles, and added a skip button. The skip button caters to the fast readers, allowing them to skip to the tutorial section, and it also provides a shortcut for players who have already played the game. In the tutorial scene, we followed suit, adding a skip button for those who wish to skip the tutorial.
 
 <img src="./final-report-gifs/intro-story.gif" alt="Intro Story GIF" width="400" />
-Figure 6: Slide Duration and Skip Button
+Figure 8: Slide Duration and Skip Button
 
 ### Brain Boss Health
 To mitigate the "unfair" difficulty experienced in the final boss arena (the brain), we have decided to lower the brain's health. In doing so, we don't eliminate the challenge of dodging the lasers and lightning, or the timing strategy with the shield, but we effectively rebalance the final challenge.
 
+<img src="./final-report-gifs/brain-reduced.gif" alt="Brain Healh Reduced GIF" width="400" />
+Figure 9: Reduced Health of Final Boss
+
 ### Level 1 Arena
 Much like the brain boss health reduction, we reduced the frequency of bullets in Level 1's arena. Nearly all of the individuals in the evaluations (7/10) stated that the level 1 arena was too difficult, and one of our team members had to surpass the gameplay and skip to the brain boss to continue the evaluation, as two individuals could not pass the level. By reducing the frequency of bullets, we also rebalance the difficulty to ensure individuals can still be challenged but have fun playing Viceragenesis.
+
+<img src="./final-report-gifs/level1-bullets.gif" alt="Level 1 Bullet Arena GIF" width="400" />
+Figure 9: Decreased Frequency of Bullets in Level 1 Arena
 
 ### Addressing Small Bugs
 Additionally, we addressed the small bugs we discovered through observing gameplay: geometry in Level 1, premature death of a stomach ulcer in Level 1, and a "no-mans-land" in the tutorial practice scene.
