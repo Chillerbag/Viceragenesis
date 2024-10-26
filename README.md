@@ -324,6 +324,10 @@ Unity represents good learning for 3d development, but as programmers, we take s
 ### Models:
   - **Crown in Victory Screen**:
   Dadaev. Crown 3D Model. Free3D, November 20th, 2019, [free3d.com/3d-model/crown](https://free3d.com/3d-model/crown-10070.html).
+  - **Brain Final boss Model**
+    Picturesque Games. (2021, November 17). Lowpoly Alien Buildings. @UnityAssetStore; Unity Asset Store. https://assetstore.unity.com/packages/3d/environments/lowpoly-alien-buildings-203675
+  - ** Spike Ball Model**
+    YounGen Tech. (2011, Match 22), Ball Pack @UnityAssetStore; Unity Asset Store. https://assetstore.unity.com/packages/3d/props/ball-pack-446
 ### Sound FX:
   - **Player Attack Sound**:
   Damnsatinist.  (November, 2019). Retro Punch [attack.ogg]. Freesound. [freesound.org/people/damnsatinist/sounds/493915/](https://freesound.org/people/damnsatinist/sounds/493915/).
